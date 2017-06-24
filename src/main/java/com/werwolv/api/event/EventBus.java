@@ -1,12 +1,17 @@
 package com.werwolv.api.event;
 
+import com.google.common.collect.ImmutableSet;
+import com.google.common.reflect.ClassPath;
+import com.werwolv.api.API;
 import com.werwolv.api.Log;
 
 import org.reflections.Reflections;
 
+import java.io.IOException;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.net.URLClassLoader;
 import java.util.*;
 
 public class EventBus {
@@ -23,9 +28,8 @@ public class EventBus {
 
         for (Iterator<Event> iterator = eventStack.iterator(); iterator.hasNext(); ) {
             Event currEvent = iterator.next();
-            for (Class eventHandler : eventHandlers) {
+            for (Class eventHandler : eventHandlers)
                 runAllAnnotatedWith(SubscribeEvent.class, eventHandler, currEvent);
-            }
             iterator.remove();
         }
     }
@@ -37,7 +41,7 @@ public class EventBus {
             if (method.isAnnotationPresent(annotation)) {
                 try {
                     if(method.getParameterTypes()[0].isInstance(event))
-                        method.invoke(eventListener.newInstance(), event);
+                            method.invoke(eventListener.newInstance(), event);
                 } catch (IllegalAccessException | InvocationTargetException | InstantiationException e) {
                     e.printStackTrace();
                 }
@@ -46,7 +50,20 @@ public class EventBus {
     }
 
     public void registerEventHandlers() {
-        this.eventHandlers.addAll(new Reflections("").getTypesAnnotatedWith(EventBusSubscriber.class));
-    }
+        ImmutableSet<ClassPath.ClassInfo> set = null;
+        try {
+            set = ClassPath.from(getClass().getClassLoader()).getAllClasses();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
+        for(ClassPath.ClassInfo c : set) {
+            try {
+                Class clazz = c.load();
+                if(clazz.isAnnotationPresent(EventBusSubscriber.class))
+                    this.eventHandlers.add(clazz);
+            } catch(NoClassDefFoundError e) {
+            }
+        }
+    }
 }

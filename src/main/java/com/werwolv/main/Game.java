@@ -2,6 +2,8 @@ package com.werwolv.main;
 
 import java.awt.Graphics2D;
 import java.awt.image.BufferStrategy;
+import java.net.URL;
+import java.util.Enumeration;
 
 import com.werwolv.api.API;
 import com.werwolv.states.State;
@@ -25,6 +27,13 @@ public class Game implements Runnable{
 		this.title = title;
 		this.width = width;
 		this.height = height;
+
+		try {
+            Enumeration<URL> e = getClass().getClassLoader().getResources("");
+            while(e.hasMoreElements()) {
+                System.out.println(e.nextElement());
+            }
+        } catch (Exception e){}
 	}
 	
 	public void init(){

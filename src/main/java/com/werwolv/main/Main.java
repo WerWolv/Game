@@ -5,9 +5,9 @@ import com.werwolv.api.API;
 public class Main {
 
 	public static void main(String[] args) {
-		Game.INSTANCE.start();
+		API.MOD_LOADER.loadMod("D:\\__Development\\Java\\GameMod\\out\\artifacts\\Game_main_jar\\Game_main.jar");
 
-		//API.MOD_LOADER.loadMod();
+		Game.INSTANCE.start();
 	}
 	
 }

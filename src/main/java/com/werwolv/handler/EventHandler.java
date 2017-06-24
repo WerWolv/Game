@@ -9,7 +9,7 @@ public class EventHandler {
 
     @SubscribeEvent
     public void onKeyPressed(KeyEvent.KeyPressed event) {
-
+        System.out.println("Derp");
     }
 
 }
