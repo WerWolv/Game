@@ -1,4 +1,4 @@
-package com.werwolv.api.event;
+package com.werwolv.api.eventbus;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

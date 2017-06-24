@@ -1,23 +1,19 @@
-package com.werwolv.api.event;
+package com.werwolv.api.eventbus;
 
 import com.google.common.collect.ImmutableSet;
 import com.google.common.reflect.ClassPath;
-import com.werwolv.api.API;
-import com.werwolv.api.Log;
-
-import org.reflections.Reflections;
+import com.werwolv.api.event.Event;
 
 import java.io.IOException;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.net.URLClassLoader;
 import java.util.*;
 
 public class EventBus {
 
-    private static List<Class<?>> eventHandlers = new ArrayList<>();
-    private static Stack<Event> eventStack = new Stack<>();
+    private List<Class<?>> eventHandlers = new ArrayList<>();
+    private Stack<Event> eventStack = new Stack<>();
 
 
     public void postEvent(Event event) {
@@ -49,6 +45,7 @@ public class EventBus {
         }
     }
 
+    @SuppressWarnings("unsafe")
     public void registerEventHandlers() {
         ImmutableSet<ClassPath.ClassInfo> set = null;
         try {
@@ -62,8 +59,7 @@ public class EventBus {
                 Class clazz = c.load();
                 if(clazz.isAnnotationPresent(EventBusSubscriber.class))
                     this.eventHandlers.add(clazz);
-            } catch(NoClassDefFoundError e) {
-            }
+            } catch(NoClassDefFoundError e) {}
         }
     }
 }

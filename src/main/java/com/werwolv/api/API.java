@@ -1,12 +1,11 @@
 package com.werwolv.api;
 
-import com.werwolv.api.event.EventBus;
+import com.werwolv.api.eventbus.EventBus;
 import com.werwolv.api.modloader.ModLoader;
 import com.werwolv.tile.Tile;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;

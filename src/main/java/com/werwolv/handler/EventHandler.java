@@ -1,8 +1,8 @@
 package com.werwolv.handler;
 
-import com.werwolv.api.event.EventBusSubscriber;
+import com.werwolv.api.eventbus.EventBusSubscriber;
 import com.werwolv.api.event.KeyEvent;
-import com.werwolv.api.event.SubscribeEvent;
+import com.werwolv.api.eventbus.SubscribeEvent;
 
 @EventBusSubscriber
 public class EventHandler {
