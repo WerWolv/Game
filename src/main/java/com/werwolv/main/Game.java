@@ -2,10 +2,17 @@ package com.werwolv.main;
 
 import java.awt.Graphics2D;
 import java.awt.image.BufferStrategy;
+import java.io.File;
 import java.net.URL;
+import java.util.Arrays;
 import java.util.Enumeration;
+import java.util.List;
 
+import com.google.common.collect.Lists;
 import com.werwolv.api.API;
+import com.werwolv.api.event.init.InitializationEvent;
+import com.werwolv.api.event.init.PostInitializationEvent;
+import com.werwolv.api.event.init.PreInitializationEvent;
 import com.werwolv.states.State;
 
 public class Game implements Runnable{
@@ -13,34 +20,39 @@ public class Game implements Runnable{
 	public static final Game INSTANCE = new Game("Game", 1080, 720);
     public static final boolean DEBUG_MODE = false;
 
+    public static final File MODS_FOLDER = new File("mods");
+
 
 	private BufferStrategy bs;
 	private Graphics2D g;
 	private Thread thread;
 	private boolean running = false;
-	
-	public String title;
-	public int width, height;
+
+    private String title;
+    private int width, height;
 	private Window window;
 		
-	public Game(String title, int width, int height){
+	private Game(String title, int width, int height){
 		this.title = title;
 		this.width = width;
 		this.height = height;
-
-		try {
-            Enumeration<URL> e = getClass().getClassLoader().getResources("");
-            while(e.hasMoreElements()) {
-                System.out.println(e.nextElement());
-            }
-        } catch (Exception e){}
 	}
 	
 	public void init(){
 		State.setCurrentState(State.gameState);
 		window = new Window(title, width, height);
 		API.EVENT_BUS.registerEventHandlers();
-	}
+
+		if(!MODS_FOLDER.exists())
+            MODS_FOLDER.mkdirs();
+
+		Arrays.asList(MODS_FOLDER.listFiles()).stream().filter(mod -> mod.getName().endsWith(".jar")).forEach(mod -> API.MOD_LOADER.loadMod(mod.getAbsolutePath()));
+
+		API.EVENT_BUS.postEvent(new PreInitializationEvent());
+        API.EVENT_BUS.postEvent(new InitializationEvent());
+        API.EVENT_BUS.postEvent(new PostInitializationEvent());
+
+    }
 	
 	public void update(){
 		if(State.getCurrentState() != null)
