@@ -51,7 +51,7 @@ public class API {
     }
 
     public static class ResourceRegistry {
-        private static Map<Integer, ModResource> loadedResources = new HashMap<>();
+        private static Map<Integer, BufferedImage> loadedResources = new HashMap<>();
         private static int currentResourceIndex = 0;
 
         //TODO: Error, not loading mod resources correctly
@@ -62,11 +62,17 @@ public class API {
             }
 
             Log.i("ResourceRegistry", "Loaded resource " + path + " as texture ID " + currentResourceIndex);
-            loadedResources.put(currentResourceIndex++, new ModResource(path));
-            return currentResourceIndex - 1;
+            try {
+                loadedResources.put(currentResourceIndex++, ImageIO.read(ClassLoader.getSystemClassLoader().getResource(path)));
+                return currentResourceIndex - 1;
+            } catch(IOException e) {
+                Log.wtf("ResourceRegistry", "Cannot load " + path);
+            }
+
+            return -1;
         }
 
-        public static ModResource getResourceFromID(int id) {
+        public static BufferedImage getResourceFromID(int id) {
             return loadedResources.get(id);
         }
     }

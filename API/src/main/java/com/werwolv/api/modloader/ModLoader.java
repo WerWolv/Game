@@ -3,17 +3,15 @@ package com.werwolv.api.modloader;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
 import com.google.common.reflect.ClassPath;
-import com.sun.deploy.ref.AppModel;
-import com.sun.xml.internal.messaging.saaj.util.ByteInputStream;
-import com.sun.xml.internal.messaging.saaj.util.ByteOutputStream;
-import com.werwolv.api.API;
 
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.net.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URL;
+import java.net.URLClassLoader;
 import java.util.List;
 
 public class ModLoader {
@@ -23,8 +21,6 @@ public class ModLoader {
     public void loadMod(String path) {
         File file = new File(path);
         URI uri = file.toURI();
-
-        System.out.println("Loaded " + path);
 
         try {
             Method addURL = URLClassLoader.class.getDeclaredMethod("addURL", URL.class);
@@ -49,11 +45,9 @@ public class ModLoader {
                     this.loadedMods.add(new ModFile(clazz, path, mod.modId(), mod.modName(), mod.modVersion()));
                 }
             } catch(NoClassDefFoundError e) {
+
             }
         }
-    }
-
-    public void extractResources(String path) {
     }
 
     public List<ModFile> getLoadedMods() {

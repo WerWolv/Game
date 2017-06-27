@@ -4,8 +4,10 @@ import com.werwolv.api.API;
 
 public class Tile {
 
+    public static final short TILE_SIZE = 32;
+
     private final int tileID;
-    private String unlocalizedName;
+    private String unlocalizedName = "null";
     private int textureID = -1;
 
     public Tile(int tileID) {
@@ -19,7 +21,8 @@ public class Tile {
     }
 
     public Tile setTexture(String path) {
-        this.textureID = API.ResourceRegistry.registerResource(path);
+        String[] tokens = path.split(":");
+        this.textureID = API.ResourceRegistry.registerResource(tokens[0] + "/tiles/" + tokens[1] + ".png");
 
         return this;
     }

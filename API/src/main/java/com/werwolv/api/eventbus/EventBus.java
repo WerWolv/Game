@@ -2,16 +2,16 @@ package com.werwolv.api.eventbus;
 
 import com.google.common.collect.ImmutableSet;
 import com.google.common.reflect.ClassPath;
-import com.werwolv.api.API;
 import com.werwolv.api.event.Event;
-import com.werwolv.api.modloader.Mod;
-import com.werwolv.api.modloader.ModFile;
 
 import java.io.IOException;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Stack;
 
 public class EventBus {
 
@@ -27,6 +27,7 @@ public class EventBus {
 
         for (Iterator<Event> iterator = eventStack.iterator(); iterator.hasNext(); ) {
             Event currEvent = iterator.next();
+            System.out.println(currEvent);
             for (Class eventHandler : eventHandlers)
                 runAllAnnotatedWith(SubscribeEvent.class, eventHandler, currEvent);
             iterator.remove();
@@ -64,7 +65,5 @@ public class EventBus {
                     this.eventHandlers.add(clazz);
             } catch(NoClassDefFoundError e) {}
         }
-
-        eventHandlers.forEach(handler -> System.out.println(handler.getName()));
     }
 }
