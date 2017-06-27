@@ -6,6 +6,7 @@ import com.google.common.reflect.ClassPath;
 import com.sun.deploy.ref.AppModel;
 import com.sun.xml.internal.messaging.saaj.util.ByteInputStream;
 import com.sun.xml.internal.messaging.saaj.util.ByteOutputStream;
+import com.werwolv.api.API;
 
 import java.io.*;
 import java.lang.reflect.InvocationTargetException;
@@ -22,6 +23,8 @@ public class ModLoader {
     public void loadMod(String path) {
         File file = new File(path);
         URI uri = file.toURI();
+
+        System.out.println("Loaded " + path);
 
         try {
             Method addURL = URLClassLoader.class.getDeclaredMethod("addURL", URL.class);

@@ -7,8 +7,6 @@ import com.werwolv.tile.Tile;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.net.URL;
-import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -53,7 +51,7 @@ public class API {
     }
 
     public static class ResourceRegistry {
-        private static Map<Integer, BufferedImage> loadedResources = new HashMap<>();
+        private static Map<Integer, ModResource> loadedResources = new HashMap<>();
         private static int currentResourceIndex = 0;
 
         //TODO: Error, not loading mod resources correctly
@@ -63,18 +61,12 @@ public class API {
                 return -1;
             }
 
-            try {
-                Log.i("ResourceRegistry", "Loaded resource " + path + " as texture ID " + currentResourceIndex);
-                loadedResources.put(currentResourceIndex++, ImageIO.read(ClassLoader.getSystemClassLoader().getResource(path)));
-                return currentResourceIndex - 1;
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            return -1;
+            Log.i("ResourceRegistry", "Loaded resource " + path + " as texture ID " + currentResourceIndex);
+            loadedResources.put(currentResourceIndex++, new ModResource(path));
+            return currentResourceIndex - 1;
         }
 
-        public static BufferedImage getResourceFromID(int id) {
+        public static ModResource getResourceFromID(int id) {
             return loadedResources.get(id);
         }
     }

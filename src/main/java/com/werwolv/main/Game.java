@@ -21,9 +21,6 @@ public class Game implements Runnable{
 	public static final Game INSTANCE = new Game("Game", 1080, 720);
     public static final boolean DEBUG_MODE = false;
 
-    public static final File MODS_FOLDER = new File("mods");
-
-
 	private BufferStrategy bs;
 	private Graphics2D g;
 	private Thread thread;
@@ -44,12 +41,6 @@ public class Game implements Runnable{
 		window = new Window(title, width, height);
 		API.EVENT_BUS.registerEventHandlers();
 
-		if(!MODS_FOLDER.exists())
-            MODS_FOLDER.mkdirs();
-
-		Arrays.asList(MODS_FOLDER.listFiles()).stream().filter(mod -> mod.getName().endsWith(".jar")).forEach(mod -> API.MOD_LOADER.loadMod(mod.getAbsolutePath()));
-        Arrays.asList(MODS_FOLDER.listFiles()).stream().filter(mod -> mod.getName().endsWith(".jar")).forEach(mod -> API.MOD_LOADER.extractResources(mod.getAbsolutePath()));
-        System.out.println(MODS_FOLDER.getAbsolutePath());
 
         API.EVENT_BUS.postEvent(new PreInitializationEvent());
         API.EVENT_BUS.postEvent(new InitializationEvent());

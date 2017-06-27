@@ -18,7 +18,7 @@ public class GameState extends State{
 	public GameState() {
 	    API.TileRegistry.registerTile(Tiles.tileGrass);
 
-		worldTiles[0][0] = 1;
+		worldTiles[0][0] = 2;
         worldTiles[0][1] = 1;
         worldTiles[0][2] = 2;
 
@@ -38,9 +38,9 @@ public class GameState extends State{
 	    for(int x = 0; x < WORLD_WIDTH; x++)
             for (int y = 0; y < WORLD_HEIGHT; y++)
                 if (worldTiles[x][y] != 0)
-                    if(API.TileRegistry.getTileFromID(worldTiles[x][y]) != null) {
-                        g.drawImage(API.ResourceRegistry.getResourceFromID(API.TileRegistry.getTileFromID(worldTiles[x][y]).getTextureID()), x * Tiles.TILE_SIZE, y * Tiles.TILE_SIZE, Tiles.TILE_SIZE, Tiles.TILE_SIZE, null);
-        }
+                    if(API.TileRegistry.getTileFromID(worldTiles[x][y]) != null)
+                            g.drawImage(API.ResourceRegistry.getResourceFromID(API.TileRegistry.getTileFromID(worldTiles[x][y]).getTextureID()).getImage(), x * Tiles.TILE_SIZE, y * Tiles.TILE_SIZE, Tiles.TILE_SIZE, Tiles.TILE_SIZE, null);
+
     }
 
 	@Override
