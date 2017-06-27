@@ -1,8 +1,7 @@
 # Game
 
-
-----|-----|------------
 Idea|Done?|Constributor
+---- | ----- | ------------
 Easy modding support|No|Nobody
 Event System|No|Nobody
 Circuit Boards|No|Nobody
