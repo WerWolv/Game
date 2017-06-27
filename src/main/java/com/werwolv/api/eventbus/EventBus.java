@@ -2,7 +2,10 @@ package com.werwolv.api.eventbus;
 
 import com.google.common.collect.ImmutableSet;
 import com.google.common.reflect.ClassPath;
+import com.werwolv.api.API;
 import com.werwolv.api.event.Event;
+import com.werwolv.api.modloader.Mod;
+import com.werwolv.api.modloader.ModFile;
 
 import java.io.IOException;
 import java.lang.annotation.Annotation;
@@ -61,5 +64,7 @@ public class EventBus {
                     this.eventHandlers.add(clazz);
             } catch(NoClassDefFoundError e) {}
         }
+
+        eventHandlers.forEach(handler -> System.out.println(handler.getName()));
     }
 }

@@ -16,11 +16,11 @@ public class GameState extends State{
 	private int[][] worldTiles = new int[WORLD_WIDTH][WORLD_HEIGHT];
 
 	public GameState() {
-	    API.TileRegistry.registerTile(Tiles.tileTest);
+	    API.TileRegistry.registerTile(Tiles.tileGrass);
 
-		worldTiles[0][0] = Tiles.tileTest.getTileID();
-        worldTiles[0][1] = Tiles.tileTest.getTileID();
-        worldTiles[0][2] = Tiles.tileTest.getTileID();
+		worldTiles[0][0] = 1;
+        worldTiles[0][1] = 1;
+        worldTiles[0][2] = 2;
 
     }
 
@@ -33,18 +33,18 @@ public class GameState extends State{
                 if (worldTiles[x][y] != 0) {
                     g.fillRect(x * Tiles.TILE_SIZE, y * Tiles.TILE_SIZE - 2, Tiles.TILE_SIZE, Tiles.TILE_SIZE + 4);
                     g.fillRect(x * Tiles.TILE_SIZE - 2, y * Tiles.TILE_SIZE, Tiles.TILE_SIZE + 4, Tiles.TILE_SIZE);
-
                 }
 
 	    for(int x = 0; x < WORLD_WIDTH; x++)
             for (int y = 0; y < WORLD_HEIGHT; y++)
                 if (worldTiles[x][y] != 0)
-                    g.drawImage(API.ResourceRegistry.getResourceFromID(API.TileRegistry.getTileFromID(worldTiles[x][y]).getTextureID()), x * Tiles.TILE_SIZE, y * Tiles.TILE_SIZE, Tiles.TILE_SIZE, Tiles.TILE_SIZE, null);
+                    if(API.TileRegistry.getTileFromID(worldTiles[x][y]) != null) {
+                        g.drawImage(API.ResourceRegistry.getResourceFromID(API.TileRegistry.getTileFromID(worldTiles[x][y]).getTextureID()), x * Tiles.TILE_SIZE, y * Tiles.TILE_SIZE, Tiles.TILE_SIZE, Tiles.TILE_SIZE, null);
+        }
     }
 
 	@Override
 	public void update() {
-
-	}
+    }
 
 }

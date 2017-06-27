@@ -3,11 +3,7 @@ package com.werwolv.main;
 import com.werwolv.handler.KeyHandler;
 
 import java.awt.Canvas;
-import java.awt.Cursor;
 import java.awt.Dimension;
-import java.awt.Point;
-import java.awt.Toolkit;
-import java.awt.image.BufferedImage;
 
 import javax.swing.JFrame;
 

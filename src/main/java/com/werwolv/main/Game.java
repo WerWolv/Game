@@ -3,6 +3,7 @@ package com.werwolv.main;
 import java.awt.Graphics2D;
 import java.awt.image.BufferStrategy;
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.Arrays;
 import java.util.Enumeration;
@@ -47,12 +48,14 @@ public class Game implements Runnable{
             MODS_FOLDER.mkdirs();
 
 		Arrays.asList(MODS_FOLDER.listFiles()).stream().filter(mod -> mod.getName().endsWith(".jar")).forEach(mod -> API.MOD_LOADER.loadMod(mod.getAbsolutePath()));
+        Arrays.asList(MODS_FOLDER.listFiles()).stream().filter(mod -> mod.getName().endsWith(".jar")).forEach(mod -> API.MOD_LOADER.extractResources(mod.getAbsolutePath()));
+        System.out.println(MODS_FOLDER.getAbsolutePath());
 
-		API.EVENT_BUS.postEvent(new PreInitializationEvent());
+        API.EVENT_BUS.postEvent(new PreInitializationEvent());
         API.EVENT_BUS.postEvent(new InitializationEvent());
         API.EVENT_BUS.postEvent(new PostInitializationEvent());
 
-    }
+	}
 	
 	public void update(){
 		if(State.getCurrentState() != null)
