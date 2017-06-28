@@ -9,6 +9,6 @@ public class EventHandlerTest {
 
     @SubscribeEvent
     public void onKeyPressed(KeyPressedEvent e) {
-        System.out.println(e.getKeyCode());
+
     }
 }

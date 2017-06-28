@@ -27,7 +27,6 @@ public class EventBus {
 
         for (Iterator<Event> iterator = eventStack.iterator(); iterator.hasNext(); ) {
             Event currEvent = iterator.next();
-            System.out.println(currEvent);
             for (Class eventHandler : eventHandlers)
                 runAllAnnotatedWith(SubscribeEvent.class, eventHandler, currEvent);
             iterator.remove();
