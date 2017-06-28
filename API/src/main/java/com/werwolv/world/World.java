@@ -1,12 +1,12 @@
 package com.werwolv.world;
 
+import com.werwolv.api.API;
+import com.werwolv.api.IUpdatable;
+import com.werwolv.api.event.entity.EntityDiedEvent;
 import com.werwolv.entities.Entity;
 import com.werwolv.tile.Tile;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class World {
 
@@ -15,6 +15,23 @@ public class World {
 
     private List<Entity> entities = new ArrayList<>();
     private Map<Integer, Chunk> chunks = new HashMap<>();
+
+
+    public World() {
+
+    }
+
+    public void update() {
+
+        IUpdatable.updateableInstances.forEach(IUpdatable::update);
+
+        Entity entityToRemove = null;
+        for(Iterator iter = entities.iterator(); iter.hasNext(); entityToRemove = (Entity) iter.next())
+            if(entityToRemove != null && entityToRemove.isDead()) {
+                API.EVENT_BUS.postEvent(new EntityDiedEvent(entityToRemove, entityToRemove.getPosX(), entityToRemove.getPosY()));
+                iter.remove();
+            }
+    }
 
     public void spawnEntity(Entity entity) {
         this.entities.add(entity);

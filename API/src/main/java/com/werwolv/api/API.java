@@ -54,7 +54,6 @@ public class API {
         private static Map<Integer, BufferedImage> loadedResources = new HashMap<>();
         private static int currentResourceIndex = 0;
 
-        //TODO: Error, not loading mod resources correctly
         public static int registerResource(String path) {
             if(ClassLoader.getSystemClassLoader().getResource(path) == null) {
                 Log.wtf("ResourceRegistry", "Cannot load file " + path);

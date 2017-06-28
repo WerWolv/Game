@@ -2,6 +2,7 @@ package com.werwolv.states;
 
 import com.sun.glass.events.KeyEvent;
 import com.werwolv.api.API;
+import com.werwolv.entities.EntityPlayer;
 import com.werwolv.handler.KeyHandler;
 import com.werwolv.main.Game;
 import com.werwolv.tile.Tile;
@@ -13,13 +14,20 @@ import java.awt.*;
 
 public class GameState extends State{
 
-	private World world = new World();
+	private World world;
+
+	private EntityPlayer player;
 
 	private static int[] camera = {0,0};
 
 	public GameState() {
+	    this.world = new World();
+	    this.player = new EntityPlayer(this.world, 0, 0);
+
         WorldGenerator worldGen = new WorldGenerator(this.world, 123);
         worldGen.generate(0, 256);
+
+        this.world.spawnEntity(this.player);
     }
 
 	@Override
@@ -56,6 +64,8 @@ public class GameState extends State{
 
 	@Override
 	public void update() {
+	    this.world.update();
+
         if(KeyHandler.isKeyPressed(KeyEvent.VK_S)) {
             GameState.changecamera(0,-5);
         }
