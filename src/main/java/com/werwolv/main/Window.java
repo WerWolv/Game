@@ -1,6 +1,7 @@
 package com.werwolv.main;
 
 import com.werwolv.handler.KeyHandler;
+import com.werwolv.handler.MouseHandler;
 
 import java.awt.Canvas;
 import java.awt.Dimension;
@@ -25,12 +26,17 @@ public class Window{
 
 	public void init(){
 
+	    KeyHandler keyHandler = new KeyHandler();
+	    MouseHandler mouseHandler = new MouseHandler();
+
 		frame = new JFrame(title);
 		frame.setSize(width, height);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setResizable(false);
 		frame.setLocationRelativeTo(null);
-        frame.addKeyListener(new KeyHandler());
+        frame.addKeyListener(keyHandler);
+        frame.addMouseListener(mouseHandler);
+        frame.addMouseMotionListener(mouseHandler);
         frame.setVisible(true);
 
 		canvas = new Canvas();
