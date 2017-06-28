@@ -5,9 +5,9 @@ import com.werwolv.api.API;
 import com.werwolv.handler.KeyHandler;
 import com.werwolv.main.Game;
 import com.werwolv.tile.Tile;
-import world.Chunk;
-import world.World;
-import world.WorldGenerator;
+import com.werwolv.world.Chunk;
+import com.werwolv.world.World;
+import com.werwolv.world.WorldGenerator;
 
 import java.awt.*;
 

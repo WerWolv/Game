@@ -1,4 +1,4 @@
-package world;
+package com.werwolv.world;
 
 import java.util.Random;
 

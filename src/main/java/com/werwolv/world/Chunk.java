@@ -1,4 +1,4 @@
-package world;
+package com.werwolv.world;
 
 import com.werwolv.tile.Tile;
 
