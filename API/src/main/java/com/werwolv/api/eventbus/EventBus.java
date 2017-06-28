@@ -4,6 +4,8 @@ import com.google.common.collect.ImmutableSet;
 import com.google.common.reflect.ClassPath;
 import com.werwolv.api.event.Event;
 
+import java.util.concurrent.ConcurrentLinkedQueue;
+
 import java.io.IOException;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.InvocationTargetException;
@@ -16,11 +18,11 @@ import java.util.Stack;
 public class EventBus {
 
     private List<Class<?>> eventHandlers = new ArrayList<>();
-    private Stack<Event> eventStack = new Stack<>();
+    private ConcurrentLinkedQueue<Event> eventStack = new ConcurrentLinkedQueue<>();
 
 
     public void postEvent(Event event) {
-        eventStack.push(event);
+        eventStack.add(event);
     }
 
     public void processEvents() {

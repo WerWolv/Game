@@ -76,7 +76,7 @@ public class Game implements Runnable{
 	public synchronized void start(){
 		if(running) return;
 		running = true;
-		thread = new Thread(this);
+		thread = new Thread(this, "GameThread");
 		thread.start();
 	}
 	
@@ -119,6 +119,14 @@ public class Game implements Runnable{
 
 		stop();
 
+	}
+
+	public int getWindowWidth() {
+		return this.width;
+	}
+
+	public int getWindowHeight() {
+		return this.height;
 	}
 	
 }

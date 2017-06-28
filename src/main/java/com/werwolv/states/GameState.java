@@ -2,49 +2,56 @@ package com.werwolv.states;
 
 import com.sun.glass.events.KeyEvent;
 import com.werwolv.api.API;
-import com.werwolv.handler.EventHandler;
 import com.werwolv.handler.KeyHandler;
-import com.werwolv.random.Terrain;
+import com.werwolv.main.Game;
 import com.werwolv.tile.Tile;
-import com.werwolv.tile.Tiles;
+import world.Chunk;
+import world.World;
+import world.WorldGenerator;
 
 import java.awt.*;
-import java.awt.image.BufferedImage;
 
 public class GameState extends State{
 
-    public static final int WORLD_WIDTH = 4096;
-    public static final int WORLD_HEIGHT = 512;
-
-	private int[][] worldTiles = new int[WORLD_WIDTH][WORLD_HEIGHT];
-
-	private Terrain terrain = new Terrain(512,1024, 0);
+	private World world = new World();
 
 	private static int[] camera = {0,0};
 
-
-
 	public GameState() {
-        System.arraycopy(terrain.generate(), 0, worldTiles, 0, terrain.getWidth());
+        WorldGenerator worldGen = new WorldGenerator(this.world, 123);
+        worldGen.generate(0, 256);
     }
 
 	@Override
 	public void render(Graphics2D g) {
 	    g.setColor(Color.BLACK);
 
-        for(int x = 0; x < WORLD_WIDTH; x++)
-            for (int y = 0; y < WORLD_HEIGHT; y++)
-                if (worldTiles[x][y] != 0) {
-                    g.fillRect(x * Tile.TILE_SIZE + camera[0], y * Tile.TILE_SIZE - 2 + camera[1], Tile.TILE_SIZE, Tile.TILE_SIZE + 4);
-                    g.fillRect(x * Tile.TILE_SIZE - 2 + camera[0], y * Tile.TILE_SIZE + camera[1], Tile.TILE_SIZE + 4, Tile.TILE_SIZE);
-                }
+        for(int chunk = 0; chunk < world.getChunkCount(); chunk++)
+            for(int x = 0; x < Chunk.CHUNK_WIDTH; x++)
+                for (int y = 0; y < World.WORLD_HEIGHT; y++)
+                    if (world.getChunk(chunk).getTiles()[x][y] != 0) {
+                        if(x * Tile.TILE_SIZE + camera[0] + chunk * Tile.TILE_SIZE < -Tile.TILE_SIZE || x * Tile.TILE_SIZE + camera[0] + chunk * Tile.TILE_SIZE > Game.INSTANCE.getWindowWidth() + Tile.TILE_SIZE)
+                            continue;
+                        if(y * Tile.TILE_SIZE - 2 + camera[1] < -Tile.TILE_SIZE || y * Tile.TILE_SIZE - 2 + camera[1] > Game.INSTANCE.getWindowWidth() + Tile.TILE_SIZE)
+                            continue;
 
-	    for(int x = 0; x < WORLD_WIDTH; x++)
-            for (int y = 0; y < WORLD_HEIGHT; y++)
-                if (worldTiles[x][y] != 0)
-                    if(API.TileRegistry.getTileFromID(worldTiles[x][y]) != null) {
-                        g.drawImage(API.ResourceRegistry.getResourceFromID(API.TileRegistry.getTileFromID(worldTiles[x][y]).getTextureID()), x * Tile.TILE_SIZE + camera[0], y * Tile.TILE_SIZE + camera[1], Tile.TILE_SIZE, Tile.TILE_SIZE, null);
-        }
+                        g.fillRect(x * Tile.TILE_SIZE + camera[0] + chunk * Tile.TILE_SIZE, y * Tile.TILE_SIZE - 2 + camera[1], Tile.TILE_SIZE, Tile.TILE_SIZE + 4);
+                        g.fillRect(x * Tile.TILE_SIZE - 2 + camera[0] + chunk * Tile.TILE_SIZE, y * Tile.TILE_SIZE + camera[1], Tile.TILE_SIZE + 4, Tile.TILE_SIZE);
+                    }
+
+        for(int chunk = 0; chunk < world.getChunkCount(); chunk++)
+            for(int x = 0; x < Chunk.CHUNK_WIDTH; x++)
+                for (int y = 0; y < World.WORLD_HEIGHT; y++) {
+
+                    if(x * Tile.TILE_SIZE + camera[0] + chunk * Tile.TILE_SIZE < -Tile.TILE_SIZE || x * Tile.TILE_SIZE + camera[0] + chunk * Tile.TILE_SIZE > Game.INSTANCE.getWindowWidth() + Tile.TILE_SIZE)
+                        continue;
+                    if(y * Tile.TILE_SIZE - 2 + camera[1] < -Tile.TILE_SIZE || y * Tile.TILE_SIZE - 2 + camera[1] > Game.INSTANCE.getWindowWidth() + Tile.TILE_SIZE)
+                        continue;
+
+	                int tileId = world.getChunk(chunk).getTiles()[x][y];
+                        if (API.TileRegistry.getTileFromID(tileId) != null && tileId != 0)
+                            g.drawImage(API.ResourceRegistry.getResourceFromID(API.TileRegistry.getTileFromID(tileId).getTextureID()), x * Tile.TILE_SIZE + camera[0] + chunk * Tile.TILE_SIZE, y * Tile.TILE_SIZE + camera[1], Tile.TILE_SIZE, Tile.TILE_SIZE, null);
+                }
     }
 
 	@Override
