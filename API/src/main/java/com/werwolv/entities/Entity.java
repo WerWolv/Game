@@ -51,4 +51,10 @@ public abstract class Entity implements IUpdatable {
     public void setDead(boolean dead) {
         isDead = dead;
     }
+
+    public void move(int x, int y) {
+        this.posX += x;
+        this.posY += y;
+    }
+
 }

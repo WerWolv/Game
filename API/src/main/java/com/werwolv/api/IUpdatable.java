@@ -7,7 +7,7 @@ public interface IUpdatable {
 
     List<IUpdatable> updateableInstances = new ArrayList<>();
 
-    void update();
+    void update(long deltaTime);
 
     default void setUpdateable() {
         updateableInstances.add(this);
