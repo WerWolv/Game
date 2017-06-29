@@ -11,6 +11,7 @@ import java.util.List;
 
 import com.google.common.collect.Lists;
 import com.werwolv.api.API;
+import com.werwolv.api.IUpdatable;
 import com.werwolv.api.event.init.InitializationEvent;
 import com.werwolv.api.event.init.PostInitializationEvent;
 import com.werwolv.api.event.init.PreInitializationEvent;
@@ -46,14 +47,11 @@ public class Game implements Runnable{
         API.EVENT_BUS.postEvent(new InitializationEvent());
         API.EVENT_BUS.postEvent(new PostInitializationEvent());
 
-	}
-	
-	public void update(){
-		if(State.getCurrentState() != null)
-			State.getCurrentState().update();
-
         API.EVENT_BUS.processEvents();
-    }
+
+        State.getCurrentState().init();
+
+	}
 	
 	public void render(){
 		bs = window.getCanvas().getBufferStrategy();
@@ -95,7 +93,7 @@ public class Game implements Runnable{
 		init();
 
 		int tps = 250;
-		double timePerTick = 1000000000 / tps;
+		double timePerTick = 1E9 / tps;
 		double delta = 0;
 		long now;
 		long lastTime = System.nanoTime();
@@ -108,12 +106,15 @@ public class Game implements Runnable{
 			lastTime = now;
 
 			if(delta >= 1){
-				update();
+                API.EVENT_BUS.processEvents();
+
+				for(IUpdatable updatable : IUpdatable.updateableInstances)
+				    updatable.update((int)delta);
+
 				delta--;
 			}
-			if(timer >= 1000000000){
-				timer = 0;
-			}
+			if(timer >= 1E9) timer = 0;
+
 			render();
 		}
 

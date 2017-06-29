@@ -1,6 +1,7 @@
 package com.werwolv.tile;
 
 import com.werwolv.api.API;
+import com.werwolv.tileEntities.TileEntity;
 
 public class Tile {
 
@@ -9,6 +10,7 @@ public class Tile {
     private final int tileID;
     private String unlocalizedName = "null";
     private int textureID = -1;
+    private TileEntity tileEntity;
 
     public Tile(int tileID) {
         this.tileID = tileID;
@@ -26,6 +28,20 @@ public class Tile {
 
         return this;
     }
+
+    public Tile addTileEntity(Class<? extends TileEntity> tileEntity) {
+        try {
+            this.tileEntity = tileEntity.newInstance();
+        } catch(InstantiationException | IllegalAccessException e) {
+            e.printStackTrace();
+        }
+        return this;
+    }
+
+    public TileEntity getTileEntity() {
+        return this.tileEntity;
+    }
+
 
     public int getTileID() {
         return tileID;

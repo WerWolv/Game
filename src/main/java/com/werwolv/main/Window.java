@@ -35,8 +35,6 @@ public class Window{
 		frame.setResizable(false);
 		frame.setLocationRelativeTo(null);
         frame.addKeyListener(keyHandler);
-        frame.addMouseListener(mouseHandler);
-        frame.addMouseMotionListener(mouseHandler);
         frame.setVisible(true);
 
 		canvas = new Canvas();
@@ -44,6 +42,8 @@ public class Window{
 		canvas.setMaximumSize(new Dimension(width, height));
 		canvas.setMinimumSize(new Dimension(width, height));
 		canvas.setFocusable(false);
+		canvas.addMouseListener(mouseHandler);
+		canvas.addMouseMotionListener(mouseHandler);
 
 		frame.add(canvas);
 		frame.pack();

@@ -2,7 +2,6 @@ package com.werwolv.states;
 
 import com.sun.glass.events.KeyEvent;
 import com.werwolv.api.API;
-import com.werwolv.api.IUpdatable;
 import com.werwolv.entities.EntityPlayer;
 import com.werwolv.handler.KeyHandler;
 import com.werwolv.main.Camera;
@@ -16,12 +15,10 @@ import java.awt.*;
 
 public class GameState extends State{
 
-	private World world;
+	public World world;
+    public EntityPlayer player;
 
-	private EntityPlayer player;
-    private Camera camera;
-
-	private long lastTimeMillis = System.currentTimeMillis();
+    public Camera camera;
 
 	public GameState() {
 	    this.world = new World();
@@ -29,12 +26,27 @@ public class GameState extends State{
 	    this.camera = new Camera();
 
 	    this.camera.setEntityToFollow(this.player);
-	    this.camera.setLerp(0.01F);
-
-        WorldGenerator worldGen = new WorldGenerator(this.world, 123);
-        worldGen.generate(0, 256);
+	    this.camera.setLerp(0.02F);
 
         this.world.spawnEntity(this.player);
+    }
+
+    @Override
+    public void init() {
+        WorldGenerator worldGen = new WorldGenerator(this.world, 123);
+        worldGen.generate(0, 256);
+    }
+
+    @Override
+    public void update(long delta) {
+        if(KeyHandler.isKeyPressed(KeyEvent.VK_W))
+            this.player.move(0,-1);
+        if(KeyHandler.isKeyPressed(KeyEvent.VK_A))
+            this.player.move(-1,0);
+        if(KeyHandler.isKeyPressed(KeyEvent.VK_S))
+            this.player.move(0,1);
+        if(KeyHandler.isKeyPressed(KeyEvent.VK_D))
+            this.player.move(1,0);
     }
 
 	@Override
@@ -44,7 +56,7 @@ public class GameState extends State{
         for(int chunk = 0; chunk < world.getChunkCount(); chunk++)
             for(int x = 0; x < Chunk.CHUNK_WIDTH; x++)
                 for (int y = 0; y < World.WORLD_HEIGHT; y++)
-                    if (world.getChunk(chunk).getTiles()[x][y] != 0) {
+                    if (world.getChunk(chunk).getGridObjects()[x][y] != null && world.getChunk(chunk).getGridObjects()[x][y].getTileID() != 0) {
                         if(x * Tile.TILE_SIZE - camera.getX() + chunk * Tile.TILE_SIZE < -Tile.TILE_SIZE || x * Tile.TILE_SIZE - camera.getX() + chunk * Tile.TILE_SIZE > Game.INSTANCE.getWindowWidth() + Tile.TILE_SIZE)
                             continue;
                         if(y * Tile.TILE_SIZE - 2 - camera.getY() < -Tile.TILE_SIZE || y * Tile.TILE_SIZE - 2 - camera.getY() > Game.INSTANCE.getWindowWidth() + Tile.TILE_SIZE)
@@ -57,36 +69,18 @@ public class GameState extends State{
         for(int chunk = 0; chunk < world.getChunkCount(); chunk++)
             for(int x = 0; x < Chunk.CHUNK_WIDTH; x++)
                 for (int y = 0; y < World.WORLD_HEIGHT; y++) {
+                    if (world.getChunk(chunk).getGridObjects()[x][y] != null && world.getChunk(chunk).getGridObjects()[x][y].getTileID() != 0) {
+                        if (x * Tile.TILE_SIZE - camera.getX() + chunk * Tile.TILE_SIZE < -Tile.TILE_SIZE || x * Tile.TILE_SIZE - camera.getX() + chunk * Tile.TILE_SIZE > Game.INSTANCE.getWindowWidth() + Tile.TILE_SIZE)
+                            continue;
+                        if (y * Tile.TILE_SIZE - 2 - camera.getY() < -Tile.TILE_SIZE || y * Tile.TILE_SIZE - 2 - camera.getY() > Game.INSTANCE.getWindowWidth() + Tile.TILE_SIZE)
+                            continue;
 
-                    if(x * Tile.TILE_SIZE - camera.getX() + chunk * Tile.TILE_SIZE < -Tile.TILE_SIZE || x * Tile.TILE_SIZE - camera.getX() + chunk * Tile.TILE_SIZE > Game.INSTANCE.getWindowWidth() + Tile.TILE_SIZE)
-                        continue;
-                    if(y * Tile.TILE_SIZE - 2 - camera.getY() < -Tile.TILE_SIZE || y * Tile.TILE_SIZE - 2 - camera.getY() > Game.INSTANCE.getWindowWidth() + Tile.TILE_SIZE)
-                        continue;
-
-	                int tileId = world.getChunk(chunk).getTiles()[x][y];
+                        int tileId = world.getChunk(chunk).getGridObjects()[x][y].getTileID();
                         if (API.TileRegistry.getTileFromID(tileId) != null && tileId != 0)
-                            g.drawImage(API.ResourceRegistry.getResourceFromID(API.TileRegistry.getTileFromID(tileId).getTextureID()), (int)(x * Tile.TILE_SIZE - camera.getX() + chunk * Tile.TILE_SIZE), (int)(y * Tile.TILE_SIZE - camera.getY()), Tile.TILE_SIZE, Tile.TILE_SIZE, null);
+                            g.drawImage(API.ResourceRegistry.getResourceFromID(API.TileRegistry.getTileFromID(tileId).getTextureID()), (int) (x * Tile.TILE_SIZE - camera.getX() + chunk * Tile.TILE_SIZE), (int) (y * Tile.TILE_SIZE - camera.getY()), Tile.TILE_SIZE, Tile.TILE_SIZE, null);
+                    }
                 }
 
         g.fillRect((int)this.player.getPosX() - (int)this.camera.getX() + Game.INSTANCE.getWindowWidth() / 2, (int)this.player.getPosY() - (int)this.camera.getY() + Game.INSTANCE.getWindowHeight() / 2, 20, 20);
     }
-
-	@Override
-	public void update() {
-	    long currTimeMillis = System.currentTimeMillis();
-
-        IUpdatable.updateableInstances.forEach(updateable -> updateable.update(currTimeMillis - this.lastTimeMillis));
-
-        if(KeyHandler.isKeyPressed(KeyEvent.VK_W))
-            this.player.move(0,-1);
-        if(KeyHandler.isKeyPressed(KeyEvent.VK_A))
-            this.player.move(-1,0);
-        if(KeyHandler.isKeyPressed(KeyEvent.VK_S))
-            this.player.move(0,1);
-        if(KeyHandler.isKeyPressed(KeyEvent.VK_D))
-            this.player.move(1,0);
-
-        this.lastTimeMillis = currTimeMillis;
-    }
-
 }
