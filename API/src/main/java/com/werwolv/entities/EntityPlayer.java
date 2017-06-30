@@ -48,4 +48,8 @@ public class EntityPlayer extends Entity {
     public Gui getOpenedGui() {
         return openedGui;
     }
+
+    public void closeGui() {
+        this.openedGui = null;
+    }
 }

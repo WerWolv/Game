@@ -7,28 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a22eb6bc-c231-4b55-b00b-e078eaab33ca" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/API/src/main/java/com/werwolv/entities/EntityPlayer.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/API/src/main/java/com/werwolv/gui/Gui.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/API/src/main/java/com/werwolv/gui/IGuiHandler.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/werwolv/gui/GuiTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/werwolv/handler/GuiHandler.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/werwolv/main/ModMain.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/classes/main/com/werwolv/tile/Tiles.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/werwolv/entities/EntityPlayer.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/werwolv/tile/Tiles.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/com/werwolv/handler/EventHandler.class" afterPath="$PROJECT_DIR$/build/classes/main/com/werwolv/handler/EventHandler.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/com/werwolv/main/Game.class" afterPath="$PROJECT_DIR$/build/classes/main/com/werwolv/main/Game.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/com/werwolv/states/GameState.class" afterPath="$PROJECT_DIR$/build/classes/main/com/werwolv/states/GameState.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/API/src/main/java/com/werwolv/api/eventbus/EventBus.java" afterPath="$PROJECT_DIR$/API/src/main/java/com/werwolv/api/eventbus/EventBus.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/API/src/main/java/com/werwolv/api/modloader/Mod.java" afterPath="$PROJECT_DIR$/API/src/main/java/com/werwolv/api/modloader/Mod.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/API/src/main/java/com/werwolv/entities/Entity.java" afterPath="$PROJECT_DIR$/API/src/main/java/com/werwolv/entities/Entity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/API/src/main/java/com/werwolv/tileEntities/TileEntity.java" afterPath="$PROJECT_DIR$/API/src/main/java/com/werwolv/tileEntities/TileEntity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/API/src/main/java/com/werwolv/world/World.java" afterPath="$PROJECT_DIR$/API/src/main/java/com/werwolv/world/World.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/werwolv/handler/EventHandler.java" afterPath="$PROJECT_DIR$/src/main/java/com/werwolv/handler/EventHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/werwolv/main/Game.java" afterPath="$PROJECT_DIR$/src/main/java/com/werwolv/main/Game.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/werwolv/states/GameState.java" afterPath="$PROJECT_DIR$/src/main/java/com/werwolv/states/GameState.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/werwolv/tileEntities/TileEntityTest.java" afterPath="$PROJECT_DIR$/src/main/java/com/werwolv/tileEntities/TileEntityTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/API/src/main/java/com/werwolv/entities/EntityPlayer.java" afterPath="$PROJECT_DIR$/API/src/main/java/com/werwolv/entities/EntityPlayer.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -82,7 +62,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/com/werwolv/states/GameState.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="422">
-              <caret line="84" column="0" lean-forward="true" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
+              <caret line="84" column="0" lean-forward="false" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -119,17 +99,17 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/com/werwolv/gui/GuiTest.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="136">
-              <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+              <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TileEntityTest.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="TileEntityTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/werwolv/tileEntities/TileEntityTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+            <state relative-caret-position="374">
+              <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -173,13 +153,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EntityPlayer.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="EntityPlayer.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/API/src/main/java/com/werwolv/entities/EntityPlayer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="79">
-              <caret line="26" column="23" lean-forward="false" selection-start-line="26" selection-start-column="23" selection-end-line="26" selection-end-column="23" />
+            <state relative-caret-position="436">
+              <caret line="53" column="5" lean-forward="true" selection-start-line="53" selection-start-column="5" selection-end-line="53" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#1448#1449#0" expanded="true" />
+                <element signature="e#1485#1486#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -189,7 +171,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/com/werwolv/handler/GuiHandler.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="170">
-              <caret line="10" column="13" lean-forward="true" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+              <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -926,8 +908,8 @@
         <option value="$PROJECT_DIR$/src/main/java/com/werwolv/handler/EventHandler.java" />
         <option value="$PROJECT_DIR$/API/src/main/java/com/werwolv/tileEntities/TileEntity.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/werwolv/handler/GuiHandler.java" />
-        <option value="$PROJECT_DIR$/API/src/main/java/com/werwolv/entities/EntityPlayer.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/werwolv/tileEntities/TileEntityTest.java" />
+        <option value="$PROJECT_DIR$/API/src/main/java/com/werwolv/entities/EntityPlayer.java" />
       </list>
     </option>
   </component>
@@ -1478,6 +1460,40 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="werwolv" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Game" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Game" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="API" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="werwolv" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="entities" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -2035,7 +2051,7 @@
       <workItem from="1498582313191" duration="4803000" />
       <workItem from="1498668275799" duration="192000" />
       <workItem from="1498761143182" duration="11256000" />
-      <workItem from="1498841041866" duration="7873000" />
+      <workItem from="1498841041866" duration="8048000" />
     </task>
     <task id="LOCAL-00001" summary="Finnished modloader and dynamical loading of mods">
       <created>1498344613331</created>
@@ -2114,11 +2130,18 @@
       <option name="project" value="LOCAL" />
       <updated>1498775819740</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Added proper mouse click functionality to the TileEntity class and added a mod-friendly API for registering, opening and managing GUI Screens">
+      <created>1498857184546</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1498857184546</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="76287000" />
+    <option name="totallyTimeSpent" value="76462000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -2178,7 +2201,8 @@
     <MESSAGE value="Added entity API and IUpdatable to request updates for any object that needs it" />
     <MESSAGE value="Added smooth camera movement and the delta time in milliseconds between two game ticks to the parameter of the IUpdatable interface" />
     <MESSAGE value="Added TileEntities and click listeners for TileEntities. Map now gets saved as tiles and not as IDs anymore. Like this, data can be stored per block (required for TileEntities to work)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added TileEntities and click listeners for TileEntities. Map now gets saved as tiles and not as IDs anymore. Like this, data can be stored per block (required for TileEntities to work)" />
+    <MESSAGE value="Added proper mouse click functionality to the TileEntity class and added a mod-friendly API for registering, opening and managing GUI Screens" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added proper mouse click functionality to the TileEntity class and added a mod-friendly API for registering, opening and managing GUI Screens" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2223,6 +2247,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2567">
           <caret line="1090" column="26" lean-forward="false" selection-start-line="1090" selection-start-column="26" selection-end-line="1090" selection-end-column="26" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2591,7 +2616,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/werwolv/gui/GuiTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
-          <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -2599,7 +2624,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/werwolv/states/GameState.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="422">
-          <caret line="84" column="0" lean-forward="true" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
+          <caret line="84" column="0" lean-forward="false" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -2609,17 +2634,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/werwolv/handler/GuiHandler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
-          <caret line="10" column="13" lean-forward="true" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/API/src/main/java/com/werwolv/entities/EntityPlayer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="79">
-          <caret line="26" column="23" lean-forward="false" selection-start-line="26" selection-start-column="23" selection-end-line="26" selection-end-column="23" />
+          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -2638,10 +2653,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/werwolv/tileEntities/TileEntityTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+        <state relative-caret-position="374">
+          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/API/src/main/java/com/werwolv/entities/EntityPlayer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="436">
+          <caret line="53" column="5" lean-forward="true" selection-start-line="53" selection-start-column="5" selection-end-line="53" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1448#1449#0" expanded="true" />
+            <element signature="e#1485#1486#0" expanded="true" />
           </folding>
         </state>
       </provider>
