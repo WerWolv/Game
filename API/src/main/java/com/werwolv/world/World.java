@@ -44,10 +44,13 @@ public class World implements IUpdatable {
         return chunksTile.size();
     }
 
-    public int getTile(int posX, int posY) {
+    public Tile getTile(int posX, int posY) {
         int chunk = (int)Math.floor(posX / Chunk.CHUNK_WIDTH);
 
-        return chunksTile.get(chunk).getGridObjects()[posX % Chunk.CHUNK_WIDTH][posY].getTileID();
+        if(chunksTile.get(chunk) == null)
+            return null;
+
+        return chunksTile.get(chunk).getGridObjects()[posX % Chunk.CHUNK_WIDTH][posY];
     }
 
     public void setTile(Tile tile, int posX, int posY) {
@@ -61,6 +64,12 @@ public class World implements IUpdatable {
 
     public TileEntity getTileEntity(int posX, int posY) {
         int chunk = (int)Math.floor(posX / Chunk.CHUNK_WIDTH);
+
+        if(chunksTile.get(chunk) == null)
+            return null;
+
+        if(posY < 0 || posY >= World.WORLD_HEIGHT)
+            return null;
 
         if(chunksTile.get(chunk).getGridObjects()[posX % Chunk.CHUNK_WIDTH][posY] == null)
             return null;
