@@ -20,7 +20,6 @@ import com.werwolv.states.State;
 public class Game implements Runnable{
 
 	public static final Game INSTANCE = new Game("Game", 1080, 720);
-    public static final boolean DEBUG_MODE = false;
 
 	private BufferStrategy bs;
 	private Graphics2D g;

@@ -11,12 +11,10 @@ import java.util.*;
 
 public class World implements IUpdatable {
 
-    public static final int WORLD_WIDTH = 4096;
     public static final int WORLD_HEIGHT = 512;
 
     private List<Entity> entities = new ArrayList<>();
     private Map<Integer, Chunk<Tile>> chunksTile = new HashMap<>();
-
 
     public World() {
 

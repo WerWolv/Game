@@ -82,5 +82,9 @@ public class GameState extends State{
                 }
 
         g.fillRect((int)this.player.getPosX() - (int)this.camera.getX() + Game.INSTANCE.getWindowWidth() / 2, (int)this.player.getPosY() - (int)this.camera.getY() + Game.INSTANCE.getWindowHeight() / 2, 20, 20);
-    }
+
+
+        if(this.player.getOpenedGui() != null)
+            this.player.getOpenedGui().render(g);
+	}
 }

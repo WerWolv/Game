@@ -5,13 +5,13 @@ import com.werwolv.world.World;
 
 public abstract class Entity implements IUpdatable {
 
-    private double health = 100D;
-    private double maxHealth = 100D;
+    protected double health = 100D;
+    protected double maxHealth = 100D;
 
-    private double posX, posY;
-    private boolean isDead = false;
+    protected double posX, posY;
+    protected boolean isDead = false;
 
-    private World entityWorld;
+    protected World entityWorld;
 
     public Entity(World world) {
         this.posX = 0;

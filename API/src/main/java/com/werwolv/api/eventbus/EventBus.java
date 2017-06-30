@@ -3,6 +3,7 @@ package com.werwolv.api.eventbus;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.reflect.ClassPath;
 import com.werwolv.api.event.Event;
+import com.werwolv.api.modloader.Mod;
 
 import java.util.concurrent.ConcurrentLinkedQueue;
 
@@ -63,6 +64,8 @@ public class EventBus {
             try {
                 Class clazz = c.load();
                 if(clazz.isAnnotationPresent(EventBusSubscriber.class))
+                    this.eventHandlers.add(clazz);
+                else if(clazz.isAnnotationPresent(Mod.class))
                     this.eventHandlers.add(clazz);
             } catch(NoClassDefFoundError e) {}
         }

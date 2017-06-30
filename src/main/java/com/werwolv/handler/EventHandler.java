@@ -28,7 +28,7 @@ public class EventHandler {
             TileEntity tileEntity = gameState.world.getTileEntity(currX / Tile.TILE_SIZE, currY / Tile.TILE_SIZE);
 
             if(tileEntity != null)
-                tileEntity.onTileClicked(event.button);
+                tileEntity.onTileClicked(event.button, gameState.player, gameState.world);
         }
     }
 }
