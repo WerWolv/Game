@@ -4,16 +4,16 @@ import com.werwolv.api.event.Event;
 
 public class MousePressedEvent extends Event {
 
-    public int button;
-    public int x, y;
+    public final EnumMouseButton button;
+    public final int x, y;
 
-    public MousePressedEvent(int button, int x, int y) {
+    public MousePressedEvent(EnumMouseButton button, int x, int y) {
         this.button = button;
         this.x = x;
         this.y = y;
     }
 
-    public int getButton() {
+    public EnumMouseButton getButton() {
         return button;
     }
 

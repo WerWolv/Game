@@ -4,7 +4,7 @@ import com.werwolv.api.event.Event;
 
 public class KeyReleasedEvent extends Event {
 
-    private int keyCode;
+    private final int keyCode;
 
     public KeyReleasedEvent(int keyCode) {
         super();

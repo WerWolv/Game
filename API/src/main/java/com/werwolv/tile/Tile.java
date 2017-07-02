@@ -3,7 +3,7 @@ package com.werwolv.tile;
 import com.werwolv.api.API;
 import com.werwolv.tileEntities.TileEntity;
 
-public class Tile {
+public abstract class Tile {
 
     public static final short TILE_SIZE = 32;
 

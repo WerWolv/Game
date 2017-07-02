@@ -44,6 +44,7 @@ public class Window{
 		canvas.setFocusable(false);
 		canvas.addMouseListener(mouseHandler);
 		canvas.addMouseMotionListener(mouseHandler);
+		canvas.addMouseWheelListener(mouseHandler);
 
 		frame.add(canvas);
 		frame.pack();

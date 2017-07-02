@@ -4,9 +4,14 @@ import com.werwolv.api.Log;
 import com.werwolv.api.modloader.Mod;
 import com.werwolv.gui.Gui;
 import com.werwolv.gui.IGuiHandler;
+import com.werwolv.inventory.Inventory;
+import com.werwolv.inventory.InventoryPlayer;
 import com.werwolv.world.World;
 
 public class EntityPlayer extends Entity {
+
+    private int selectedItemIndex;
+    public Inventory inventoryPlayer = new InventoryPlayer();
 
     private Gui openedGui = null;
 
@@ -30,11 +35,6 @@ public class EntityPlayer extends Entity {
             Mod mod = modClass.getAnnotation(Mod.class);
             IGuiHandler guiHandler = mod.guiHandler().newInstance();
 
-            if(guiHandler == null) {
-                Log.wtf("GuiHandler", "This mod has no GuiHandler registered to it!");
-                return;
-            }
-
             this.openedGui = guiHandler.getGuiFromID(guiID, this, this.entityWorld, (int) this.getPosX(), (int) this.getPosY());
 
             if(this.openedGui == null)
@@ -51,5 +51,9 @@ public class EntityPlayer extends Entity {
 
     public void closeGui() {
         this.openedGui = null;
+    }
+
+    public void setSelectedItemIndex(int index) {
+        this.selectedItemIndex = index;
     }
 }

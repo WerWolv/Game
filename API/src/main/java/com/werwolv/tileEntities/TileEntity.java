@@ -1,6 +1,7 @@
 package com.werwolv.tileEntities;
 
 import com.werwolv.api.IUpdatable;
+import com.werwolv.api.event.input.EnumMouseButton;
 import com.werwolv.entities.EntityPlayer;
 import com.werwolv.world.World;
 
@@ -10,7 +11,7 @@ public abstract class TileEntity implements IUpdatable {
         this.setUpdateable();
     }
 
-    public void onTileClicked(int button, EntityPlayer player, World world) {
+    public void onTileClicked(EnumMouseButton button, EntityPlayer player, World world) {
 
     }
 }

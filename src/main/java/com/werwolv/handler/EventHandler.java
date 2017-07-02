@@ -2,6 +2,7 @@ package com.werwolv.handler;
 
 import com.werwolv.api.event.input.KeyPressedEvent;
 import com.werwolv.api.event.input.MouseClickedEvent;
+import com.werwolv.api.event.input.MousePressedEvent;
 import com.werwolv.api.event.input.MouseReleasedEvent;
 import com.werwolv.api.eventbus.EventBusSubscriber;
 import com.werwolv.api.eventbus.SubscribeEvent;
@@ -19,7 +20,7 @@ public class EventHandler {
     }
 
     @SubscribeEvent
-    public void onMouseReleased(MouseReleasedEvent event) {
+    public void onMousePressed(MousePressedEvent event) {
         if(State.getCurrentState() instanceof GameState) {
             GameState gameState = (GameState) State.getCurrentState();
             int currX = (int)(gameState.camera.getX() + event.getX());
@@ -29,6 +30,7 @@ public class EventHandler {
 
             if(tileEntity != null)
                 tileEntity.onTileClicked(event.button, gameState.player, gameState.world);
+            //else if(gameState.player.inventoryPlayer.get)
         }
     }
 }

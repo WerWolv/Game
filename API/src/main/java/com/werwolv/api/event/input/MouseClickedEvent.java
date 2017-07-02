@@ -4,18 +4,18 @@ import com.werwolv.api.event.Event;
 
 public class MouseClickedEvent extends Event {
 
-    private int button;
-    private int x, y;
-    private int clickCnt;
+    private final EnumMouseButton button;
+    private final int x, y;
+    private final int clickCnt;
 
-    public MouseClickedEvent(int button, int x, int y, int clickCnt) {
+    public MouseClickedEvent(EnumMouseButton button, int x, int y, int clickCnt) {
         this.button = button;
         this.x = x;
         this.y = y;
         this.clickCnt = clickCnt;
     }
 
-    public int getButton() {
+    public EnumMouseButton getButton() {
         return button;
     }
 

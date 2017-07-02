@@ -1,5 +1,6 @@
 package com.test.mod;
 
+import com.test.mod.tile.TileMod;
 import com.werwolv.api.API;
 import com.werwolv.api.event.init.InitializationEvent;
 import com.werwolv.api.eventbus.EventBusSubscriber;
@@ -11,7 +12,7 @@ import com.werwolv.tile.Tile;
 @EventBusSubscriber
 public class ModMain {
 
-    public static final Tile tileMod = new Tile(2).setUnlocalizedName("tileTest").setTexture("testId:tileTest");
+    public static final Tile tileMod = new TileMod(2).setUnlocalizedName("tileTest").setTexture("testId:tileTest");
 
     @SubscribeEvent
     public void onInit(InitializationEvent event) {

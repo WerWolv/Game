@@ -8,12 +8,13 @@ import com.werwolv.api.eventbus.SubscribeEvent;
 import com.werwolv.api.modloader.Mod;
 import com.werwolv.handler.GuiHandler;
 import com.werwolv.tile.Tile;
+import com.werwolv.tile.TileTest;
 import com.werwolv.tileEntities.TileEntityTest;
 
 @Mod(modId = "game", modName = "Game", modVersion = "1.0.0", guiHandler = GuiHandler.class)
 public class ModMain {
 
-    public static final Tile tileGrass = new Tile(1).setUnlocalizedName("tileGrass").setTexture("game:tileGrass").addTileEntity(TileEntityTest.class);
+    public static final Tile tileGrass = new TileTest(1).setUnlocalizedName("tileGrass").setTexture("game:tileGrass").addTileEntity(TileEntityTest.class);
 
     @SubscribeEvent
     public void onPreInit(PreInitializationEvent event) {

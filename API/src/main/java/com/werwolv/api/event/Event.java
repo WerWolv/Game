@@ -1,6 +1,6 @@
 package com.werwolv.api.event;
 
-public class Event {
+public abstract class Event {
 
     private final long timestamp;
 

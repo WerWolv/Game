@@ -5,8 +5,8 @@ import com.werwolv.entities.Entity;
 
 public class EntityDiedEvent extends Event {
 
-    private Entity diedEntity;
-    private double deathX, deathY;
+    private final Entity diedEntity;
+    private final double deathX, deathY;
 
     public EntityDiedEvent(Entity diedEntity, double deathX, double deathY) {
         this.diedEntity = diedEntity;

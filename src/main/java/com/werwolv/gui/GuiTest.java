@@ -6,7 +6,6 @@ public class GuiTest extends Gui{
 
     @Override
     public void update(long deltaTime) {
-
     }
 
     @Override
