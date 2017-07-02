@@ -3,8 +3,9 @@ package com.werwolv.main;
 import com.werwolv.handler.KeyHandler;
 import com.werwolv.handler.MouseHandler;
 
-import java.awt.Canvas;
-import java.awt.Dimension;
+import java.awt.*;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 
 import javax.swing.JFrame;
 
@@ -32,10 +33,19 @@ public class Window{
 		frame = new JFrame(title);
 		frame.setSize(width, height);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setResizable(false);
 		frame.setLocationRelativeTo(null);
         frame.addKeyListener(keyHandler);
         frame.setVisible(true);
+
+		frame.addComponentListener(new ComponentAdapter() {
+			@Override
+			public void componentResized(ComponentEvent e) {
+				super.componentResized(e);
+
+				Component c = (Component)e.getSource();
+				Game.INSTANCE.setWindowSize(c.getWidth(), c.getHeight());
+			}
+		});
 
 		canvas = new Canvas();
 		canvas.setPreferredSize(new Dimension(width, height));

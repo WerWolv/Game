@@ -128,5 +128,10 @@ public class Game implements Runnable{
 	public int getWindowHeight() {
 		return this.height;
 	}
+
+	public void setWindowSize(int width, int height) {
+		this.width = width;
+		this.height = height;
+	}
 	
 }

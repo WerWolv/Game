@@ -53,27 +53,28 @@ public class GameState extends State{
 	public void render(Graphics2D g) {
 	    g.setColor(Color.BLACK);
 
-        for(int chunk = 0; chunk < world.getChunkCount(); chunk++)
+	    int windowWidth = Game.INSTANCE.getWindowWidth();
+	    int windowHeight = Game.INSTANCE.getWindowHeight();
+
+	    int chunksOnScreen = (windowWidth / (Chunk.CHUNK_WIDTH * Tile.TILE_SIZE));
+	    int verticalTilesOnScreen = windowHeight / Tile.TILE_SIZE;
+
+        int cameraChunk = (int) (camera.getX() + windowWidth / 2) / Tile.TILE_SIZE / Chunk.CHUNK_WIDTH;
+        int cameraVerticalTile = (int)(camera.getY() + windowHeight / 2) / Tile.TILE_SIZE;
+
+        for(int chunk = cameraChunk - chunksOnScreen / 2 - 1; chunk < cameraChunk + chunksOnScreen / 2 + 1; chunk++)
             for(int x = 0; x < Chunk.CHUNK_WIDTH; x++)
-                for (int y = 0; y < World.WORLD_HEIGHT; y++)
+                for (int y = Math.max(0, cameraVerticalTile - verticalTilesOnScreen / 2 - 1); y < cameraVerticalTile + verticalTilesOnScreen / 2 + 1; y++)
                     if (world.getChunk(chunk).getGridObjects()[x][y] != null && world.getChunk(chunk).getGridObjects()[x][y].getTileID() != 0) {
-                        if(x * Tile.TILE_SIZE - camera.getX() + chunk * Tile.TILE_SIZE < -Tile.TILE_SIZE || x * Tile.TILE_SIZE - camera.getX() + chunk * Tile.TILE_SIZE > Game.INSTANCE.getWindowWidth() + Tile.TILE_SIZE)
-                            continue;
-                        if(y * Tile.TILE_SIZE - 2 - camera.getY() < -Tile.TILE_SIZE || y * Tile.TILE_SIZE - 2 - camera.getY() > Game.INSTANCE.getWindowWidth() + Tile.TILE_SIZE)
-                            continue;
 
                         g.fillRect((int)(x * Tile.TILE_SIZE - camera.getX() + chunk * Tile.TILE_SIZE), (int)(y * Tile.TILE_SIZE - 2 - camera.getY()), Tile.TILE_SIZE, Tile.TILE_SIZE + 4);
                         g.fillRect((int)(x * Tile.TILE_SIZE - 2 - camera.getX() + chunk * Tile.TILE_SIZE), (int)(y * Tile.TILE_SIZE - camera.getY()), Tile.TILE_SIZE + 4, Tile.TILE_SIZE);
                     }
 
-        for(int chunk = 0; chunk < world.getChunkCount(); chunk++)
+        for(int chunk = cameraChunk - chunksOnScreen / 2 - 1; chunk < cameraChunk + chunksOnScreen / 2 + 1; chunk++)
             for(int x = 0; x < Chunk.CHUNK_WIDTH; x++)
-                for (int y = 0; y < World.WORLD_HEIGHT; y++) {
+                for (int y = Math.max(0, cameraVerticalTile - verticalTilesOnScreen / 2 - 1); y < cameraVerticalTile + verticalTilesOnScreen / 2 + 1; y++) {
                     if (world.getChunk(chunk).getGridObjects()[x][y] != null && world.getChunk(chunk).getGridObjects()[x][y].getTileID() != 0) {
-                        if (x * Tile.TILE_SIZE - camera.getX() + chunk * Tile.TILE_SIZE < -Tile.TILE_SIZE || x * Tile.TILE_SIZE - camera.getX() + chunk * Tile.TILE_SIZE > Game.INSTANCE.getWindowWidth() + Tile.TILE_SIZE)
-                            continue;
-                        if (y * Tile.TILE_SIZE - 2 - camera.getY() < -Tile.TILE_SIZE || y * Tile.TILE_SIZE - 2 - camera.getY() > Game.INSTANCE.getWindowWidth() + Tile.TILE_SIZE)
-                            continue;
 
                         int tileId = world.getChunk(chunk).getGridObjects()[x][y].getTileID();
                         if (API.TileRegistry.getTileFromID(tileId) != null && tileId != 0)
@@ -81,7 +82,7 @@ public class GameState extends State{
                     }
                 }
 
-        g.fillRect((int)this.player.getPosX() - (int)this.camera.getX() + Game.INSTANCE.getWindowWidth() / 2, (int)this.player.getPosY() - (int)this.camera.getY() + Game.INSTANCE.getWindowHeight() / 2, 20, 20);
+        g.fillRect((int)this.player.getPosX() - (int)this.camera.getX(), (int)this.player.getPosY() - (int)this.camera.getY(), 20, 20);
 
 
         if(this.player.getOpenedGui() != null)

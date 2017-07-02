@@ -11,8 +11,8 @@ public class Camera implements IUpdatable {
     private Entity entityToFollow;
 
     public Camera() {
-        this.x = 0;
-        this.y = 0;
+        this.x = - Game.INSTANCE.getWindowWidth() / 2;
+        this.y = - Game.INSTANCE.getWindowHeight() / 2;
         this.lerp = 0.0F;
         this.setUpdateable();
     }
@@ -45,8 +45,8 @@ public class Camera implements IUpdatable {
     @Override
     public void update(long deltaTime) {
         if(entityToFollow != null) {
-            this.x += (entityToFollow.getPosX() - this.x) * lerp;
-            this.y += (entityToFollow.getPosY() - this.y) * lerp;
+            this.x += (entityToFollow.getPosX() - Game.INSTANCE.getWindowWidth() / 2 - this.x) * lerp;
+            this.y += (entityToFollow.getPosY() - Game.INSTANCE.getWindowHeight() / 2 - this.y) * lerp;
         }
     }
 }
