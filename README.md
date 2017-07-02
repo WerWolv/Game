@@ -2,8 +2,8 @@
 
 Idea|Done?|Constributor
 ---- | ----- | ------------
-Easy modding support|No|Nobody
-Event System|No|Nobody
+Easy modding support|Yes|WerWolv
+Event System|Yes|WerWolv
 Circuit Boards|No|Mrasam
 Programming of PCBs|No|Nobody
 Alchemy|No|Nobody
