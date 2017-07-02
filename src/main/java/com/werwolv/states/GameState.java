@@ -20,6 +20,8 @@ public class GameState extends State{
 
     public Camera camera;
 
+    public int mouseX, mouseY;
+
 	public GameState() {
 	    this.world = new World();
 	    this.player = new EntityPlayer(this.world, 0, 0);
@@ -83,7 +85,6 @@ public class GameState extends State{
                 }
 
         g.fillRect((int)this.player.getPosX() - (int)this.camera.getX(), (int)this.player.getPosY() - (int)this.camera.getY(), 20, 20);
-
 
         if(this.player.getOpenedGui() != null)
             this.player.getOpenedGui().render(g);

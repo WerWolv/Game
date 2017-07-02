@@ -1,11 +1,13 @@
 package com.werwolv.handler;
 
+import com.werwolv.api.API;
 import com.werwolv.api.event.input.KeyPressedEvent;
 import com.werwolv.api.event.input.MouseClickedEvent;
 import com.werwolv.api.event.input.MousePressedEvent;
 import com.werwolv.api.event.input.MouseReleasedEvent;
 import com.werwolv.api.eventbus.EventBusSubscriber;
 import com.werwolv.api.eventbus.SubscribeEvent;
+import com.werwolv.main.Game;
 import com.werwolv.states.GameState;
 import com.werwolv.states.State;
 import com.werwolv.tile.Tile;
@@ -29,7 +31,7 @@ public class EventHandler {
             TileEntity tileEntity = gameState.world.getTileEntity(currX / Tile.TILE_SIZE, currY / Tile.TILE_SIZE);
 
             if(tileEntity != null)
-                tileEntity.onTileClicked(event.button, gameState.player, gameState.world);
+                tileEntity.onTileClicked(event.button, gameState.player, gameState.world, currX / Tile.TILE_SIZE, currY / Tile.TILE_SIZE);
             //else if(gameState.player.inventoryPlayer.get)
         }
     }

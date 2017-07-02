@@ -11,7 +11,7 @@ public abstract class TileEntity implements IUpdatable {
         this.setUpdateable();
     }
 
-    public void onTileClicked(EnumMouseButton button, EntityPlayer player, World world) {
+    public void onTileClicked(EnumMouseButton button, EntityPlayer player, World world, int posX, int posY) {
 
     }
 }
