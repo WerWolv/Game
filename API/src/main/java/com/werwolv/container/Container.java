@@ -1,15 +1,14 @@
-package com.werwolv.inventory;
+package com.werwolv.container;
 
 import com.werwolv.inventory.slot.Slot;
 import com.werwolv.item.ItemStack;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-public abstract class Inventory {
+public abstract class Container {
 
-    private Map<Integer, Slot> inventorySlots = new HashMap<>();
+    protected Map<Integer, Slot> inventorySlots = new HashMap<>();
 
     public abstract int getSize();
 
@@ -31,9 +30,7 @@ public abstract class Inventory {
         Slot slot = inventorySlots.get(index);
 
         if(itemStack.getStackSize() == 0)
-            this.setInventorySlotContent(index, null, 0,0);
-        else
-            this.setInventorySlotContent(index, itemStack, slot.getItemStackX(), slot.getItemStackY());
+            this.setInventorySlotContent(index, null);
 
         return getStackInSlot(index);
     }
@@ -41,13 +38,13 @@ public abstract class Inventory {
     public ItemStack removeStackFromSlot(int index) {
         ItemStack itemStack = inventorySlots.get(index).getItemStack();
 
-        inventorySlots.get(index).setItemStack(null, 0, 0);
+        inventorySlots.get(index).setItemStack(null);
 
         return itemStack;
     }
 
-    public void setInventorySlotContent(int index, ItemStack itemStack, int itemStackPosX, int itemStackPosY) {
-        this.inventorySlots.get(index).setItemStack(itemStack, itemStackPosX, itemStackPosY);
+    public void setInventorySlotContent(int index, ItemStack itemStack) {
+        this.inventorySlots.get(index).setItemStack(itemStack);
     }
 
     public Map<Integer, Slot> getInventorySlots() {

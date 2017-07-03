@@ -18,7 +18,7 @@ public class GuiTest extends Gui{
     @Override
     public void render(GuiRenderer renderer) {
         renderer.drawDefaultBackground();
-        renderer.drawGuiBackground(backgroundTexture, 0, 0, 0, 0);
+        renderer.drawGuiBackground(backgroundTexture, 0, 0, 1.0D);
     }
 
     @Override

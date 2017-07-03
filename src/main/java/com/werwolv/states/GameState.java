@@ -5,16 +5,15 @@ import com.werwolv.api.API;
 import com.werwolv.entities.EntityPlayer;
 import com.werwolv.gui.Gui;
 import com.werwolv.handler.KeyHandler;
-import com.werwolv.inventory.Inventory;
 import com.werwolv.inventory.slot.Slot;
 import com.werwolv.main.Camera;
-import com.werwolv.main.Game;
 import com.werwolv.tile.Tile;
 import com.werwolv.world.Chunk;
 import com.werwolv.world.World;
 import com.werwolv.world.WorldGenerator;
 
 import java.awt.*;
+
 
 public class GameState extends State{
 
@@ -88,7 +87,7 @@ public class GameState extends State{
         g.fillRect((int)this.player.getPosX() - (int)this.camera.getX(), (int)this.player.getPosY() - (int)this.camera.getY(), 20, 20);
 
         Gui openendGui = this.player.getOpenedGui();
-        Inventory openendInventory = this.player.getOpenendInventory();
+        com.werwolv.container.Container openendInventory = this.player.getOpenendInventory();
 
         if(openendGui != null)
             openendGui.render(API.RenderingUtils.GUI_RENDERER);
@@ -96,11 +95,11 @@ public class GameState extends State{
         if(openendInventory != null) {
             g.setColor(Slot.SLOT_COLOR);
             openendInventory.getInventorySlots().forEach((i, slot) -> {
-                int slotX = API.ContextValues.WINDOW_WIDTH / 2 - Slot.SIZE_SLOT / 2 + slot.getPosX();
-                int slotY = API.ContextValues.WINDOW_HEIGHT / 2 - Slot.SIZE_SLOT / 2 + slot.getPosY();
+                int slotX = API.ContextValues.WINDOW_WIDTH / 2 - slot.getSize() / 2 + slot.getPosX();
+                int slotY = API.ContextValues.WINDOW_HEIGHT / 2 - slot.getSize() / 2 + slot.getPosY();
 
-                if(State.mouseX >= slotX && State.mouseY >= slotY && State.mouseX <= slotX + Slot.SIZE_SLOT && State.mouseY <= slotY + Slot.SIZE_SLOT)
-                    g.fillRect(slotX, slotY, Slot.SIZE_SLOT, Slot.SIZE_SLOT);
+                if(State.mouseX >= slotX && State.mouseY >= slotY && State.mouseX <= slotX + slot.getSize() && State.mouseY <= slotY + slot.getSize())
+                    g.fillRect(slotX, slotY, slot.getSize(), slot.getSize());
             });
         }
 	}

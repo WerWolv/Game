@@ -1,13 +1,13 @@
 package com.werwolv.gui;
 
-import com.werwolv.inventory.Inventory;
+import com.werwolv.container.Container;
 import com.werwolv.inventory.slot.Slot;
 
-public class InventoryTest extends Inventory {
+public class ContainerTest extends Container {
 
-    public InventoryTest() {
+    public ContainerTest() {
         super();
-        this.addInventorySlot(0, new Slot(35, 52));
+        this.addInventorySlot(0, new Slot(35, 52, 32));
     }
 
     @Override

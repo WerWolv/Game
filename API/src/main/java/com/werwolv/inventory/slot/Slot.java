@@ -6,18 +6,17 @@ import java.awt.*;
 
 public class Slot {
 
-    public static final int SIZE_SLOT = 40;
     public static final Color SLOT_COLOR = new Color(0xFF, 0xFF, 0xFF, 0x7F);
 
     private final int posX, posY;
+    private final int size;
 
     private ItemStack itemStack;
 
-    private int itemStackX, itemStackY;
-
-    public Slot(int posX, int posY) {
+    public Slot(int posX, int posY, int size) {
         this.posX = posX;
         this.posY = posY;
+        this.size = size;
     }
 
     public int getPosX() {
@@ -28,22 +27,15 @@ public class Slot {
         return posY;
     }
 
+    public int getSize() {
+        return size;
+    }
+
     public ItemStack getItemStack() {
         return itemStack;
     }
 
-    public void setItemStack(ItemStack itemStack, int itemStackX, int itemStackY) {
+    public void setItemStack(ItemStack itemStack) {
         this.itemStack = itemStack;
-
-        this.itemStackX = itemStackX;
-        this.itemStackY = itemStackY;
-    }
-
-    public int getItemStackX() {
-        return itemStackX;
-    }
-
-    public int getItemStackY() {
-        return itemStackY;
     }
 }

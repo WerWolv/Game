@@ -1,6 +1,7 @@
 package com.werwolv.handler;
 
 import com.werwolv.api.event.input.KeyPressedEvent;
+import com.werwolv.api.event.input.KeyTypedEvent;
 import com.werwolv.api.event.input.MouseMovedEvent;
 import com.werwolv.api.event.input.MousePressedEvent;
 import com.werwolv.api.eventbus.EventBusSubscriber;
@@ -17,12 +18,17 @@ import static java.awt.event.KeyEvent.*;
 public class EventHandler {
 
     @SubscribeEvent
-    public void onKeyPressed(KeyPressedEvent event) {
+    public void onKeyPressed(KeyTypedEvent event) {
         if(State.getCurrentState() instanceof GameState) {
             GameState gameState = (GameState) State.getCurrentState();
 
             switch(event.getKeyCode()) {
-                case VK_E: gameState.player.openGui(ModMain.class, 0); break;
+                case VK_E: {
+                    if(gameState.player.getOpenedGui() == null)
+                        gameState.player.openGui(ModMain.class, 0);
+                    else
+                        gameState.player.closeGui();
+                } break;
                 case VK_ESCAPE: gameState.player.closeGui(); break;
             }
         }

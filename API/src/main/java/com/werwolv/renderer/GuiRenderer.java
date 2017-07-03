@@ -24,13 +24,29 @@ public class GuiRenderer {
         graphics2D.fillRect(0, 0, API.ContextValues.WINDOW_WIDTH, API.ContextValues.WINDOW_HEIGHT);
     }
 
-    public void drawGuiBackground(int textureID, int offsetX, int offsetY, int width, int height) {
+    public void drawGuiBackground(int textureID, int offsetX, int offsetY, double scale) {
         BufferedImage texture = API.ResourceRegistry.getResourceFromID(textureID);
 
-        graphics2D.drawImage(texture, API.ContextValues.WINDOW_WIDTH / 2 - texture.getWidth() / 2 + offsetX, API.ContextValues.WINDOW_HEIGHT / 2 - texture.getHeight() / 2 + offsetY, width == 0 ? texture.getWidth() : width, height == 0 ? texture.getHeight() : height, null);
+        graphics2D.drawImage(texture, API.ContextValues.WINDOW_WIDTH / 2 - texture.getWidth() / 2 + offsetX, API.ContextValues.WINDOW_HEIGHT / 2 - texture.getHeight() / 2 + offsetY, (int)(texture.getWidth() * scale), (int)(texture.getHeight() * scale), null);
     }
 
-    //TODO: Function to only draw a section of a BufferedImage
+    public void drawGuiTexture(int textureID, int offsetX, int offsetY, double scale) {
+        BufferedImage texture = API.ResourceRegistry.getResourceFromID(textureID);
+
+        graphics2D.drawImage(texture, API.ContextValues.WINDOW_WIDTH / 2 + offsetX, API.ContextValues.WINDOW_HEIGHT / 2 + offsetY, (int)(texture.getWidth() * scale), (int)(texture.getHeight() * scale), null);
+    }
+
+    public void drawGuiTexture(int textureID, int offsetX, int offsetY, int sectorX1, int sectorY1, int sectorX2, int sectorY2, double scale) {
+        BufferedImage texture = API.ResourceRegistry.getResourceFromID(textureID).getSubimage(sectorX1, sectorY1, sectorX2, sectorY2);
+
+        graphics2D.drawImage(texture, API.ContextValues.WINDOW_WIDTH / 2 + offsetX, API.ContextValues.WINDOW_HEIGHT / 2 + offsetY, (int)(texture.getWidth() * scale), (int)(texture.getHeight() * scale), null);
+    }
+
+    public void drawGuiTexture(int textureID, int offsetX, int offsetY, Rectangle rect, double scale) {
+        BufferedImage texture = API.ResourceRegistry.getResourceFromID(textureID).getSubimage(rect.x, rect.y, rect.width, rect.height);
+
+        graphics2D.drawImage(texture, API.ContextValues.WINDOW_WIDTH / 2 + offsetX, API.ContextValues.WINDOW_HEIGHT / 2 + offsetY, (int)(texture.getWidth() * scale), (int)(texture.getHeight() * scale), null);
+    }
 
     public void render(IRenderer renderer) {
         renderer.render(this.graphics2D);
