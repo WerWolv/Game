@@ -2,6 +2,7 @@ package com.werwolv.world;
 
 import com.werwolv.api.API;
 import com.werwolv.api.IUpdatable;
+import com.werwolv.api.Log;
 import com.werwolv.api.event.entity.EntityDiedEvent;
 import com.werwolv.entities.Entity;
 import com.werwolv.tile.Tile;
@@ -55,6 +56,21 @@ public class World implements IUpdatable {
 
     public void setTile(Tile tile, int posX, int posY) {
         int chunk = (int)Math.floor(posX / Chunk.CHUNK_WIDTH);
+
+        if(!chunksTile.containsKey(chunk))
+            this.chunksTile.put(chunk, new Chunk(new Tile[Chunk.CHUNK_WIDTH][World.WORLD_HEIGHT]));
+
+        this.getChunk(chunk).setGridObject(tile, posX - (chunk * Chunk.CHUNK_WIDTH), posY);
+    }
+
+    public void setTile(int id, int posX, int posY) {
+        int chunk = (int)Math.floor(posX / Chunk.CHUNK_WIDTH);
+        Tile tile = API.TileRegistry.getTileFromID(id);
+
+        if(id != 0 && tile == null) {
+            Log.wtf("World", "Tile id " + id + " doesn't correspond to a registered tile!");
+            return;
+        }
 
         if(!chunksTile.containsKey(chunk))
             this.chunksTile.put(chunk, new Chunk(new Tile[Chunk.CHUNK_WIDTH][World.WORLD_HEIGHT]));

@@ -2,7 +2,12 @@ package com.werwolv.inventory.slot;
 
 import com.werwolv.item.ItemStack;
 
-public abstract class Slot {
+import java.awt.*;
+
+public class Slot {
+
+    public static final int SIZE_SLOT = 40;
+    public static final Color SLOT_COLOR = new Color(0xFF, 0xFF, 0xFF, 0x7F);
 
     private final int posX, posY;
 

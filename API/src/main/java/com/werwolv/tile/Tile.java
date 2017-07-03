@@ -3,17 +3,21 @@ package com.werwolv.tile;
 import com.werwolv.api.API;
 import com.werwolv.tileEntities.TileEntity;
 
-public abstract class Tile {
+public class Tile {
 
     public static final short TILE_SIZE = 32;
 
     private final int tileID;
-    private String unlocalizedName = "null";
+    private String unlocalizedName;
     private int textureID = -1;
     private TileEntity tileEntity;
 
     public Tile(int tileID) {
         this.tileID = tileID;
+    }
+
+    public String getUnlocalizedName() {
+        return unlocalizedName;
     }
 
     public Tile setUnlocalizedName(String unlocalizedName) {

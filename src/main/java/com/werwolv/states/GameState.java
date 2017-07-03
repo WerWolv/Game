@@ -3,7 +3,10 @@ package com.werwolv.states;
 import com.sun.glass.events.KeyEvent;
 import com.werwolv.api.API;
 import com.werwolv.entities.EntityPlayer;
+import com.werwolv.gui.Gui;
 import com.werwolv.handler.KeyHandler;
+import com.werwolv.inventory.Inventory;
+import com.werwolv.inventory.slot.Slot;
 import com.werwolv.main.Camera;
 import com.werwolv.main.Game;
 import com.werwolv.tile.Tile;
@@ -19,8 +22,6 @@ public class GameState extends State{
     public EntityPlayer player;
 
     public Camera camera;
-
-    public int mouseX, mouseY;
 
 	public GameState() {
 	    this.world = new World();
@@ -55,8 +56,8 @@ public class GameState extends State{
 	public void render(Graphics2D g) {
 	    g.setColor(Color.BLACK);
 
-	    int windowWidth = Game.INSTANCE.getWindowWidth();
-	    int windowHeight = Game.INSTANCE.getWindowHeight();
+	    int windowWidth = API.ContextValues.WINDOW_WIDTH;
+	    int windowHeight = API.ContextValues.WINDOW_HEIGHT;
 
 	    int chunksOnScreen = (windowWidth / (Chunk.CHUNK_WIDTH * Tile.TILE_SIZE));
 	    int verticalTilesOnScreen = windowHeight / Tile.TILE_SIZE;
@@ -86,7 +87,21 @@ public class GameState extends State{
 
         g.fillRect((int)this.player.getPosX() - (int)this.camera.getX(), (int)this.player.getPosY() - (int)this.camera.getY(), 20, 20);
 
-        if(this.player.getOpenedGui() != null)
-            this.player.getOpenedGui().render(g);
+        Gui openendGui = this.player.getOpenedGui();
+        Inventory openendInventory = this.player.getOpenendInventory();
+
+        if(openendGui != null)
+            openendGui.render(API.RenderingUtils.GUI_RENDERER);
+
+        if(openendInventory != null) {
+            g.setColor(Slot.SLOT_COLOR);
+            openendInventory.getInventorySlots().forEach((i, slot) -> {
+                int slotX = API.ContextValues.WINDOW_WIDTH / 2 - Slot.SIZE_SLOT / 2 + slot.getPosX();
+                int slotY = API.ContextValues.WINDOW_HEIGHT / 2 - Slot.SIZE_SLOT / 2 + slot.getPosY();
+
+                if(State.mouseX >= slotX && State.mouseY >= slotY && State.mouseX <= slotX + Slot.SIZE_SLOT && State.mouseY <= slotY + Slot.SIZE_SLOT)
+                    g.fillRect(slotX, slotY, Slot.SIZE_SLOT, Slot.SIZE_SLOT);
+            });
+        }
 	}
 }

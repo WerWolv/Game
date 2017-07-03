@@ -1,24 +1,37 @@
 package com.werwolv.handler;
 
-import com.werwolv.api.API;
 import com.werwolv.api.event.input.KeyPressedEvent;
-import com.werwolv.api.event.input.MouseClickedEvent;
+import com.werwolv.api.event.input.MouseMovedEvent;
 import com.werwolv.api.event.input.MousePressedEvent;
-import com.werwolv.api.event.input.MouseReleasedEvent;
 import com.werwolv.api.eventbus.EventBusSubscriber;
 import com.werwolv.api.eventbus.SubscribeEvent;
-import com.werwolv.main.Game;
+import com.werwolv.main.ModMain;
 import com.werwolv.states.GameState;
 import com.werwolv.states.State;
 import com.werwolv.tile.Tile;
 import com.werwolv.tileEntities.TileEntity;
+
+import static java.awt.event.KeyEvent.*;
 
 @EventBusSubscriber
 public class EventHandler {
 
     @SubscribeEvent
     public void onKeyPressed(KeyPressedEvent event) {
+        if(State.getCurrentState() instanceof GameState) {
+            GameState gameState = (GameState) State.getCurrentState();
 
+            switch(event.getKeyCode()) {
+                case VK_E: gameState.player.openGui(ModMain.class, 0); break;
+                case VK_ESCAPE: gameState.player.closeGui(); break;
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public void onMouseMoved(MouseMovedEvent event) {
+        State.mouseX = event.getX();
+        State.mouseY = event.getY();
     }
 
     @SubscribeEvent

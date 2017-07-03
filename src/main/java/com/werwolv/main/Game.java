@@ -39,8 +39,11 @@ public class Game implements Runnable{
 	public void init(){
 		State.setCurrentState(State.gameState);
 		window = new Window(title, width, height);
-		API.EVENT_BUS.registerEventHandlers();
 
+		API.ContextValues.WINDOW_WIDTH = this.width;
+		API.ContextValues.WINDOW_HEIGHT = this.height;
+
+		API.EVENT_BUS.registerEventHandlers();
 
         API.EVENT_BUS.postEvent(new PreInitializationEvent());
         API.EVENT_BUS.postEvent(new InitializationEvent());
@@ -59,7 +62,8 @@ public class Game implements Runnable{
 			return;
 		}
 		g = (Graphics2D) bs.getDrawGraphics();
-		
+		API.RenderingUtils.GUI_RENDERER.setGraphics(g);
+
 		g.clearRect(0, 0, width, height);
 		
 		if(State.getCurrentState() != null)
@@ -132,6 +136,9 @@ public class Game implements Runnable{
 	public void setWindowSize(int width, int height) {
 		this.width = width;
 		this.height = height;
+
+		API.ContextValues.WINDOW_WIDTH = width;
+		API.ContextValues.WINDOW_HEIGHT = height;
 	}
 	
 }

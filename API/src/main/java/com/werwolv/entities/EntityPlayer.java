@@ -13,7 +13,8 @@ public class EntityPlayer extends Entity {
     private int selectedItemIndex;
     public Inventory inventoryPlayer = new InventoryPlayer();
 
-    private Gui openedGui = null;
+    private Gui openedGui;
+    private Inventory openendInventory;
 
     public EntityPlayer(World world, double posX, double posY) {
         super(world, posX, posY);
@@ -36,6 +37,7 @@ public class EntityPlayer extends Entity {
             IGuiHandler guiHandler = mod.guiHandler().newInstance();
 
             this.openedGui = guiHandler.getGuiFromID(guiID, this, this.entityWorld, (int) this.getPosX(), (int) this.getPosY());
+            this.openendInventory = guiHandler.getInventoryFromID(guiID, this, this.entityWorld, (int) this.getPosX(), (int) this.getPosY());
 
             if(this.openedGui == null)
                 Log.wtf("GuiHandler", "This mod has no Gui registered under this ID!");
@@ -49,8 +51,14 @@ public class EntityPlayer extends Entity {
         return openedGui;
     }
 
+    public Inventory getOpenendInventory() { return openendInventory; }
+
     public void closeGui() {
+        if(this.openedGui != null)
+            this.openedGui.onGuiClosed();
+
         this.openedGui = null;
+        this.openendInventory = null;
     }
 
     public void setSelectedItemIndex(int index) {

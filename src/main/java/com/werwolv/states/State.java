@@ -9,6 +9,8 @@ public abstract class State implements IUpdatable {
 	public static final State menuState = new MenuState();
 	public static final State gameState = new GameState();
 
+	public static int mouseX, mouseY;
+
 	private static State currState = null;
 
 	public State() {

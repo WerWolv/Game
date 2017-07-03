@@ -10,6 +10,18 @@ public class Log {
         System.out.println("[Info][" + tag + "] " + message);
     }
 
+    public static void d(String message) {
+        if(!API.ContextValues.DEBUG_MODE) return;
+
+        System.out.println("[Debug] " + message);
+    }
+
+    public static void d(String tag, String message) {
+        if(!API.ContextValues.DEBUG_MODE) return;
+
+        System.out.println("[Debug][" + tag + "] " + message);
+    }
+
     public static void wtf(String message) {
         System.err.println("[Error] " + message);
     }

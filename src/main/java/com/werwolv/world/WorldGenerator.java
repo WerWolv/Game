@@ -20,7 +20,7 @@ public class WorldGenerator {
         random.setSeed(this.seed);
         for(; chunkStart < chunkEnd; chunkStart++)
             for (int y = 0; y < World.WORLD_HEIGHT; y++)
-                this.world.setTile(API.TileRegistry.getTileFromID(random.nextInt(3)), chunkStart, y);
+                this.world.setTile(random.nextInt(3), chunkStart, y);
     }
 
     public long getSeed() {

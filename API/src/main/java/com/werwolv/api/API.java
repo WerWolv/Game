@@ -2,6 +2,7 @@ package com.werwolv.api;
 
 import com.werwolv.api.eventbus.EventBus;
 import com.werwolv.api.modloader.ModLoader;
+import com.werwolv.renderer.GuiRenderer;
 import com.werwolv.tile.Tile;
 
 import javax.imageio.ImageIO;
@@ -52,18 +53,31 @@ public class API {
 
     public static class ResourceRegistry {
         private static Map<Integer, BufferedImage> loadedResources = new HashMap<>();
-        private static int currentResourceIndex = 0;
+
+        private static int registeredTextures = 0;
 
         public static int registerResource(String path) {
+            int textureID;
+
             if(ClassLoader.getSystemClassLoader().getResource(path) == null) {
                 Log.wtf("ResourceRegistry", "Cannot load file " + path);
                 return -1;
             }
 
-            Log.i("ResourceRegistry", "Loaded resource " + path + " as texture ID " + currentResourceIndex);
+            registeredTextures++;
+
             try {
-                loadedResources.put(currentResourceIndex++, ImageIO.read(ClassLoader.getSystemClassLoader().getResource(path)));
-                return currentResourceIndex - 1;
+                for(textureID = 0; textureID < registeredTextures; textureID++) {
+                    if (loadedResources.get(textureID) == null) {
+                        loadedResources.put(textureID, ImageIO.read(ClassLoader.getSystemClassLoader().getResource(path)));
+                        break;
+                    }
+                }
+
+                Log.d("ResourceRegistry", "Loaded resource " + path + " as texture ID " + textureID);
+
+                return textureID;
+
             } catch(IOException e) {
                 Log.wtf("ResourceRegistry", "Cannot load " + path);
             }
@@ -74,6 +88,21 @@ public class API {
         public static BufferedImage getResourceFromID(int id) {
             return loadedResources.get(id);
         }
+
+        public static void unloadResource(int textureID) {
+            loadedResources.remove(textureID);
+        }
+    }
+
+    public static class RenderingUtils {
+        public static final GuiRenderer GUI_RENDERER = new GuiRenderer();
+    }
+
+    public static class ContextValues {
+        public static int WINDOW_WIDTH;
+        public static int WINDOW_HEIGHT;
+
+        public static boolean DEBUG_MODE = false;
     }
 
 }

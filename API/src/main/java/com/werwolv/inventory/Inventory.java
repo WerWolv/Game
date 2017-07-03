@@ -4,6 +4,7 @@ import com.werwolv.inventory.slot.Slot;
 import com.werwolv.item.ItemStack;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public abstract class Inventory {
@@ -47,5 +48,13 @@ public abstract class Inventory {
 
     public void setInventorySlotContent(int index, ItemStack itemStack, int itemStackPosX, int itemStackPosY) {
         this.inventorySlots.get(index).setItemStack(itemStack, itemStackPosX, itemStackPosY);
+    }
+
+    public Map<Integer, Slot> getInventorySlots() {
+        return new HashMap<>(inventorySlots);
+    }
+
+    public void addInventorySlot(int slotID, Slot slot) {
+        this.inventorySlots.put(slotID, slot);
     }
 }

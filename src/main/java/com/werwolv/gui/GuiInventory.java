@@ -3,22 +3,24 @@ package com.werwolv.gui;
 import com.werwolv.api.API;
 import com.werwolv.renderer.GuiRenderer;
 
-public class GuiTest extends Gui{
+public class GuiInventory extends Gui {
 
     private int backgroundTexture;
 
-    public GuiTest() {
-        backgroundTexture = API.ResourceRegistry.registerResource("game/gui/guiTest.png");
+    public GuiInventory() {
+        backgroundTexture = API.ResourceRegistry.registerResource("game/gui/guiInventory.png");
     }
 
     @Override
     public void update(long deltaTime) {
+
     }
 
     @Override
     public void render(GuiRenderer renderer) {
         renderer.drawDefaultBackground();
-        renderer.drawGuiBackground(backgroundTexture, 0, 0, 0, 0);
+
+        renderer.drawGuiBackground(backgroundTexture, -API.ContextValues.WINDOW_WIDTH / 2 + 128, -API.ContextValues.WINDOW_HEIGHT / 2 + 128, 512, 512);
     }
 
     @Override
@@ -27,4 +29,5 @@ public class GuiTest extends Gui{
 
         API.ResourceRegistry.unloadResource(backgroundTexture);
     }
+
 }
