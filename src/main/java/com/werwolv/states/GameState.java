@@ -2,33 +2,37 @@ package com.werwolv.states;
 
 import com.sun.glass.events.KeyEvent;
 import com.werwolv.api.API;
+import com.werwolv.container.Container;
+import com.werwolv.engine.renderer.TileRenderer;
 import com.werwolv.entities.EntityPlayer;
-import com.werwolv.gui.Gui;
-import com.werwolv.handler.KeyHandler;
-import com.werwolv.inventory.slot.Slot;
 import com.werwolv.main.Camera;
+import com.werwolv.main.Game;
+import com.werwolv.main.Window;
 import com.werwolv.tile.Tile;
 import com.werwolv.world.Chunk;
 import com.werwolv.world.World;
 import com.werwolv.world.WorldGenerator;
-
-import java.awt.*;
-
+import org.joml.Matrix4f;
 
 public class GameState extends State{
 
-	public World world;
+    private static final float WORLD_SCALE = 50.0F;
+
+    public World world;
     public EntityPlayer player;
 
     public Camera camera;
 
-	public GameState() {
+    public TileRenderer tileRenderer = new TileRenderer();
+    private Matrix4f worldSpace = new Matrix4f().scale(WORLD_SCALE);
+
+    public GameState() {
 	    this.world = new World();
 	    this.player = new EntityPlayer(this.world, 0, 0);
 	    this.camera = new Camera();
 
 	    this.camera.setEntityToFollow(this.player);
-	    this.camera.setLerp(0.02F);
+	    this.camera.setLerp(0.1F);
 
         this.world.spawnEntity(this.player);
     }
@@ -41,66 +45,39 @@ public class GameState extends State{
 
     @Override
     public void update(long delta) {
-        if(KeyHandler.isKeyPressed(KeyEvent.VK_W))
-            this.player.move(0,-1);
-        if(KeyHandler.isKeyPressed(KeyEvent.VK_A))
-            this.player.move(-1,0);
-        if(KeyHandler.isKeyPressed(KeyEvent.VK_S))
-            this.player.move(0,1);
-        if(KeyHandler.isKeyPressed(KeyEvent.VK_D))
-            this.player.move(1,0);
+        if(Window.isKeyPressed(KeyEvent.VK_W))
+            this.player.move(0,0.1);
+        if(Window.isKeyPressed(KeyEvent.VK_A))
+            this.player.move(-0.1,0);
+        if(Window.isKeyPressed(KeyEvent.VK_S))
+            this.player.move(0,-0.1);
+        if(Window.isKeyPressed(KeyEvent.VK_D))
+            this.player.move(0.1,0);
     }
 
 	@Override
-	public void render(Graphics2D g) {
-	    g.setColor(Color.BLACK);
+	public void render() {
+        float width = API.ContextValues.WINDOW_WIDTH;
+        float height = API.ContextValues.WINDOW_HEIGHT;
 
-	    int windowWidth = API.ContextValues.WINDOW_WIDTH;
-	    int windowHeight = API.ContextValues.WINDOW_HEIGHT;
+        int chunksOnScreen = (int )Math.ceil(width / (Chunk.CHUNK_WIDTH * WORLD_SCALE));
+        int verticalTilesOnScreen = (int) Math.ceil((height / WORLD_SCALE));
 
-	    int chunksOnScreen = (windowWidth / (Chunk.CHUNK_WIDTH * Tile.TILE_SIZE));
-	    int verticalTilesOnScreen = windowHeight / Tile.TILE_SIZE;
+        int cameraChunk = (int) (camera.getX());
+        int cameraVerticalTile = (int)(camera.getY());
 
-        int cameraChunk = (int) (camera.getX() + windowWidth / 2) / Tile.TILE_SIZE / Chunk.CHUNK_WIDTH;
-        int cameraVerticalTile = (int)(camera.getY() + windowHeight / 2) / Tile.TILE_SIZE;
-
-        for(int chunk = cameraChunk - chunksOnScreen / 2 - 1; chunk < cameraChunk + chunksOnScreen / 2 + 1; chunk++)
-            for(int x = 0; x < Chunk.CHUNK_WIDTH; x++)
-                for (int y = Math.max(0, cameraVerticalTile - verticalTilesOnScreen / 2 - 1); y < cameraVerticalTile + verticalTilesOnScreen / 2 + 1; y++)
-                    if (world.getChunk(chunk).getGridObjects()[x][y] != null && world.getChunk(chunk).getGridObjects()[x][y].getTileID() != 0) {
-
-                        g.fillRect((int)(x * Tile.TILE_SIZE - camera.getX() + chunk * Tile.TILE_SIZE), (int)(y * Tile.TILE_SIZE - 2 - camera.getY()), Tile.TILE_SIZE, Tile.TILE_SIZE + 4);
-                        g.fillRect((int)(x * Tile.TILE_SIZE - 2 - camera.getX() + chunk * Tile.TILE_SIZE), (int)(y * Tile.TILE_SIZE - camera.getY()), Tile.TILE_SIZE + 4, Tile.TILE_SIZE);
-                    }
-
-        for(int chunk = cameraChunk - chunksOnScreen / 2 - 1; chunk < cameraChunk + chunksOnScreen / 2 + 1; chunk++)
-            for(int x = 0; x < Chunk.CHUNK_WIDTH; x++)
+        for(int chunk = cameraChunk - chunksOnScreen / 2 - 1; chunk < cameraChunk + chunksOnScreen / 2 + 1; chunk++) {
+            for(int x = 0; x < Chunk.CHUNK_WIDTH; x++) {
                 for (int y = Math.max(0, cameraVerticalTile - verticalTilesOnScreen / 2 - 1); y < cameraVerticalTile + verticalTilesOnScreen / 2 + 1; y++) {
-                    if (world.getChunk(chunk).getGridObjects()[x][y] != null && world.getChunk(chunk).getGridObjects()[x][y].getTileID() != 0) {
-
-                        int tileId = world.getChunk(chunk).getGridObjects()[x][y].getTileID();
-                        if (API.TileRegistry.getTileFromID(tileId) != null && tileId != 0)
-                            g.drawImage(API.ResourceRegistry.getResourceFromID(API.TileRegistry.getTileFromID(tileId).getTextureID()), (int) (x * Tile.TILE_SIZE - camera.getX() + chunk * Tile.TILE_SIZE), (int) (y * Tile.TILE_SIZE - camera.getY()), Tile.TILE_SIZE, Tile.TILE_SIZE, null);
+                    Tile tile = this.world.getChunk(chunk).getGridObjects()[x][y];
+                    if(tile != null && tile.getTileID() != 0) {
+                        tileRenderer.renderTile(tile.getTileID(), chunk * Chunk.CHUNK_WIDTH + x, y, worldSpace, camera);
                     }
                 }
-
-        g.fillRect((int)this.player.getPosX() - (int)this.camera.getX(), (int)this.player.getPosY() - (int)this.camera.getY(), 20, 20);
-
-        Gui openendGui = this.player.getOpenedGui();
-        com.werwolv.container.Container openendInventory = this.player.getOpenendInventory();
-
-        if(openendGui != null)
-            openendGui.render(API.RenderingUtils.GUI_RENDERER);
-
-        if(openendInventory != null) {
-            g.setColor(Slot.SLOT_COLOR);
-            openendInventory.getInventorySlots().forEach((i, slot) -> {
-                int slotX = API.ContextValues.WINDOW_WIDTH / 2 - slot.getSize() / 2 + slot.getPosX();
-                int slotY = API.ContextValues.WINDOW_HEIGHT / 2 - slot.getSize() / 2 + slot.getPosY();
-
-                if(State.mouseX >= slotX && State.mouseY >= slotY && State.mouseX <= slotX + slot.getSize() && State.mouseY <= slotY + slot.getSize())
-                    g.fillRect(slotX, slotY, slot.getSize(), slot.getSize());
-            });
+            }
         }
-	}
+
+        tileRenderer.renderTile(2, (float) player.getPosX(), (float) player.getPosY(), worldSpace, camera);
+
+    }
 }

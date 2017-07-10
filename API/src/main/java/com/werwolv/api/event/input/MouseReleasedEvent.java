@@ -5,9 +5,9 @@ import com.werwolv.api.event.Event;
 public class MouseReleasedEvent extends Event {
 
     public final EnumMouseButton button;
-    public final int x, y;
+    public final double x, y;
 
-    public MouseReleasedEvent(EnumMouseButton button, int x, int y) {
+    public MouseReleasedEvent(EnumMouseButton button, double x, double y) {
         this.button = button;
         this.x = x;
         this.y = y;
@@ -17,11 +17,11 @@ public class MouseReleasedEvent extends Event {
         return button;
     }
 
-    public int getX() {
+    public double getX() {
         return x;
     }
 
-    public int getY() {
+    public double getY() {
         return y;
     }
 }

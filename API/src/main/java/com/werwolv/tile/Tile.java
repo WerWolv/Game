@@ -1,11 +1,14 @@
 package com.werwolv.tile;
 
 import com.werwolv.api.API;
+import com.werwolv.engine.Model;
 import com.werwolv.tileEntities.TileEntity;
 
 public class Tile {
 
     public static final short TILE_SIZE = 32;
+
+    private Model modelTile;
 
     private final int tileID;
     private String unlocalizedName;

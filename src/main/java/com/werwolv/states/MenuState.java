@@ -16,9 +16,7 @@ public class MenuState extends State{
 	}
 
     @Override
-	public void render(Graphics2D g) {
-		g.setColor(Color.BLUE);
-		g.fillRect(50, 50, 70, 70);
-		
+	public void render() {
+
 	}
 }

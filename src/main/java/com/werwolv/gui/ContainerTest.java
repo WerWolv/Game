@@ -10,6 +10,7 @@ public class ContainerTest extends Container {
         this.addInventorySlot(0, new Slot(35, 52, 32));
     }
 
+
     @Override
     public int getSize() {
         return 0;

@@ -7,6 +7,7 @@ import com.werwolv.api.event.init.PreInitializationEvent;
 import com.werwolv.api.eventbus.SubscribeEvent;
 import com.werwolv.api.modloader.Mod;
 import com.werwolv.handler.GuiHandler;
+import com.werwolv.item.Item;
 import com.werwolv.tile.Tile;
 import com.werwolv.tile.TileTest;
 import com.werwolv.tileEntities.TileEntityTest;
@@ -16,6 +17,8 @@ public class ModMain {
 
     public static final Tile tileGrass = new TileTest(1).setUnlocalizedName("tileGrass").setTexture("game:tileGrass").addTileEntity(TileEntityTest.class);
 
+    public static final Item itemTest = new Item(1).setUnlocalizedName("itemTest").setTexture("game:itemGrass");
+
     @SubscribeEvent
     public void onPreInit(PreInitializationEvent event) {
 
@@ -23,7 +26,8 @@ public class ModMain {
 
     @SubscribeEvent
     public void onInit(InitializationEvent event) {
-        API.TileRegistry.registerTile(tileGrass);
+        API.GameRegistry.registerTile(tileGrass);
+        API.GameRegistry.registerItem(itemTest);
     }
 
     @SubscribeEvent

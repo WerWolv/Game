@@ -9,7 +9,7 @@ public abstract class State implements IUpdatable {
 	public static final State menuState = new MenuState();
 	public static final State gameState = new GameState();
 
-	public static int mouseX, mouseY;
+	public static double mouseX, mouseY;
 
 	private static State currState = null;
 
@@ -27,6 +27,6 @@ public abstract class State implements IUpdatable {
 
 	public abstract void init();
 
-	public abstract void render(Graphics2D g);
+	public abstract void render();
 
 }

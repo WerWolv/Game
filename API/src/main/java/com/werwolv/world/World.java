@@ -65,7 +65,7 @@ public class World implements IUpdatable {
 
     public void setTile(int id, int posX, int posY) {
         int chunk = (int)Math.floor(posX / Chunk.CHUNK_WIDTH);
-        Tile tile = API.TileRegistry.getTileFromID(id);
+        Tile tile = API.GameRegistry.getTileFromID(id);
 
         if(id != 0 && tile == null) {
             Log.wtf("World", "Tile id " + id + " doesn't correspond to a registered tile!");

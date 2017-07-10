@@ -1,10 +1,11 @@
 package com.werwolv.item;
 
 import com.werwolv.api.API;
+import com.werwolv.api.Log;
 import com.werwolv.entities.EntityPlayer;
 import com.werwolv.world.World;
 
-public abstract class Item {
+public class Item {
 
     private final int itemID;
     private int textureID;
@@ -24,6 +25,12 @@ public abstract class Item {
 
     public Item setTexture(String path) {
         String[] tokens = path.split(":");
+
+        if(tokens.length != 2) {
+            Log.wtf("Item", "Texture path wasn't formatted correctly. Use 'modname:path/to/texture'!");
+            return this;
+        }
+
         this.textureID = API.ResourceRegistry.registerResource(tokens[0] + "/items/" + tokens[1] + ".png");
 
         return this;
@@ -33,7 +40,7 @@ public abstract class Item {
         return itemStack;
     }
 
-    public int getTileID() {
+    public int getItemID() {
         return itemID;
     }
 

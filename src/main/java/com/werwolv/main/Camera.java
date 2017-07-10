@@ -1,18 +1,22 @@
 package com.werwolv.main;
 
+import com.werwolv.api.API;
 import com.werwolv.api.IUpdatable;
 import com.werwolv.entities.Entity;
+import org.joml.Matrix4f;
+import org.joml.Vector3f;
 
 public class Camera implements IUpdatable {
 
-    private double x, y;
+    private float x, y;
     private float lerp;
+    private Matrix4f projection;
 
     private Entity entityToFollow;
 
     public Camera() {
-        this.x = - Game.INSTANCE.getWindowWidth() / 2;
-        this.y = - Game.INSTANCE.getWindowHeight() / 2;
+        recreateViewPort();
+
         this.lerp = 0.0F;
         this.setUpdateable();
     }
@@ -26,11 +30,11 @@ public class Camera implements IUpdatable {
         this.y = y;
     }
 
-    public double getX() {
+    public float getX() {
         return x;
     }
 
-    public double getY() {
+    public float getY() {
         return y;
     }
 
@@ -42,11 +46,26 @@ public class Camera implements IUpdatable {
         this.lerp = lerp;
     }
 
+    public Matrix4f getProjection() {
+        Matrix4f target = new Matrix4f();
+        Matrix4f pos = new Matrix4f().setTranslation(new Vector3f(x, y, 1.0F));
+
+        target = projection.mul(pos, target);
+
+        return target;
+    }
+
+    public void recreateViewPort() {
+        int width = API.ContextValues.WINDOW_WIDTH;
+        int height = API.ContextValues.WINDOW_HEIGHT;
+
+        projection = new Matrix4f().ortho2D(-width/2, width/2, -height/2, height/2);    }
+
     @Override
     public void update(long deltaTime) {
         if(entityToFollow != null) {
-            this.x += (entityToFollow.getPosX() - Game.INSTANCE.getWindowWidth() / 2 - this.x) * lerp;
-            this.y += (entityToFollow.getPosY() - Game.INSTANCE.getWindowHeight() / 2 - this.y) * lerp;
+            this.x += (entityToFollow.getPosX() - this.x) * lerp;
+            this.y += (entityToFollow.getPosY() - this.y) * lerp;
         }
     }
 }

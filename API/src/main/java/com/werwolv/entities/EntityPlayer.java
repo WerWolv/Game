@@ -5,7 +5,6 @@ import com.werwolv.api.modloader.Mod;
 import com.werwolv.container.Container;
 import com.werwolv.gui.Gui;
 import com.werwolv.gui.IGuiHandler;
-import com.werwolv.container.ContainerPlayer;
 import com.werwolv.item.ItemStack;
 import com.werwolv.world.World;
 
@@ -19,7 +18,7 @@ public class EntityPlayer extends Entity {
     public Map<Integer, ItemStack> inventoryPlayer = new HashMap<>();
 
     private Gui openedGui;
-    private Container openendInventory;
+    private Container openedContainer;
 
     public EntityPlayer(World world, double posX, double posY) {
         super(world, posX, posY);
@@ -42,7 +41,7 @@ public class EntityPlayer extends Entity {
             IGuiHandler guiHandler = mod.guiHandler().newInstance();
 
             this.openedGui = guiHandler.getGuiFromID(guiID, this, this.entityWorld, (int) this.getPosX(), (int) this.getPosY());
-            this.openendInventory = guiHandler.getInventoryFromID(guiID, this, this.entityWorld, (int) this.getPosX(), (int) this.getPosY());
+            this.openedContainer = guiHandler.getInventoryFromID(guiID, this, this.entityWorld, (int) this.getPosX(), (int) this.getPosY());
 
             if(this.openedGui == null)
                 Log.wtf("GuiHandler", "This mod has no Gui registered under this ID!");
@@ -56,14 +55,16 @@ public class EntityPlayer extends Entity {
         return openedGui;
     }
 
-    public Container getOpenendInventory() { return openendInventory; }
+    public Container getOpenedContainer() { return openedContainer; }
 
     public void closeGui() {
-        if(this.openedGui != null)
+        if(this.openedGui != null) {
             this.openedGui.onGuiClosed();
+            this.openedContainer.onContainerClosed();
+        }
 
         this.openedGui = null;
-        this.openendInventory = null;
+        this.openedContainer = null;
     }
 
     public void setSelectedItemIndex(int index) {

@@ -52,7 +52,7 @@ public abstract class Entity implements IUpdatable {
         isDead = dead;
     }
 
-    public void move(int x, int y) {
+    public void move(double x, double y) {
         this.posX += x;
         this.posY += y;
     }

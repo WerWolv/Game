@@ -9,6 +9,8 @@ import java.util.Map;
 public abstract class Container {
 
     protected Map<Integer, Slot> inventorySlots = new HashMap<>();
+    public ItemStack draggingItem = null;
+    private boolean keepsInventory = false;
 
     public abstract int getSize();
 
@@ -54,4 +56,6 @@ public abstract class Container {
     public void addInventorySlot(int slotID, Slot slot) {
         this.inventorySlots.put(slotID, slot);
     }
+
+    public void onContainerClosed() { }
 }

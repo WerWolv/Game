@@ -4,18 +4,18 @@ import com.werwolv.api.event.Event;
 
 public class MouseMovedEvent extends Event {
 
-    private final int x, y;
+    private final double x, y;
 
-    public MouseMovedEvent(int x, int y) {
+    public MouseMovedEvent(double x, double y) {
         this.x = x;
         this.y = y;
     }
 
-    public int getX() {
+    public double getX() {
         return x;
     }
 
-    public int getY() {
+    public double getY() {
         return y;
     }
 }

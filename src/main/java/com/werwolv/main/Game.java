@@ -2,20 +2,26 @@ package com.werwolv.main;
 
 import java.awt.Graphics2D;
 import java.awt.image.BufferStrategy;
-import java.io.File;
-import java.io.IOException;
-import java.net.URL;
-import java.util.Arrays;
-import java.util.Enumeration;
-import java.util.List;
-
-import com.google.common.collect.Lists;
 import com.werwolv.api.API;
 import com.werwolv.api.IUpdatable;
 import com.werwolv.api.event.init.InitializationEvent;
 import com.werwolv.api.event.init.PostInitializationEvent;
 import com.werwolv.api.event.init.PreInitializationEvent;
+import com.werwolv.states.GameState;
 import com.werwolv.states.State;
+
+import org.lwjgl.*;
+import org.lwjgl.glfw.*;
+import org.lwjgl.opengl.*;
+import org.lwjgl.system.*;
+
+import java.nio.*;
+
+import static org.lwjgl.glfw.Callbacks.*;
+import static org.lwjgl.glfw.GLFW.*;
+import static org.lwjgl.opengl.GL11.*;
+import static org.lwjgl.system.MemoryStack.*;
+import static org.lwjgl.system.MemoryUtil.*;
 
 public class Game implements Runnable{
 
@@ -27,21 +33,28 @@ public class Game implements Runnable{
 	private boolean running = false;
 
     private String title;
-    private int width, height;
 	private Window window;
-		
+
 	private Game(String title, int width, int height){
 		this.title = title;
-		this.width = width;
-		this.height = height;
+
+        API.ContextValues.WINDOW_WIDTH = width;
+        API.ContextValues.WINDOW_HEIGHT = height;
 	}
 	
 	public void init(){
-		State.setCurrentState(State.gameState);
-		window = new Window(title, width, height);
+	    window = new Window();
+	    window.setSize(API.ContextValues.WINDOW_WIDTH, API.ContextValues.WINDOW_HEIGHT);
 
-		API.ContextValues.WINDOW_WIDTH = this.width;
-		API.ContextValues.WINDOW_HEIGHT = this.height;
+	    System.out.println("LWJGL version " + Version.getVersion());
+		GLFWErrorCallback.createPrint(System.err).set();
+
+        window.createWindow(false);
+
+        GL.createCapabilities();
+
+        State.setCurrentState(State.gameState);
+
 
 		API.EVENT_BUS.registerEventHandlers();
 
@@ -56,7 +69,7 @@ public class Game implements Runnable{
 	}
 	
 	public void render(){
-		bs = window.getCanvas().getBufferStrategy();
+		/*bs = window.getCanvas().getBufferStrategy();
 		if(bs == null){
 			window.getCanvas().createBufferStrategy(3);
 			return;
@@ -64,20 +77,24 @@ public class Game implements Runnable{
 		g = (Graphics2D) bs.getDrawGraphics();
 		API.RenderingUtils.GUI_RENDERER.setGraphics(g);
 
-		g.clearRect(0, 0, width, height);
+		g.clearRect(0, 0, width, height);*/
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+        if(State.getCurrentState() != null)
+            State.getCurrentState().render();
+
+        glfwSwapBuffers(window.getWindow());
+        glfwPollEvents();
 		
-		if(State.getCurrentState() != null)
-			State.getCurrentState().render(g);
-		
-		bs.show();
-		g.dispose();
-		
+		/*bs.show();
+		g.dispose();*/
+
 	}
 	
 	public synchronized void start(){
 		if(running) return;
 		running = true;
-		thread = new Thread(this, "GameThread");
+		thread = new Thread(this, "Game");
 		thread.start();
 	}
 	
@@ -92,7 +109,6 @@ public class Game implements Runnable{
 	}
 
 	public void run(){
-
 		init();
 
 		int tps = 250;
@@ -102,7 +118,7 @@ public class Game implements Runnable{
 		long lastTime = System.nanoTime();
 		long timer = 0;
 
-		while(running){
+		while(!window.shouldClose()){
 			now = System.nanoTime();
 			delta += (now - lastTime) / timePerTick;
 			timer += now - lastTime;
@@ -121,24 +137,14 @@ public class Game implements Runnable{
 			render();
 		}
 
-		stop();
+        glfwFreeCallbacks(window.getWindow());
+		glfwDestroyWindow(window.getWindow());
+		glfwTerminate();
+		glfwSetErrorCallback(null).free();
+        System.exit(0);
+    }
 
-	}
-
-	public int getWindowWidth() {
-		return this.width;
-	}
-
-	public int getWindowHeight() {
-		return this.height;
-	}
-
-	public void setWindowSize(int width, int height) {
-		this.width = width;
-		this.height = height;
-
-		API.ContextValues.WINDOW_WIDTH = width;
-		API.ContextValues.WINDOW_HEIGHT = height;
-	}
-	
+    public Window getWindow() {
+        return window;
+    }
 }

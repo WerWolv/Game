@@ -1,11 +1,13 @@
 package com.werwolv.handler;
 
-import com.werwolv.api.event.input.KeyPressedEvent;
+import com.werwolv.api.API;
+import com.werwolv.api.Log;
 import com.werwolv.api.event.input.KeyTypedEvent;
 import com.werwolv.api.event.input.MouseMovedEvent;
 import com.werwolv.api.event.input.MousePressedEvent;
 import com.werwolv.api.eventbus.EventBusSubscriber;
 import com.werwolv.api.eventbus.SubscribeEvent;
+import com.werwolv.item.ItemStack;
 import com.werwolv.main.ModMain;
 import com.werwolv.states.GameState;
 import com.werwolv.states.State;
@@ -30,6 +32,7 @@ public class EventHandler {
                         gameState.player.closeGui();
                 } break;
                 case VK_ESCAPE: gameState.player.closeGui(); break;
+                case VK_K: gameState.player.getOpenedContainer().setInventorySlotContent(0, new ItemStack(ModMain.itemTest, 1, 0));
             }
         }
     }
@@ -44,14 +47,32 @@ public class EventHandler {
     public void onMousePressed(MousePressedEvent event) {
         if(State.getCurrentState() instanceof GameState) {
             GameState gameState = (GameState) State.getCurrentState();
-            int currX = (int)(gameState.camera.getX() + event.getX());
-            int currY = (int)(gameState.camera.getY() + event.getY());
 
-            TileEntity tileEntity = gameState.world.getTileEntity(currX / Tile.TILE_SIZE, currY / Tile.TILE_SIZE);
+            if(gameState.player.getOpenedGui() == null) {
 
-            if(tileEntity != null)
-                tileEntity.onTileClicked(event.button, gameState.player, gameState.world, currX / Tile.TILE_SIZE, currY / Tile.TILE_SIZE);
-            //else if(gameState.player.inventoryPlayer.get)
+                int currX = (int) (gameState.camera.getX() + event.getX());
+                int currY = (int) (gameState.camera.getY() + event.getY());
+
+                TileEntity tileEntity = gameState.world.getTileEntity(currX / Tile.TILE_SIZE, currY / Tile.TILE_SIZE);
+
+                if (tileEntity != null)
+                    tileEntity.onTileClicked(event.button, gameState.player, gameState.world, currX / Tile.TILE_SIZE, currY / Tile.TILE_SIZE);
+                //else if(gameState.player.inventoryPlayer.get)
+            } else {
+                gameState.player.getOpenedContainer().getInventorySlots().forEach((key, slot) -> {
+                    int slotX = API.ContextValues.WINDOW_WIDTH / 2 - slot.getSize() / 2 + slot.getPosX();
+                    int slotY = API.ContextValues.WINDOW_HEIGHT / 2 - slot.getSize() / 2 + slot.getPosY();
+
+                    if(State.mouseX >= slotX && State.mouseY >= slotY) {
+                        if (State.mouseX <= slotX + slot.getSize() && State.mouseY <= slotY + slot.getSize()) {
+                            ItemStack oldDraggedItem = gameState.player.getOpenedContainer().draggingItem;
+                            gameState.player.getOpenedContainer().draggingItem = slot.getItemStack();
+                            slot.setItemStack(oldDraggedItem);
+                        }
+                    }
+                });
+
+            }
         }
     }
 }
