@@ -13,6 +13,7 @@ import com.werwolv.world.Chunk;
 import com.werwolv.world.World;
 import com.werwolv.world.WorldGenerator;
 import org.joml.Matrix4f;
+import org.joml.Vector3f;
 
 public class GameState extends State{
 
@@ -77,7 +78,7 @@ public class GameState extends State{
             }
         }
 
-        tileRenderer.renderTile(2, (float) player.getPosX(), (float) player.getPosY(), worldSpace, camera);
+        tileRenderer.renderColor(new Vector3f(1, 1, 0), (float) player.getPosX(), (float) player.getPosY(), worldSpace, camera);
 
     }
 }

@@ -1,6 +1,8 @@
 package com.werwolv.engine;
 
 import org.joml.Matrix4f;
+import org.joml.Vector2f;
+import org.joml.Vector3f;
 import org.joml.Vector4f;
 import org.lwjgl.BufferUtils;
 
@@ -65,6 +67,16 @@ public class Shader {
     public void setUniform(String uniformName, int value) {
         int location = glGetUniformLocation(program, uniformName);
         if (location != -1) glUniform1i(location, value);
+    }
+
+    public void setUniform(String uniformName, Vector2f value) {
+        int location = glGetUniformLocation(program, uniformName);
+        if (location != -1) glUniform2f(location, value.x, value.y);
+    }
+
+    public void setUniform(String uniformName, Vector3f value) {
+        int location = glGetUniformLocation(program, uniformName);
+        if (location != -1) glUniform3f(location, value.x, value.y, value.z);
     }
 
     public void setUniform(String uniformName, Vector4f value) {
