@@ -16,7 +16,6 @@ import static org.lwjgl.system.MemoryUtil.*;
 public class Window {
 
 	private long window;
-	private int width, height;
 
 	private double mouseX, mouseY;
 
@@ -24,8 +23,9 @@ public class Window {
     private boolean hasBeenResized = false;
 
     public Window() {
-		setSize(100, 100);
-	}
+        API.ContextValues.WINDOW_WIDTH = 1080;
+        API.ContextValues.WINDOW_HEIGHT = 720;
+    }
 
 
     public static boolean isKeyPressed(int keyCode) {
@@ -33,10 +33,11 @@ public class Window {
     }
 
     public boolean hasBeenResized() {
-        boolean result = hasBeenResized;
-        hasBeenResized = false;
+        return hasBeenResized;
+    }
 
-        return result;
+    public void setResized(boolean hasBeenResized) {
+        this.hasBeenResized = hasBeenResized;
     }
 
     public void createWindow(boolean fullscreen) {
@@ -48,7 +49,7 @@ public class Window {
         glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
         glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
 
-        window = glfwCreateWindow(width, height, "Game", fullscreen ? glfwGetPrimaryMonitor() : 0, 0);
+        window = glfwCreateWindow(API.ContextValues.WINDOW_WIDTH, API.ContextValues.WINDOW_HEIGHT, "Game", fullscreen ? glfwGetPrimaryMonitor() : 0, 0);
 
         if (window == NULL)
             throw new RuntimeException("Failed to create the GLFW window");
@@ -70,7 +71,6 @@ public class Window {
             API.ContextValues.WINDOW_WIDTH = width;
             API.ContextValues.WINDOW_HEIGHT = height;
             hasBeenResized = true;
-            setSize(width, height);
         });
 
         glfwSetKeyCallback(window, (window, key, scanCode, action, mods) -> {
@@ -115,20 +115,7 @@ public class Window {
 		return glfwWindowShouldClose(window);
 	}
 
-	public void setSize(int width, int height) {
-		this.width = width;
-		this.height = height;
-	}
-
 	public long getWindow() {
 		return window;
-	}
-
-	public int getWidth() {
-		return width;
-	}
-
-	public int getHeight() {
-		return height;
 	}
 }

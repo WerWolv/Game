@@ -20,7 +20,7 @@ public class EntityPlayer extends Entity {
     private Gui openedGui;
     private Container openedContainer;
 
-    public EntityPlayer(World world, double posX, double posY) {
+    public EntityPlayer(World world, float posX, float posY) {
         super(world, posX, posY);
     }
 
@@ -40,8 +40,8 @@ public class EntityPlayer extends Entity {
             Mod mod = modClass.getAnnotation(Mod.class);
             IGuiHandler guiHandler = mod.guiHandler().newInstance();
 
-            this.openedGui = guiHandler.getGuiFromID(guiID, this, this.entityWorld, (int) this.getPosX(), (int) this.getPosY());
-            this.openedContainer = guiHandler.getInventoryFromID(guiID, this, this.entityWorld, (int) this.getPosX(), (int) this.getPosY());
+            this.openedGui = guiHandler.getGuiFromID(guiID, this, this.entityWorld, (int) this.getX(), (int) this.getY());
+            this.openedContainer = guiHandler.getInventoryFromID(guiID, this, this.entityWorld, (int) this.getX(), (int) this.getY());
 
             if(this.openedGui == null)
                 Log.wtf("GuiHandler", "This mod has no Gui registered under this ID!");

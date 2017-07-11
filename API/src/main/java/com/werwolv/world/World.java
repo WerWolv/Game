@@ -25,7 +25,7 @@ public class World implements IUpdatable {
         Entity entityToRemove = null;
         for(Iterator iter = entities.iterator(); iter.hasNext(); entityToRemove = (Entity) iter.next())
             if(entityToRemove != null && entityToRemove.isDead()) {
-                API.EVENT_BUS.postEvent(new EntityDiedEvent(entityToRemove, entityToRemove.getPosX(), entityToRemove.getPosY()));
+                API.EVENT_BUS.postEvent(new EntityDiedEvent(entityToRemove, entityToRemove.getX(), entityToRemove.getY()));
                 iter.remove();
             }
     }

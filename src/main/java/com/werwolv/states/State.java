@@ -1,6 +1,7 @@
 package com.werwolv.states;
 
 import com.werwolv.api.IUpdatable;
+import com.werwolv.main.Camera;
 
 import java.awt.Graphics2D;
 
@@ -10,6 +11,8 @@ public abstract class State implements IUpdatable {
 	public static final State gameState = new GameState();
 
 	public static double mouseX, mouseY;
+
+	public Camera camera = new Camera();
 
 	private static State currState = null;
 

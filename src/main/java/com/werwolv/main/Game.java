@@ -44,7 +44,6 @@ public class Game implements Runnable{
 	
 	public void init(){
 	    window = new Window();
-	    window.setSize(API.ContextValues.WINDOW_WIDTH, API.ContextValues.WINDOW_HEIGHT);
 
 	    System.out.println("LWJGL version " + Version.getVersion());
 		GLFWErrorCallback.createPrint(System.err).set();
@@ -69,25 +68,12 @@ public class Game implements Runnable{
 	}
 	
 	public void render(){
-		/*bs = window.getCanvas().getBufferStrategy();
-		if(bs == null){
-			window.getCanvas().createBufferStrategy(3);
-			return;
-		}
-		g = (Graphics2D) bs.getDrawGraphics();
-		API.RenderingUtils.GUI_RENDERER.setGraphics(g);
-
-		g.clearRect(0, 0, width, height);*/
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         if(State.getCurrentState() != null)
             State.getCurrentState().render();
 
         glfwSwapBuffers(window.getWindow());
-        glfwPollEvents();
-		
-		/*bs.show();
-		g.dispose();*/
 
 	}
 	
@@ -124,11 +110,19 @@ public class Game implements Runnable{
 			timer += now - lastTime;
 			lastTime = now;
 
+            if(window.hasBeenResized()) {
+                glViewport(0, 0, API.ContextValues.WINDOW_WIDTH, API.ContextValues.WINDOW_HEIGHT);
+                State.getCurrentState().camera.recreateViewPort();
+            }
+
 			if(delta >= 1){
                 API.EVENT_BUS.processEvents();
 
 				for(IUpdatable updatable : IUpdatable.updateableInstances)
 				    updatable.update((int)delta);
+
+				window.setResized(false);
+				glfwPollEvents();
 
 				delta--;
 			}

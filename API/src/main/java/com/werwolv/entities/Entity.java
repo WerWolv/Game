@@ -8,7 +8,7 @@ public abstract class Entity implements IUpdatable {
     protected double health = 100D;
     protected double maxHealth = 100D;
 
-    protected double posX, posY;
+    protected float posX, posY;
     protected boolean isDead = false;
 
     protected World entityWorld;
@@ -21,26 +21,26 @@ public abstract class Entity implements IUpdatable {
         setUpdateable();
     }
 
-    public Entity(World world, double posX, double posY) {
+    public Entity(World world, float posX, float posY) {
         this(world);
 
         this.posX = posX;
         this.posY = posY;
     }
 
-    public double getPosX() {
+    public float getX() {
         return posX;
     }
 
-    public void setPosX(double posX) {
+    public void setX(float posX) {
         this.posX = posX;
     }
 
-    public double getPosY() {
+    public float getY() {
         return posY;
     }
 
-    public void setPosY(double posY) {
+    public void setY(float posY) {
         this.posY = posY;
     }
 
@@ -52,7 +52,7 @@ public abstract class Entity implements IUpdatable {
         isDead = dead;
     }
 
-    public void move(double x, double y) {
+    public void move(float x, float y) {
         this.posX += x;
         this.posY += y;
     }

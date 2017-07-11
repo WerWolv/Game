@@ -48,7 +48,7 @@ public class Camera implements IUpdatable {
 
     public Matrix4f getProjection() {
         Matrix4f target = new Matrix4f();
-        Matrix4f pos = new Matrix4f().setTranslation(new Vector3f(x, y, 1.0F));
+        Matrix4f pos = new Matrix4f();
 
         target = projection.mul(pos, target);
 
@@ -64,8 +64,8 @@ public class Camera implements IUpdatable {
     @Override
     public void update(long deltaTime) {
         if(entityToFollow != null) {
-            this.x += (entityToFollow.getPosX() - this.x) * lerp;
-            this.y += (entityToFollow.getPosY() - this.y) * lerp;
+            this.x += (entityToFollow.getX() - this.x) * lerp;
+            this.y += (entityToFollow.getY() - this.y) * lerp;
         }
     }
 }
