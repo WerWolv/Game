@@ -39,9 +39,9 @@ public class ModLoader {
 
         for(ClassPath.ClassInfo c : set) {
             try {
-                Class clazz = c.load();
+                Class<? extends Mod> clazz = (Class<? extends Mod>) c.load();
                 if(clazz.isAnnotationPresent(Mod.class)) {
-                    Mod mod = (Mod) clazz.getAnnotation(Mod.class);
+                    Mod mod = clazz.getAnnotation(Mod.class);
                     this.loadedMods.add(new ModFile(clazz, path, mod.modId(), mod.modName(), mod.modVersion()));
                 }
             } catch(NoClassDefFoundError e) {

@@ -1,4 +1,4 @@
-import org.gradle.internal.os.OperatingSystem;
+import org.gradle.internal.os.OperatingSystem
 
 group 'com.werwolv'
 version '1.0-SNAPSHOT'

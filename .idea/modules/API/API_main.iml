@@ -23,8 +23,8 @@
     <orderEntry type="library" scope="RUNTIME" name="Gradle: org.lwjgl:lwjgl-bgfx:natives-windows:3.1.2" level="project" />
     <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl-nanovg:3.1.2" level="project" />
     <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl-nfd:3.1.2" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.lwjgl:lwjgl-glfw:natives-windows:3.1.2" level="project" />
     <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl-nuklear:3.1.2" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.lwjgl:lwjgl-glfw:natives-windows:3.1.2" level="project" />
     <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl-openal:3.1.2" level="project" />
     <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl-opencl:3.1.2" level="project" />
     <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl-opengl:3.1.2" level="project" />
@@ -39,15 +39,15 @@
     <orderEntry type="library" scope="RUNTIME" name="Gradle: org.lwjgl:lwjgl-nfd:natives-windows:3.1.2" level="project" />
     <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl-stb:3.1.2" level="project" />
     <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl-tinyexr:3.1.2" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.lwjgl:lwjgl-nuklear:natives-windows:3.1.2" level="project" />
     <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl-tinyfd:3.1.2" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.lwjgl:lwjgl-nuklear:natives-windows:3.1.2" level="project" />
     <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl-vulkan:3.1.2" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: org.lwjgl:lwjgl-openal:natives-windows:3.1.2" level="project" />
     <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl-xxhash:3.1.2" level="project" />
     <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl-yoga:3.1.2" level="project" />
     <orderEntry type="library" name="Gradle: com.google.guava:guava:20.0" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.lwjgl:lwjgl-opengl:natives-windows:3.1.2" level="project" />
     <orderEntry type="library" name="Gradle: org.javassist:javassist:3.21.0-GA" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.lwjgl:lwjgl-opengl:natives-windows:3.1.2" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: org.lwjgl:lwjgl-opengles:natives-windows:3.1.2" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: org.lwjgl:lwjgl-openvr:natives-windows:3.1.2" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: org.lwjgl:lwjgl-ovr:natives-windows:3.1.2" level="project" />

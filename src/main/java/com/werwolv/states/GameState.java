@@ -2,11 +2,8 @@ package com.werwolv.states;
 
 import com.sun.glass.events.KeyEvent;
 import com.werwolv.api.API;
-import com.werwolv.container.Container;
 import com.werwolv.engine.renderer.TileRenderer;
 import com.werwolv.entities.EntityPlayer;
-import com.werwolv.main.Camera;
-import com.werwolv.main.Game;
 import com.werwolv.main.Window;
 import com.werwolv.tile.Tile;
 import com.werwolv.world.Chunk;

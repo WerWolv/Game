@@ -4,7 +4,6 @@ import com.werwolv.api.API;
 import com.werwolv.api.IUpdatable;
 import com.werwolv.entities.Entity;
 import org.joml.Matrix4f;
-import org.joml.Vector3f;
 
 public class Camera implements IUpdatable {
 

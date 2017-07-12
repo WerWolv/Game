@@ -4,12 +4,10 @@ import org.joml.Matrix4f;
 import org.joml.Vector2f;
 import org.joml.Vector3f;
 import org.joml.Vector4f;
-import org.lwjgl.BufferUtils;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.nio.FloatBuffer;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -100,7 +98,7 @@ public class Shader {
 
             String line;
             while((line = reader.readLine()) != null)
-                text.append(line + '\n');
+                text.append(line).append('\n');
 
             reader.close();
         } catch (IOException e) {

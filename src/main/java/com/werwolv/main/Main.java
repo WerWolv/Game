@@ -13,7 +13,7 @@ public class Main {
 		if(!MODS_FOLDER.exists())
 			MODS_FOLDER.mkdirs();
 
-		Arrays.asList(MODS_FOLDER.listFiles()).stream().filter(mod -> mod.getName().endsWith(".jar")).forEach(mod -> API.MOD_LOADER.loadMod(mod.getAbsolutePath()));
+		Arrays.stream(MODS_FOLDER.listFiles()).filter(mod -> mod.getName().endsWith(".jar")).forEach(mod -> API.MOD_LOADER.loadMod(mod.getAbsolutePath()));
 
 		Game.INSTANCE.start();
 	}

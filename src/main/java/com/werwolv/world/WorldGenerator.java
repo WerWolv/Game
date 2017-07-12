@@ -1,7 +1,5 @@
 package com.werwolv.world;
 
-import com.werwolv.api.API;
-
 import java.util.Random;
 
 public class WorldGenerator {

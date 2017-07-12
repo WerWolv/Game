@@ -1,7 +1,6 @@
 package com.werwolv.handler;
 
 import com.werwolv.api.API;
-import com.werwolv.api.Log;
 import com.werwolv.api.event.input.KeyTypedEvent;
 import com.werwolv.api.event.input.MouseMovedEvent;
 import com.werwolv.api.event.input.MousePressedEvent;

@@ -3,6 +3,8 @@ package com.werwolv.tile;
 import com.werwolv.api.API;
 import com.werwolv.engine.Model;
 import com.werwolv.tileEntities.TileEntity;
+import com.werwolv.world.AABB;
+import org.joml.Vector2f;
 
 public class Tile {
 
@@ -56,6 +58,10 @@ public class Tile {
 
     public int getTextureID() {
         return textureID;
+    }
+
+    public AABB getBoundingBox() {
+        return new AABB(new Vector2f(0.5F, 0.5F), new Vector2f(0.5F, 0.5F));
     }
 
 }

@@ -1,8 +1,5 @@
 package com.werwolv.states;
 
-import java.awt.Color;
-import java.awt.Graphics2D;
-
 public class MenuState extends State{
 
     @Override

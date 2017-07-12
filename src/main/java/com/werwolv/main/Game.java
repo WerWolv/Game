@@ -7,21 +7,15 @@ import com.werwolv.api.IUpdatable;
 import com.werwolv.api.event.init.InitializationEvent;
 import com.werwolv.api.event.init.PostInitializationEvent;
 import com.werwolv.api.event.init.PreInitializationEvent;
-import com.werwolv.states.GameState;
 import com.werwolv.states.State;
 
 import org.lwjgl.*;
 import org.lwjgl.glfw.*;
 import org.lwjgl.opengl.*;
-import org.lwjgl.system.*;
-
-import java.nio.*;
 
 import static org.lwjgl.glfw.Callbacks.*;
 import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.opengl.GL11.*;
-import static org.lwjgl.system.MemoryStack.*;
-import static org.lwjgl.system.MemoryUtil.*;
 
 public class Game implements Runnable{
 

@@ -1,7 +1,5 @@
 package com.werwolv.item;
 
-import java.security.MessageDigest;
-
 public class ItemStack {
 
     private final Item item;

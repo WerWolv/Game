@@ -1,15 +1,17 @@
 package com.werwolv.entities;
 
 import com.werwolv.api.IUpdatable;
+import com.werwolv.world.AABB;
 import com.werwolv.world.World;
+import org.joml.Vector2f;
 
 public abstract class Entity implements IUpdatable {
 
     protected double health = 100D;
     protected double maxHealth = 100D;
 
-    protected float posX, posY;
-    protected boolean isDead = false;
+    private float posX, posY;
+    private boolean isDead = false;
 
     protected World entityWorld;
 
@@ -55,6 +57,10 @@ public abstract class Entity implements IUpdatable {
     public void move(float x, float y) {
         this.posX += x;
         this.posY += y;
+    }
+
+    public AABB getBoundingBox() {
+        return new AABB(new Vector2f(0.5F, 0.5F), new Vector2f(0.5F, 0.5F));
     }
 
 }

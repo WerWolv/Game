@@ -2,9 +2,6 @@ package com.werwolv.main;
 
 import com.werwolv.api.API;
 import com.werwolv.api.event.input.*;
-import org.lwjgl.glfw.GLFWCursorPosCallback;
-import org.lwjgl.glfw.GLFWKeyCallback;
-import org.lwjgl.glfw.GLFWMouseButtonCallback;
 import org.lwjgl.glfw.GLFWVidMode;
 import org.lwjgl.system.MemoryStack;
 

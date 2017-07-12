@@ -7,9 +7,6 @@ import com.werwolv.item.Item;
 import com.werwolv.renderer.GuiRenderer;
 import com.werwolv.tile.Tile;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 

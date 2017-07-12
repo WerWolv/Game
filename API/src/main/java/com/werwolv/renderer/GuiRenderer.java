@@ -3,7 +3,6 @@ package com.werwolv.renderer;
 import com.werwolv.api.API;
 
 import java.awt.*;
-import java.awt.image.BufferedImage;
 
 public class GuiRenderer {
 

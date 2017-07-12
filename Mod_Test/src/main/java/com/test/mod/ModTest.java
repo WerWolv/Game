@@ -2,7 +2,6 @@ package com.test.mod;
 
 import com.test.mod.tile.TileMod;
 import com.werwolv.api.API;
-import com.werwolv.api.Log;
 import com.werwolv.api.event.init.InitializationEvent;
 import com.werwolv.api.eventbus.EventBusSubscriber;
 import com.werwolv.api.eventbus.SubscribeEvent;

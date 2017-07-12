@@ -1,10 +1,6 @@
 package com.werwolv.handler;
 
-import com.werwolv.api.API;
-import com.werwolv.api.event.input.*;
 import org.lwjgl.glfw.GLFWMouseButtonCallback;
-
-import java.awt.event.*;
 
 public class MouseHandler extends GLFWMouseButtonCallback {
 

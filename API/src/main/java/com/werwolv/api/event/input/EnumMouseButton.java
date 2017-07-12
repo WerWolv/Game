@@ -14,6 +14,8 @@ public enum EnumMouseButton {
         this.id = id;
     }
 
+    public int getId() { return id; }
+
     public static EnumMouseButton getButtonFromID(int id) {
         switch(id) {
             case 1: return LEFT;

@@ -3,8 +3,6 @@ package com.werwolv.states;
 import com.werwolv.api.IUpdatable;
 import com.werwolv.main.Camera;
 
-import java.awt.Graphics2D;
-
 public abstract class State implements IUpdatable {
 
 	public static final State menuState = new MenuState();

@@ -1,6 +1,5 @@
 package com.werwolv.engine;
 
-import com.werwolv.api.resource.Texture;
 import org.lwjgl.BufferUtils;
 
 import java.nio.FloatBuffer;
