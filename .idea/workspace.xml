@@ -9,39 +9,21 @@
     <bookmark url="file://$PROJECT_DIR$/API/src/main/java/com/werwolv/api/API.java" line="56" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a22eb6bc-c231-4b55-b00b-e078eaab33ca" name="Default" comment="Added first collision implementation with axis aligned bounding boxes (AABB). Collision is detected but player isn't stopped yet from moving into the colliding object">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/API/src/main/java/com/werwolv/world/AABB.java" />
+    <list default="true" id="a22eb6bc-c231-4b55-b00b-e078eaab33ca" name="Default" comment="Fullscreen support and included OpenAL">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/com/werwolv/handler/EventHandler.class" afterPath="$PROJECT_DIR$/build/classes/main/com/werwolv/handler/EventHandler.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/com/werwolv/main/Game.class" afterPath="$PROJECT_DIR$/build/classes/main/com/werwolv/main/Game.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/com/werwolv/main/Main.class" afterPath="$PROJECT_DIR$/build/classes/main/com/werwolv/main/Main.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/com/werwolv/main/Window.class" afterPath="$PROJECT_DIR$/build/classes/main/com/werwolv/main/Window.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/com/werwolv/states/GameState.class" afterPath="$PROJECT_DIR$/build/classes/main/com/werwolv/states/GameState.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/com/werwolv/states/State.class" afterPath="$PROJECT_DIR$/build/classes/main/com/werwolv/states/State.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/API/API_main.iml" afterPath="$PROJECT_DIR$/.idea/modules/API/API_main.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/API/API_test.iml" afterPath="$PROJECT_DIR$/.idea/modules/API/API_test.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/com/werwolv/states/MenuState.class" afterPath="$PROJECT_DIR$/build/classes/main/com/werwolv/states/MenuState.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/API/build.gradle" afterPath="$PROJECT_DIR$/API/build.gradle" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/API/src/main/java/com/werwolv/api/API.java" afterPath="$PROJECT_DIR$/API/src/main/java/com/werwolv/api/API.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/API/src/main/java/com/werwolv/api/event/input/EnumMouseButton.java" afterPath="$PROJECT_DIR$/API/src/main/java/com/werwolv/api/event/input/EnumMouseButton.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/API/src/main/java/com/werwolv/api/eventbus/EventBus.java" afterPath="$PROJECT_DIR$/API/src/main/java/com/werwolv/api/eventbus/EventBus.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/API/src/main/java/com/werwolv/api/modloader/ModLoader.java" afterPath="$PROJECT_DIR$/API/src/main/java/com/werwolv/api/modloader/ModLoader.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/API/src/main/java/com/werwolv/api/resource/Texture.java" afterPath="$PROJECT_DIR$/API/src/main/java/com/werwolv/api/resource/Texture.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/API/src/main/java/com/werwolv/engine/Model.java" afterPath="$PROJECT_DIR$/API/src/main/java/com/werwolv/engine/Model.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/API/src/main/java/com/werwolv/engine/Shader.java" afterPath="$PROJECT_DIR$/API/src/main/java/com/werwolv/engine/Shader.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/API/src/main/java/com/werwolv/entities/Entity.java" afterPath="$PROJECT_DIR$/API/src/main/java/com/werwolv/entities/Entity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/API/src/main/java/com/werwolv/gui/Gui.java" afterPath="$PROJECT_DIR$/API/src/main/java/com/werwolv/gui/Gui.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/API/src/main/java/com/werwolv/item/ItemStack.java" afterPath="$PROJECT_DIR$/API/src/main/java/com/werwolv/item/ItemStack.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/API/src/main/java/com/werwolv/renderer/GuiRenderer.java" afterPath="$PROJECT_DIR$/API/src/main/java/com/werwolv/renderer/GuiRenderer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/API/src/main/java/com/werwolv/tile/Tile.java" afterPath="$PROJECT_DIR$/API/src/main/java/com/werwolv/tile/Tile.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Mod_Test/src/main/java/com/test/mod/ModTest.java" afterPath="$PROJECT_DIR$/Mod_Test/src/main/java/com/test/mod/ModTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/werwolv/handler/EventHandler.java" afterPath="$PROJECT_DIR$/src/main/java/com/werwolv/handler/EventHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/werwolv/handler/MouseHandler.java" afterPath="$PROJECT_DIR$/src/main/java/com/werwolv/handler/MouseHandler.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/werwolv/main/Camera.java" afterPath="$PROJECT_DIR$/src/main/java/com/werwolv/main/Camera.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/werwolv/main/Game.java" afterPath="$PROJECT_DIR$/src/main/java/com/werwolv/main/Game.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/werwolv/main/Main.java" afterPath="$PROJECT_DIR$/src/main/java/com/werwolv/main/Main.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/werwolv/main/Window.java" afterPath="$PROJECT_DIR$/src/main/java/com/werwolv/main/Window.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/werwolv/states/GameState.java" afterPath="$PROJECT_DIR$/src/main/java/com/werwolv/states/GameState.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/werwolv/states/MenuState.java" afterPath="$PROJECT_DIR$/src/main/java/com/werwolv/states/MenuState.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/werwolv/states/State.java" afterPath="$PROJECT_DIR$/src/main/java/com/werwolv/states/State.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/werwolv/world/WorldGenerator.java" afterPath="$PROJECT_DIR$/src/main/java/com/werwolv/world/WorldGenerator.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -94,50 +76,18 @@
       <file leaf-file-name="GameState.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/werwolv/states/GameState.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="188">
-              <caret line="24" column="4" lean-forward="false" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="4" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="EntityPlayer.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/API/src/main/java/com/werwolv/entities/EntityPlayer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="16" column="16" lean-forward="false" selection-start-line="16" selection-start-column="16" selection-end-line="16" selection-end-column="16" />
+            <state relative-caret-position="222">
+              <caret line="62" column="0" lean-forward="false" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EnumMouseButton.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/API/src/main/java/com/werwolv/api/event/input/EnumMouseButton.java">
+      <file leaf-file-name="MenuState.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/werwolv/states/MenuState.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="16" column="36" lean-forward="false" selection-start-line="16" selection-start-column="36" selection-end-line="16" selection-end-column="36" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ModLoader.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/API/src/main/java/com/werwolv/api/modloader/ModLoader.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="322">
-              <caret line="43" column="30" lean-forward="false" selection-start-line="43" selection-start-column="30" selection-end-line="43" selection-end-column="30" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="World.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/API/src/main/java/com/werwolv/world/World.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="38" column="39" lean-forward="false" selection-start-line="38" selection-start-column="39" selection-end-line="38" selection-end-column="39" />
+            <state relative-caret-position="34">
+              <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -146,18 +96,18 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/werwolv/main/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+            <state relative-caret-position="93">
+              <caret line="20" column="35" lean-forward="false" selection-start-line="20" selection-start-column="35" selection-end-line="20" selection-end-column="35" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Shader.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/API/src/main/java/com/werwolv/engine/Shader.java">
+      <file leaf-file-name="Game.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/werwolv/main/Game.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-18">
-              <caret line="69" column="51" lean-forward="false" selection-start-line="69" selection-start-column="51" selection-end-line="69" selection-end-column="51" />
+            <state relative-caret-position="260">
+              <caret line="66" column="79" lean-forward="false" selection-start-line="66" selection-start-column="79" selection-end-line="66" selection-end-column="79" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -165,39 +115,72 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AABB.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/API/src/main/java/com/werwolv/world/AABB.java">
+      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="14" lean-forward="false" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="14" />
+            <state relative-caret-position="277">
+              <caret line="90" column="31" lean-forward="false" selection-start-line="90" selection-start-column="31" selection-end-line="90" selection-end-column="31" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Tile.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/API/src/main/java/com/werwolv/tile/Tile.java">
+      <file leaf-file-name="Window.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/werwolv/main/Window.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
-              <caret line="53" column="0" lean-forward="false" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+            <state relative-caret-position="85">
+              <caret line="46" column="60" lean-forward="false" selection-start-line="46" selection-start-column="60" selection-end-line="46" selection-end-column="60" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Camera.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/werwolv/main/Camera.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="337">
+              <caret line="57" column="74" lean-forward="false" selection-start-line="57" selection-start-column="74" selection-end-line="57" selection-end-column="74" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="API.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/API/src/main/java/com/werwolv/api/API.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="279">
+              <caret line="135" column="0" lean-forward="false" selection-start-line="135" selection-start-column="0" selection-end-line="135" selection-end-column="0" />
               <folding>
-                <element signature="e#1448#1449#0" expanded="true" />
-                <element signature="e#1531#1532#0" expanded="true" />
+                <element signature="e#1706#1707#0" expanded="true" />
+                <element signature="e#1760#1761#0" expanded="true" />
+                <element signature="e#2822#2823#0" expanded="true" />
+                <element signature="e#2876#2877#0" expanded="true" />
+                <marker date="1499861373227" expanded="false" signature="3851:3866" ph=" { " />
+                <marker date="1499861373227" expanded="false" signature="3897:3907" ph=" }" />
+                <marker date="1499861373227" expanded="false" signature="3966:3981" ph=" { " />
+                <marker date="1499861373227" expanded="false" signature="4016:4026" ph=" }" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Entity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/API/src/main/java/com/werwolv/entities/Entity.java">
+      <file leaf-file-name="Log.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/API/src/main/java/com/werwolv/api/Log.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="188">
-              <caret line="25" column="4" lean-forward="false" selection-start-line="25" selection-start-column="4" selection-end-line="25" selection-end-column="4" />
+            <state relative-caret-position="204">
+              <caret line="16" column="5" lean-forward="false" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LocalizationHelper.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/API/src/main/java/com/werwolv/api/lang/LocalizationHelper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="345">
+              <caret line="34" column="20" lean-forward="false" selection-start-line="34" selection-start-column="20" selection-end-line="34" selection-end-column="25" />
               <folding>
-                <element signature="e#695#696#0" expanded="true" />
-                <element signature="e#722#723#0" expanded="true" />
-                <element signature="e#1174#1175#0" expanded="true" />
-                <element signature="e#1257#1258#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -894,7 +877,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/werwolv/handler/EventHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/werwolv/engine/utils/math.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/werwolv/engine/utils/Math.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/werwolv/engine/utils/math/Vector3f.java" />
@@ -918,7 +900,6 @@
         <option value="$PROJECT_DIR$/API/src/main/java/com/werwolv/engine/Texture.java" />
         <option value="$PROJECT_DIR$/API/src/main/java/com/werwolv/renderer/GuiRenderer.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/werwolv/states/MenuState.java" />
-        <option value="$PROJECT_DIR$/API/src/main/java/com/werwolv/api/API.java" />
         <option value="$PROJECT_DIR$/API/src/main/java/com/werwolv/api/resource/Texture.java" />
         <option value="$PROJECT_DIR$/shaders/shader.vert" />
         <option value="$PROJECT_DIR$/src/main/java/com/werwolv/handler/MouseHandler.java" />
@@ -929,22 +910,24 @@
         <option value="$PROJECT_DIR$/API/src/main/java/com/werwolv/engine/Model.java" />
         <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/shaders/shader.frag" />
-        <option value="$PROJECT_DIR$/src/main/java/com/werwolv/main/Window.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/werwolv/states/State.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/werwolv/main/Game.java" />
         <option value="$PROJECT_DIR$/API/src/main/java/com/werwolv/entities/EntityPlayer.java" />
         <option value="$PROJECT_DIR$/API/src/main/java/com/werwolv/world/World.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/werwolv/engine/renderer/TileRenderer.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/werwolv/main/Camera.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/werwolv/world/AABB.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/werwolv/states/GameState.java" />
         <option value="$PROJECT_DIR$/API/src/main/java/com/werwolv/entities/Entity.java" />
         <option value="$PROJECT_DIR$/API/src/main/java/com/werwolv/api/event/input/EnumMouseButton.java" />
         <option value="$PROJECT_DIR$/API/src/main/java/com/werwolv/api/modloader/ModLoader.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/werwolv/main/Main.java" />
         <option value="$PROJECT_DIR$/API/src/main/java/com/werwolv/engine/Shader.java" />
         <option value="$PROJECT_DIR$/API/src/main/java/com/werwolv/world/AABB.java" />
         <option value="$PROJECT_DIR$/API/src/main/java/com/werwolv/tile/Tile.java" />
+        <option value="$PROJECT_DIR$/API/src/main/java/com/werwolv/api/lang/LocalizationHelper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/werwolv/main/Window.java" />
+        <option value="$PROJECT_DIR$/API/src/main/java/com/werwolv/api/API.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/werwolv/main/Main.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/werwolv/main/Camera.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/werwolv/states/GameState.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/werwolv/main/Game.java" />
       </list>
     </option>
   </component>
@@ -1002,6 +985,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="PackagesPane">
         <subPane>
           <PATH>
@@ -1138,6 +1122,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -1207,36 +1192,6 @@
               <option name="myItemId" value="werwolv" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="world" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Game" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Game_with_LWJGL" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="werwolv" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -1264,7 +1219,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="states" />
+              <option name="myItemId" value="main" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1324,58 +1279,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Mod_Test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Game" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Game_with_LWJGL" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Mod_Test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mod" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Game" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Game_with_LWJGL" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="API" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -1514,7 +1417,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="tile" />
+              <option name="myItemId" value="item" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1586,17 +1489,87 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Game" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Game_with_LWJGL" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="API" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="werwolv" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="api" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Game" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Game_with_LWJGL" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="API" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="werwolv" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="api" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lang" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -2140,7 +2113,7 @@
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="com.werwolv.main.Main" />
       <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="PROGRAM_PARAMETERS" value="-m" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
@@ -2374,7 +2347,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="164710000" />
+    <option name="totallyTimeSpent" value="166536000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -2391,35 +2364,43 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.42361864" sideWeight="0.52132195" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.42361864" sideWeight="0.52558637" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="LuaJ" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.4978678" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.41603467" sideWeight="0.4978678" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33152762" sideWeight="0.48081023" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33152762" sideWeight="0.47654584" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.42361864" sideWeight="0.47867805" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.4978678" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.42361864" sideWeight="0.47441363" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.49573562" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23880596" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24147122" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18176973" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.42361864" sideWeight="0.52132195" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="LuaJ" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.4978678" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="12" side_tool="true" content_ui="tabs" />
     </layout>
@@ -2473,22 +2454,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/werwolv/engine/rendering/Vertices.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/resources/shaders/bg.vert">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="39" lean-forward="false" selection-start-line="8" selection-start-column="39" selection-end-line="8" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/shaders/bg.frag">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="1" lean-forward="false" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/API/src/main/java/com/werwolv/util/FileUtils.java" />
     <entry file="file://$PROJECT_DIR$/API/src/main/java/com/werwolv/engine/Texture.java" />
     <entry file="file://$PROJECT_DIR$/API/src/main/java/com/werwolv/renderer/GuiRenderer.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -2576,17 +2541,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/API/src/main/java/com/werwolv/api/API.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="54" column="0" lean-forward="false" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#1760#1761#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/jre/lib/rt.jar!/sun/misc/Unsafe.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3128">
@@ -2619,7 +2573,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
           <caret line="751" column="30" lean-forward="false" selection-start-line="751" selection-start-column="30" selection-end-line="751" selection-end-column="30" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2638,19 +2591,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/werwolv/states/MenuState.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/API/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="31" lean-forward="false" selection-start-line="14" selection-start-column="31" selection-end-line="14" selection-end-column="31" />
-          <folding />
+        <state relative-caret-position="175">
+          <caret line="65" column="29" lean-forward="false" selection-start-line="65" selection-start-column="29" selection-end-line="65" selection-end-column="29" />
+          <folding>
+            <marker date="1499860427074" expanded="true" signature="564:3430" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -2658,7 +2605,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2666,15 +2612,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="23" column="0" lean-forward="true" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2693,7 +2630,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="290">
           <caret line="3603" column="20" lean-forward="false" selection-start-line="3603" selection-start-column="20" selection-end-line="3603" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2701,7 +2637,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="11" column="41" lean-forward="false" selection-start-line="11" selection-start-column="41" selection-end-line="11" selection-end-column="41" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2709,7 +2644,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="17" lean-forward="false" selection-start-line="0" selection-start-column="17" selection-end-line="0" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2717,15 +2651,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="713">
           <caret line="51" column="44" lean-forward="false" selection-start-line="51" selection-start-column="21" selection-end-line="51" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/werwolv/main/Window.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="26" column="45" lean-forward="false" selection-start-line="26" selection-start-column="45" selection-end-line="26" selection-end-column="45" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2733,26 +2658,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="293">
           <caret line="20" column="41" lean-forward="false" selection-start-line="20" selection-start-column="41" selection-end-line="20" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/werwolv/main/Camera.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="50" column="38" lean-forward="false" selection-start-line="50" selection-start-column="38" selection-end-line="50" selection-end-column="38" />
-          <folding>
-            <element signature="e#657#658#0" expanded="true" />
-            <element signature="e#681#682#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/werwolv/main/Game.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1293">
-          <caret line="114" column="66" lean-forward="false" selection-start-line="114" selection-start-column="66" selection-end-line="114" selection-end-column="66" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2761,7 +2666,7 @@
         <state relative-caret-position="17">
           <caret line="32" column="25" lean-forward="false" selection-start-line="32" selection-start-column="25" selection-end-line="32" selection-end-column="25" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2779,21 +2684,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/werwolv/states/GameState.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="24" column="4" lean-forward="false" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="4" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/API/src/main/java/com/werwolv/entities/EntityPlayer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
-          <caret line="16" column="16" lean-forward="false" selection-start-line="16" selection-start-column="16" selection-end-line="16" selection-end-column="16" />
-          <folding />
+          <caret line="7" column="33" lean-forward="false" selection-start-line="7" selection-start-column="33" selection-end-line="7" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <marker date="1499860427078" expanded="false" signature="1649:1660" ph=" { " />
+            <marker date="1499860427078" expanded="false" signature="1677:1683" ph=" }" />
+            <marker date="1499860427078" expanded="true" signature="1727:1754" ph="{...}" />
+            <marker date="1499860427078" expanded="true" signature="1783:2002" ph="{...}" />
+            <marker date="1499860427078" expanded="false" signature="2051:2062" ph=" { " />
+            <marker date="1499860427078" expanded="false" signature="2093:2099" ph=" }" />
+            <marker date="1499860427078" expanded="false" signature="2137:2148" ph=" { " />
+            <marker date="1499860427078" expanded="false" signature="2172:2178" ph=" }" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -2801,7 +2706,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="16" column="36" lean-forward="false" selection-start-line="16" selection-start-column="36" selection-end-line="16" selection-end-column="36" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2809,29 +2713,24 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="322">
           <caret line="43" column="30" lean-forward="false" selection-start-line="43" selection-start-column="30" selection-end-line="43" selection-end-column="30" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/API/src/main/java/com/werwolv/world/World.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="38" column="39" lean-forward="false" selection-start-line="38" selection-start-column="39" selection-end-line="38" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/werwolv/main/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="102">
+          <caret line="6" column="35" lean-forward="false" selection-start-line="6" selection-start-column="35" selection-end-line="6" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <marker date="1499860427081" expanded="true" signature="2239:2585" ph="{...}" />
+            <marker date="1499860427081" expanded="true" signature="2643:3079" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/API/src/main/java/com/werwolv/engine/Shader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-18">
+        <state relative-caret-position="-85">
           <caret line="69" column="51" lean-forward="false" selection-start-line="69" selection-start-column="51" selection-end-line="69" selection-end-column="51" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -2849,12 +2748,134 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/API/src/main/java/com/werwolv/tile/Tile.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
+        <state relative-caret-position="243">
           <caret line="53" column="0" lean-forward="false" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/settings.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/API/src/main/java/com/werwolv/api/Log.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="16" column="5" lean-forward="false" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/API/src/main/java/com/werwolv/item/Item.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="29" column="19" lean-forward="false" selection-start-line="29" selection-start-column="19" selection-end-line="29" selection-end-column="19" />
           <folding>
-            <element signature="e#1448#1449#0" expanded="true" />
-            <element signature="e#1531#1532#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <marker date="1499860427079" expanded="true" signature="669:925" ph="{...}" />
+            <marker date="1499860427079" expanded="true" signature="1036:1069" ph="{...}" />
+            <marker date="1499860427079" expanded="false" signature="1097:1108" ph=" { " />
+            <marker date="1499860427079" expanded="false" signature="1122:1128" ph=" }" />
+            <marker date="1499860427079" expanded="false" signature="1159:1170" ph=" { " />
+            <marker date="1499860427079" expanded="false" signature="1187:1193" ph=" }" />
+            <marker date="1499860427079" expanded="false" signature="1238:1249" ph=" { " />
+            <marker date="1499860427079" expanded="false" signature="1293:1299" ph=" }" />
+            <marker date="1499860427079" expanded="false" signature="1339:1350" ph=" { " />
+            <marker date="1499860427079" expanded="false" signature="1376:1382" ph=" }" />
+            <marker date="1499860427079" expanded="false" signature="1429:1440" ph=" { " />
+            <marker date="1499860427079" expanded="false" signature="1469:1475" ph=" }" />
+            <marker date="1499860427079" expanded="false" signature="1528:1539" ph=" { " />
+            <marker date="1499860427079" expanded="false" signature="1574:1580" ph=" }" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/API/src/main/java/com/werwolv/api/lang/LocalizationHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="34" column="20" lean-forward="false" selection-start-line="34" selection-start-column="20" selection-end-line="34" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/werwolv/main/Window.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="46" column="60" lean-forward="false" selection-start-line="46" selection-start-column="60" selection-end-line="46" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/API/src/main/java/com/werwolv/api/API.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="279">
+          <caret line="135" column="0" lean-forward="false" selection-start-line="135" selection-start-column="0" selection-end-line="135" selection-end-column="0" />
+          <folding>
+            <element signature="e#1706#1707#0" expanded="true" />
+            <element signature="e#1760#1761#0" expanded="true" />
+            <element signature="e#2822#2823#0" expanded="true" />
+            <element signature="e#2876#2877#0" expanded="true" />
+            <marker date="1499861373227" expanded="false" signature="3851:3866" ph=" { " />
+            <marker date="1499861373227" expanded="false" signature="3897:3907" ph=" }" />
+            <marker date="1499861373227" expanded="false" signature="3966:3981" ph=" { " />
+            <marker date="1499861373227" expanded="false" signature="4016:4026" ph=" }" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/werwolv/main/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="93">
+          <caret line="20" column="35" lean-forward="false" selection-start-line="20" selection-start-column="35" selection-end-line="20" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/werwolv/main/Camera.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="337">
+          <caret line="57" column="74" lean-forward="false" selection-start-line="57" selection-start-column="74" selection-end-line="57" selection-end-column="74" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/werwolv/states/MenuState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/werwolv/states/GameState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="222">
+          <caret line="62" column="0" lean-forward="false" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/werwolv/main/Game.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="66" column="79" lean-forward="false" selection-start-line="66" selection-start-column="79" selection-end-line="66" selection-end-column="79" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="277">
+          <caret line="90" column="31" lean-forward="false" selection-start-line="90" selection-start-column="31" selection-end-line="90" selection-end-column="31" />
+          <folding />
         </state>
       </provider>
     </entry>

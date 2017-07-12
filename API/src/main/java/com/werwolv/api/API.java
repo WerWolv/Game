@@ -129,9 +129,14 @@ public class API {
     public static class ContextValues {
         public static int WINDOW_WIDTH;
         public static int WINDOW_HEIGHT;
+        public static int MONITOR_WIDTH;
+        public static int MONITOR_HEIGHT;
+
         public static int DRAGGED_ITEM_SIZE = 64;
 
         public static boolean DEBUG_MODE = false;
+        public static boolean LOAD_MODS = false;
+        public static boolean FULL_SCREEN = false;
     }
 
 }

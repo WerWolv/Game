@@ -41,12 +41,19 @@ public class Window {
         if (!glfwInit())
             throw new IllegalStateException("Unable to initialize GLFW!");
 
+        GLFWVidMode vidMode = glfwGetVideoMode(glfwGetPrimaryMonitor());
+
+        API.ContextValues.MONITOR_WIDTH = vidMode.width();
+        API.ContextValues.MONITOR_HEIGHT = vidMode.height();
 
         glfwDefaultWindowHints();
         glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
         glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
 
-        window = glfwCreateWindow(API.ContextValues.WINDOW_WIDTH, API.ContextValues.WINDOW_HEIGHT, "Game", fullscreen ? glfwGetPrimaryMonitor() : 0, 0);
+        if(fullscreen)
+            window = glfwCreateWindow(API.ContextValues.MONITOR_WIDTH, API.ContextValues.MONITOR_HEIGHT, "Game", glfwGetPrimaryMonitor(), NULL);
+        else
+            window = glfwCreateWindow(API.ContextValues.WINDOW_WIDTH, API.ContextValues.WINDOW_HEIGHT, "Game", NULL, NULL);
 
         if (window == NULL)
             throw new RuntimeException("Failed to create the GLFW window");
@@ -56,7 +63,6 @@ public class Window {
             IntBuffer pHeight = stack.mallocInt(1);
 
             glfwGetWindowSize(window, pWidth, pHeight);
-            GLFWVidMode vidMode = glfwGetVideoMode(glfwGetPrimaryMonitor());
             glfwSetWindowPos(window, (vidMode.width() - pWidth.get(0)) / 2, (vidMode.height() - pHeight.get(0)) / 2);
         }
 

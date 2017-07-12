@@ -2,8 +2,12 @@ package com.werwolv.main;
 
 import java.awt.Graphics2D;
 import java.awt.image.BufferStrategy;
+import java.nio.ByteBuffer;
+import java.nio.IntBuffer;
+
 import com.werwolv.api.API;
 import com.werwolv.api.IUpdatable;
+import com.werwolv.api.Log;
 import com.werwolv.api.event.init.InitializationEvent;
 import com.werwolv.api.event.init.PostInitializationEvent;
 import com.werwolv.api.event.init.PreInitializationEvent;
@@ -11,11 +15,17 @@ import com.werwolv.states.State;
 
 import org.lwjgl.*;
 import org.lwjgl.glfw.*;
+import org.lwjgl.openal.AL;
+import org.lwjgl.openal.ALC;
+import org.lwjgl.openal.ALCCapabilities;
 import org.lwjgl.opengl.*;
 
 import static org.lwjgl.glfw.Callbacks.*;
 import static org.lwjgl.glfw.GLFW.*;
+import static org.lwjgl.openal.AL10.*;
+import static org.lwjgl.openal.ALC10.*;
 import static org.lwjgl.opengl.GL11.*;
+import static org.lwjgl.system.MemoryUtil.NULL;
 
 public class Game implements Runnable{
 
@@ -29,6 +39,8 @@ public class Game implements Runnable{
     private String title;
 	private Window window;
 
+	private long mediaDevice = NULL;
+
 	private Game(String title, int width, int height){
 		this.title = title;
 
@@ -39,15 +51,25 @@ public class Game implements Runnable{
 	public void init(){
 	    window = new Window();
 
-	    System.out.println("LWJGL version " + Version.getVersion());
+        Log.i("LWJGL", "LWJGL version " + Version.getVersion());
+
 		GLFWErrorCallback.createPrint(System.err).set();
 
-        window.createWindow(false);
+        window.createWindow(API.ContextValues.FULL_SCREEN);
 
         GL.createCapabilities();
+        Log.i("LWJGL", "OpenGL version " + glGetString(GL_VERSION));
+
+
+        mediaDevice = alcOpenDevice((ByteBuffer) null);
+        ALCCapabilities deviceCaps = ALC.createCapabilities(mediaDevice);
+
+        alcMakeContextCurrent(alcCreateContext(mediaDevice, (IntBuffer) null));
+
+        AL.createCapabilities(deviceCaps);
+        Log.i("LWJGL", "OpenAL version " + alGetString(AL_VERSION));
 
         State.setCurrentState(State.gameState);
-
 
 		API.EVENT_BUS.registerEventHandlers();
 
@@ -124,6 +146,9 @@ public class Game implements Runnable{
 
 			render();
 		}
+
+		alcCloseDevice(mediaDevice);
+		ALC.destroy();
 
         glfwFreeCallbacks(window.getWindow());
 		glfwDestroyWindow(window.getWindow());

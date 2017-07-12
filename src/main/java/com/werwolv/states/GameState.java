@@ -52,8 +52,8 @@ public class GameState extends State{
 
 	@Override
 	public void render() {
-        float width = API.ContextValues.WINDOW_WIDTH;
-        float height = API.ContextValues.WINDOW_HEIGHT;
+        float width = API.ContextValues.FULL_SCREEN ? API.ContextValues.MONITOR_WIDTH : API.ContextValues.WINDOW_WIDTH;
+        float height = API.ContextValues.FULL_SCREEN ? API.ContextValues.MONITOR_HEIGHT : API.ContextValues.WINDOW_HEIGHT;
 
         int chunksOnScreen = (int) Math.ceil(width / (Chunk.CHUNK_WIDTH * WORLD_SCALE)) + 2;
         int verticalTilesOnScreen = (int) Math.ceil((height / WORLD_SCALE)) + 2;
