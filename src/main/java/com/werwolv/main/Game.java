@@ -11,6 +11,7 @@ import com.werwolv.api.Log;
 import com.werwolv.api.event.init.InitializationEvent;
 import com.werwolv.api.event.init.PostInitializationEvent;
 import com.werwolv.api.event.init.PreInitializationEvent;
+import com.werwolv.engine.renderer.audio.Audio;
 import com.werwolv.states.State;
 
 import org.lwjgl.*;
@@ -60,13 +61,7 @@ public class Game implements Runnable{
         GL.createCapabilities();
         Log.i("LWJGL", "OpenGL version " + glGetString(GL_VERSION));
 
-
-        mediaDevice = alcOpenDevice((ByteBuffer) null);
-        ALCCapabilities deviceCaps = ALC.createCapabilities(mediaDevice);
-
-        alcMakeContextCurrent(alcCreateContext(mediaDevice, (IntBuffer) null));
-
-        AL.createCapabilities(deviceCaps);
+        Audio.createContext();
         Log.i("LWJGL", "OpenAL version " + alGetString(AL_VERSION));
 
         State.setCurrentState(State.gameState);
@@ -134,6 +129,8 @@ public class Game implements Runnable{
 			if(delta >= 1){
                 API.EVENT_BUS.processEvents();
 
+                Audio.setListenerPosition();
+
 				for(IUpdatable updatable : IUpdatable.updateableInstances)
 				    updatable.update((int)delta);
 
@@ -147,8 +144,7 @@ public class Game implements Runnable{
 			render();
 		}
 
-		alcCloseDevice(mediaDevice);
-		ALC.destroy();
+		Audio.clean();
 
         glfwFreeCallbacks(window.getWindow());
 		glfwDestroyWindow(window.getWindow());

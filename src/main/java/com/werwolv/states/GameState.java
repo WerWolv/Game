@@ -3,6 +3,7 @@ package com.werwolv.states;
 import com.sun.glass.events.KeyEvent;
 import com.werwolv.api.API;
 import com.werwolv.engine.renderer.TileRenderer;
+import com.werwolv.engine.renderer.audio.SoundSource;
 import com.werwolv.entities.EntityPlayer;
 import com.werwolv.main.Window;
 import com.werwolv.tile.Tile;
@@ -22,9 +23,12 @@ public class GameState extends State{
     public TileRenderer tileRenderer = new TileRenderer();
     private Matrix4f worldSpace = new Matrix4f().scale(WORLD_SCALE);
 
+    private SoundSource source;
+
     public GameState() {
-	    this.world = new World();
-	    this.player = new EntityPlayer(this.world, 0, 0);
+
+        this.player = API.thePlayer;
+        this.world = API.theWorld;
 
 	    this.camera.setEntityToFollow(this.player);
 	    this.camera.setLerp(0.1F);
@@ -34,6 +38,8 @@ public class GameState extends State{
 
     @Override
     public void init() {
+        source = new SoundSource("game:test", 1.0F, 1.0F, false);
+
         WorldGenerator worldGen = new WorldGenerator(this.world, 123);
         worldGen.generate(0, 256);
     }
@@ -48,6 +54,12 @@ public class GameState extends State{
             this.player.move(0,-0.1F);
         if(Window.isKeyPressed(KeyEvent.VK_D))
             this.player.move(0.1F,0);
+
+        if(Window.isKeyPressed(KeyEvent.VK_R))
+            if(!source.isPlaying()) {
+                source.setPosition(0, 0, 0);
+                source.play();
+            }
     }
 
 	@Override

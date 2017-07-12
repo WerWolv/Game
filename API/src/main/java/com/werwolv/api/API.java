@@ -3,9 +3,11 @@ package com.werwolv.api;
 import com.werwolv.api.eventbus.EventBus;
 import com.werwolv.api.modloader.ModLoader;
 import com.werwolv.api.resource.Texture;
+import com.werwolv.entities.EntityPlayer;
 import com.werwolv.item.Item;
 import com.werwolv.renderer.GuiRenderer;
 import com.werwolv.tile.Tile;
+import com.werwolv.world.World;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -14,6 +16,9 @@ public class API {
 
     public static final EventBus EVENT_BUS = new EventBus();
     public static final ModLoader MOD_LOADER = new ModLoader();
+
+    public static final World theWorld = new World();
+    public static final EntityPlayer thePlayer = new EntityPlayer(theWorld, 0, 0);
 
     public static class GameRegistry {
         private static Map<Integer, Tile> registeredTiles = new HashMap<>();
