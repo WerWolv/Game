@@ -22,15 +22,18 @@ public class GameState extends State{
 
     public TileRenderer tileRenderer = new TileRenderer();
     private Matrix4f worldSpace = new Matrix4f().scale(WORLD_SCALE);
+    private Matrix4f invWorldSpace = new Matrix4f().scale(WORLD_SCALE);
 
     private SoundSource source;
 
     public GameState() {
 
+        worldSpace.invert(invWorldSpace);
+
         this.player = API.thePlayer;
         this.world = API.theWorld;
 
-	    this.camera.setEntityToFollow(this.player);
+	    this.camera.follow(this.player);
 	    this.camera.setLerp(0.1F);
 
         this.world.spawnEntity(this.player);
@@ -38,7 +41,7 @@ public class GameState extends State{
 
     @Override
     public void init() {
-        source = new SoundSource("game:test", 1.0F, 1.0F, false);
+        //source = new SoundSource("game:test", 1.0F, 1.0F, false);
 
         WorldGenerator worldGen = new WorldGenerator(this.world, 123);
         worldGen.generate(0, 256);
@@ -85,5 +88,6 @@ public class GameState extends State{
         }
 
         tileRenderer.renderColor(new Vector3f(1, 1, 0), player.getX(), player.getY(), worldSpace, camera);
+        tileRenderer.renderColor(new Vector3f(1, 0, 1),  (camera.getX() + (int)State.mouseX - API.ContextValues.WINDOW_WIDTH / 2) / WORLD_SCALE, (camera.getY() + (int)-State.mouseY + API.ContextValues.WINDOW_HEIGHT / 2) / WORLD_SCALE, worldSpace, camera);
     }
 }

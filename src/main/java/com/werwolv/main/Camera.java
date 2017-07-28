@@ -20,7 +20,7 @@ public class Camera implements IUpdatable {
         this.setUpdateable();
     }
 
-    public void setEntityToFollow(Entity entityToFollow) {
+    public void follow(Entity entityToFollow) {
         this.entityToFollow = entityToFollow;
     }
 

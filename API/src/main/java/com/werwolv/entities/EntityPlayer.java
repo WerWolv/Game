@@ -3,6 +3,7 @@ package com.werwolv.entities;
 import com.werwolv.api.Log;
 import com.werwolv.api.modloader.Mod;
 import com.werwolv.container.Container;
+import com.werwolv.data.PlayerData;
 import com.werwolv.gui.Gui;
 import com.werwolv.gui.IGuiHandler;
 import com.werwolv.item.ItemStack;
@@ -12,6 +13,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class EntityPlayer extends Entity {
+
+    private final PlayerData playerData = (PlayerData) new PlayerData().deserialize();
 
     private int selectedItemIndex;
     private int numInventoryRows = 5;
@@ -73,5 +76,9 @@ public class EntityPlayer extends Entity {
 
     public int getNumInventoryRows() {
         return numInventoryRows;
+    }
+
+    public PlayerData getPlayerData() {
+        return playerData;
     }
 }

@@ -10,6 +10,7 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Gradle: org.reflections:reflections:0.9.11" level="project" />
+    <orderEntry type="library" name="Gradle: org.joml:joml:1.9.3" level="project" />
     <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl:3.1.2" level="project" />
     <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl-assimp:3.1.2" level="project" />
     <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl-bgfx:3.1.2" level="project" />
@@ -23,8 +24,8 @@
     <orderEntry type="library" scope="RUNTIME" name="Gradle: org.lwjgl:lwjgl-bgfx:natives-windows:3.1.2" level="project" />
     <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl-nanovg:3.1.2" level="project" />
     <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl-nfd:3.1.2" level="project" />
-    <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl-nuklear:3.1.2" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: org.lwjgl:lwjgl-glfw:natives-windows:3.1.2" level="project" />
+    <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl-nuklear:3.1.2" level="project" />
     <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl-openal:3.1.2" level="project" />
     <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl-opencl:3.1.2" level="project" />
     <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl-opengl:3.1.2" level="project" />
@@ -39,8 +40,8 @@
     <orderEntry type="library" scope="RUNTIME" name="Gradle: org.lwjgl:lwjgl-nfd:natives-windows:3.1.2" level="project" />
     <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl-stb:3.1.2" level="project" />
     <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl-tinyexr:3.1.2" level="project" />
-    <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl-tinyfd:3.1.2" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: org.lwjgl:lwjgl-nuklear:natives-windows:3.1.2" level="project" />
+    <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl-tinyfd:3.1.2" level="project" />
     <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl-vulkan:3.1.2" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: org.lwjgl:lwjgl-openal:natives-windows:3.1.2" level="project" />
     <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl-xxhash:3.1.2" level="project" />
@@ -58,6 +59,5 @@
     <orderEntry type="library" scope="RUNTIME" name="Gradle: org.lwjgl:lwjgl-tinyfd:natives-windows:3.1.2" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: org.lwjgl:lwjgl-xxhash:natives-windows:3.1.2" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: org.lwjgl:lwjgl-yoga:natives-windows:3.1.2" level="project" />
-    <orderEntry type="library" name="Gradle: org.joml:joml:1.9.3" level="project" />
   </component>
 </module>
