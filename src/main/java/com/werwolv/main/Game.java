@@ -2,6 +2,7 @@ package com.werwolv.main;
 
 import java.awt.Graphics2D;
 import java.awt.image.BufferStrategy;
+import java.util.ConcurrentModificationException;
 
 import com.werwolv.api.API;
 import com.werwolv.api.IUpdatable;
@@ -11,11 +12,12 @@ import com.werwolv.api.event.init.InitializationEvent;
 import com.werwolv.api.event.init.PostInitializationEvent;
 import com.werwolv.api.event.init.PreInitializationEvent;
 import com.werwolv.engine.audio.Audio;
-import com.werwolv.states.State;
+import com.werwolv.state.State;
 
 import org.lwjgl.*;
 import org.lwjgl.glfw.*;
 import org.lwjgl.opengl.*;
+import org.reflections.Reflections;
 
 import static org.lwjgl.glfw.Callbacks.*;
 import static org.lwjgl.glfw.GLFW.*;
@@ -27,7 +29,9 @@ public class Game implements Runnable{
 
 	public static final Game INSTANCE = new Game("Game", 1080, 720);
 
-	private BufferStrategy bs;
+    private Reflections reflections = new Reflections("");
+
+    private BufferStrategy bs;
 	private Graphics2D g;
 	private Thread thread;
 	private boolean running = false;
@@ -59,7 +63,12 @@ public class Game implements Runnable{
         Audio.createContext();
         Log.i("LWJGL", "OpenAL version " + alGetString(AL_VERSION));
 
-        State.setCurrentState(State.gameState);
+        for(Class<? extends State> s : reflections.getSubTypesOf(State.class))
+            try {
+                s.newInstance();
+            } catch (InstantiationException | IllegalAccessException e) {
+                e.printStackTrace();
+            }
 
 		API.EVENT_BUS.registerEventHandlers();
 
@@ -69,8 +78,7 @@ public class Game implements Runnable{
 
         API.EVENT_BUS.processEvents();
 
-        State.getCurrentState().init();
-
+        State.setCurrentState("game");
 	}
 	
 	public void render(){
@@ -78,6 +86,9 @@ public class Game implements Runnable{
 
         if(State.getCurrentState() != null)
             State.getCurrentState().render();
+
+        if(API.thePlayer.getOpenedGui() != null)
+            API.thePlayer.getOpenedGui().render(API.RenderingUtils.GUI_RENDERER);
 
         glfwSwapBuffers(window.getWindow());
 
@@ -126,8 +137,12 @@ public class Game implements Runnable{
 
                 Audio.setListenerPosition();
 
-				for(IUpdatable updatable : IUpdatable.updateableInstances)
-				    updatable.update((int)delta);
+                try {
+                    for (IUpdatable updatable : IUpdatable.updateableInstances)
+                        updatable.update((int) delta);
+                } catch(ConcurrentModificationException e) {
+
+                }
 
 				window.setResized(false);
 				glfwPollEvents();

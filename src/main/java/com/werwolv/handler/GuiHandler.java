@@ -11,8 +11,7 @@ public class GuiHandler implements IGuiHandler {
     @Override
     public Gui getGuiFromID(int ID, EntityPlayer entityPlayer, World world, int x, int y) {
         switch(ID) {
-            case 0: return new GuiInventory(entityPlayer.getNumInventoryRows());
-            case 1: return new GuiTest();
+            case 0: return new GuiTest();
         }
 
         return null;
@@ -21,8 +20,6 @@ public class GuiHandler implements IGuiHandler {
     @Override
     public Container getInventoryFromID(int ID, EntityPlayer entityPlayer, World world, int x, int y) {
         switch(ID) {
-            case 0: return new ContainerPlayer(entityPlayer);
-            case 1: return new ContainerTest();
         }
 
         return null;

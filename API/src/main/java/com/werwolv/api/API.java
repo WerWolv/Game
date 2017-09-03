@@ -4,6 +4,7 @@ import com.werwolv.api.event.quest.QuestFinishedEvent;
 import com.werwolv.api.event.quest.QuestTaskFinishedEvent;
 import com.werwolv.api.eventbus.EventBus;
 import com.werwolv.api.modloader.ModLoader;
+import com.werwolv.engine.renderer.ModelRenderer;
 import com.werwolv.engine.resource.Texture;
 import com.werwolv.entities.EntityPlayer;
 import com.werwolv.item.Item;
@@ -266,6 +267,7 @@ public class API {
     }
 
     public static class RenderingUtils {
+        public static final ModelRenderer MODEL_RENDERER = new ModelRenderer();
         public static final GuiRenderer GUI_RENDERER = new GuiRenderer();
     }
 

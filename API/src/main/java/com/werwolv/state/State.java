@@ -1,12 +1,14 @@
-package com.werwolv.states;
+package com.werwolv.state;
 
 import com.werwolv.api.IUpdatable;
 import com.werwolv.engine.renderer.Camera;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public abstract class State implements IUpdatable {
 
-	public static final State menuState = new MenuState();
-	public static final State gameState = new GameState();
+    private static final Map<String, State> states = new HashMap<>();
 
 	public static double mouseX, mouseY;
 
@@ -14,19 +16,23 @@ public abstract class State implements IUpdatable {
 
 	private static State currState = null;
 
-	public State() {
+	public State(String stateName) {
 		this.setUpdateable();
+		states.put(stateName, this);
 	}
 	
 	public static State getCurrentState(){
 		return currState;
 	}
 	
-	public static void setCurrentState(State state){
-		currState = state;
+	public static void setCurrentState(String stateName){
+		currState = states.get(stateName);
+		currState.init();
 	}
 
 	public abstract void init();
+
+	public abstract void deinit();
 
 	public abstract void render();
 

@@ -1,9 +1,20 @@
 package com.werwolv.states;
 
-public class MenuState extends State{
+import com.werwolv.state.State;
+
+public class MenuState extends State {
+
+    public MenuState() {
+        super("menu");
+    }
 
     @Override
     public void init() {
+
+    }
+
+    @Override
+    public void deinit() {
 
     }
 

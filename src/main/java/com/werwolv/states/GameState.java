@@ -4,22 +4,19 @@ import com.sun.glass.events.KeyEvent;
 import com.werwolv.api.API;
 import com.werwolv.engine.resource.ModelLoader;
 import com.werwolv.engine.Model;
-import com.werwolv.engine.renderer.ModelRenderer;
 import com.werwolv.engine.audio.SoundSource;
-import com.werwolv.engine.resource.Texture;
 import com.werwolv.entities.EntityPlayer;
+import com.werwolv.main.ModMain;
 import com.werwolv.main.Window;
+import com.werwolv.state.State;
 import com.werwolv.tile.Tile;
 import com.werwolv.world.Chunk;
 import com.werwolv.world.World;
 import com.werwolv.world.WorldGenerator;
 import org.joml.Matrix4f;
-import org.joml.Vector2f;
-import org.joml.Vector3f;
+import org.joml.Vector4f;
 
-import java.util.EmptyStackException;
-
-public class GameState extends State{
+public class GameState extends State {
 
     public World world;
     public EntityPlayer player;
@@ -31,9 +28,8 @@ public class GameState extends State{
 
     private SoundSource source;
 
-    private ModelRenderer modelRenderer = new ModelRenderer();
-
     public GameState() {
+        super("game");
 
         worldSpace.invert(invWorldSpace);
 
@@ -55,29 +51,28 @@ public class GameState extends State{
     }
 
     @Override
+    public void deinit() {
+
+    }
+
+    @Override
     public void update(long delta) {
-        if(Window.isKeyPressed(KeyEvent.VK_W))
-            this.player.move(0,0.1F);
-        if(Window.isKeyPressed(KeyEvent.VK_A))
-            this.player.move(-0.1F,0);
-        if(Window.isKeyPressed(KeyEvent.VK_S))
-            this.player.move(0,-0.1F);
-        if(Window.isKeyPressed(KeyEvent.VK_D))
-            this.player.move(0.1F,0);
-
-        if(Window.isKeyPressed(KeyEvent.VK_F) && !this.player.getPrevPositions().isEmpty()){
-            try {
-                this.player.getPrevPositions().pop();
-                this.player.getPrevPositions().pop();
-                this.player.getPrevPositions().pop();
-
-                Vector2f pos = this.player.getPrevPositions().pop();
-                this.player.setX(pos.x);
-                this.player.setY(pos.y);
-            } catch(EmptyStackException e) {
-
-            }
+        if(this.player.getOpenedGui() == null) {
+            if (Window.isKeyPressed(KeyEvent.VK_W))
+                this.player.move(0, 0.1F);
+            if (Window.isKeyPressed(KeyEvent.VK_A))
+                this.player.move(-0.1F, 0);
+            if (Window.isKeyPressed(KeyEvent.VK_S))
+                this.player.move(0, -0.1F);
+            if (Window.isKeyPressed(KeyEvent.VK_D))
+                this.player.move(0.1F, 0);
+            if(Window.isKeyPressed(KeyEvent.VK_E))
+                this.player.openGui(ModMain.class, 0);
+        } else if(Window.isKeyPressed(KeyEvent.VK_E)) {
+            this.player.closeGui();
         }
+
+        //Collision check
 
         if(Window.isKeyPressed(KeyEvent.VK_R))
             if(!source.isPlaying()) {
@@ -101,15 +96,13 @@ public class GameState extends State{
             for(int x = 0; x < Chunk.CHUNK_WIDTH; x++) {
                 for (int y = Math.max(0, cameraVerticalTile - verticalTilesOnScreen / 2); y < cameraVerticalTile + verticalTilesOnScreen / 2; y++) {
                     Tile tile = this.world.getChunk(chunk).getGridObjects()[x][y];
-                    if(tile != null && tile.getTileID() != 0) {
-                        //tileRenderer.renderTile(tile.getTileID(), chunk * Chunk.CHUNK_WIDTH + x, y, worldSpace, State.CAMERA);
-                        modelRenderer.renderTile(model, API.ResourceRegistry.getTextureFromID(tile.getTileID()), chunk * Chunk.CHUNK_WIDTH + x, y, worldSpace, this.getCamera());
-                    }
+                    if(tile != null && tile.getTileID() != 0)
+                        API.RenderingUtils.MODEL_RENDERER.renderTile(model, API.ResourceRegistry.getTextureFromID(tile.getTileID()), chunk * Chunk.CHUNK_WIDTH + x, y, worldSpace, this.getCamera());
                 }
             }
         }
 
-        modelRenderer.renderColor(model, new Vector3f(1, 1, 0), player.getX(), player.getY(), worldSpace, this.getCamera());
-        modelRenderer.renderColor(model, new Vector3f(1, 0, 1),  this.getCamera().getX() + ((int)State.mouseX - API.ContextValues.WINDOW_WIDTH / 2) / API.ContextValues.WORLD_SCALE, this.getCamera().getY() + ((int)-State.mouseY + API.ContextValues.WINDOW_HEIGHT / 2) / API.ContextValues.WORLD_SCALE, worldSpace, this.getCamera());
+        API.RenderingUtils.MODEL_RENDERER.renderColor(model, new Vector4f(1, 1, 0, 1), player.getX(), player.getY(), worldSpace, this.getCamera());
+        API.RenderingUtils.MODEL_RENDERER.renderColor(model, new Vector4f(1, 0, 1, 1),  this.getCamera().getX() + ((int)State.mouseX - API.ContextValues.WINDOW_WIDTH / 2) / API.ContextValues.WORLD_SCALE, this.getCamera().getY() + ((int)-State.mouseY + API.ContextValues.WINDOW_HEIGHT / 2) / API.ContextValues.WORLD_SCALE, worldSpace, this.getCamera());
     }
 }

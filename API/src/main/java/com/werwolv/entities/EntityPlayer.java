@@ -66,10 +66,10 @@ public class EntityPlayer extends Entity {
     public Container getOpenedContainer() { return openedContainer; }
 
     public void closeGui() {
-        if(this.openedGui != null) {
+        if(this.openedGui != null)
             this.openedGui.onGuiClosed();
+        if(this.openedContainer != null)
             this.openedContainer.onContainerClosed();
-        }
 
         this.openedGui = null;
         this.openedContainer = null;

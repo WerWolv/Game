@@ -73,23 +73,23 @@ public class ModelLoader {
 
     public static Model loadOBJ(String objFilePath) {
         FileReader isr;
-
         String[] tokens = objFilePath.split(":");
-
         File objFile = new File(ClassLoader.getSystemClassLoader().getResource(tokens[0] + "/models/" + tokens[1] + ".obj").getFile());
-        System.out.println(ClassLoader.getSystemClassLoader().getResource(tokens[0] + "/models/" + tokens[1] + ".obj").getFile());
+
         try {
             isr = new FileReader(objFile);
         } catch (FileNotFoundException e) {
             System.err.println("File not found in res; don't use any extention");
             return null;
         }
+
         BufferedReader reader = new BufferedReader(isr);
         String line;
         List<VertexNM> vertices = new ArrayList<>();
         List<Vector2f> textures = new ArrayList<>();
         List<Vector3f> normals = new ArrayList<>();
         List<Integer> indices = new ArrayList<>();
+
         try {
             while (true) {
                 line = reader.readLine().replace("  ", " ");
@@ -100,7 +100,6 @@ public class ModelLoader {
                             Float.valueOf(currentLine[2]));
                     VertexNM newVertex = new VertexNM(vertices.size(), vertex);
                     vertices.add(newVertex);
-
                 } else if (line.startsWith("vt ")) {
                     String[] currentLine = line.split(" ");
                     Vector2f texture = new Vector2f(Float.valueOf(currentLine[1]),
@@ -112,10 +111,9 @@ public class ModelLoader {
                             Float.valueOf(currentLine[3]),
                             Float.valueOf(currentLine[2]));
                     normals.add(normal);
-                } else if (line.startsWith("f ")) {
-                    break;
-                }
+                } else if (line.startsWith("f ")) break;
             }
+
             while (line != null && line.startsWith("f ")) {
                 String[] currentLine = line.split(" ");
                 String[] vertex1 = currentLine[1].split("/");
@@ -127,23 +125,23 @@ public class ModelLoader {
                 calculateTangents(v0, v1, v2, textures);//NEW
                 line = reader.readLine();
             }
+
             reader.close();
         } catch (IOException e) {
             System.err.println("Error reading the file");
         }
+
         removeUnusedVertices(vertices);
         float[] verticesArray = new float[vertices.size() * 3];
         float[] texturesArray = new float[vertices.size() * 2];
         float[] normalsArray = new float[vertices.size() * 3];
         float[] tangentsArray = new float[vertices.size() * 3];
-        float furthest = convertDataToArrays(vertices, textures, normals, verticesArray,
-                texturesArray, normalsArray, tangentsArray);
+        float furthest = convertDataToArrays(vertices, textures, normals, verticesArray, texturesArray, normalsArray, tangentsArray);
         int[] indicesArray = convertIndicesListToArray(indices);
 
         return new Model(verticesArray, texturesArray, indicesArray);//loadToVAO(new ModelDataNM(verticesArray, texturesArray, normalsArray, tangentsArray, indicesArray, furthest));
     }
 
-    //NEW
     private static void calculateTangents(VertexNM v0, VertexNM v1, VertexNM v2, List<Vector2f> textures) {
         Vector3f delatPos1 = new Vector3f();
         Vector3f delatPos2 = new Vector3f();

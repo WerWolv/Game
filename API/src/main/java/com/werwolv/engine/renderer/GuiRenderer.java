@@ -1,54 +1,48 @@
 package com.werwolv.engine.renderer;
 
 import com.werwolv.api.API;
-
-import java.awt.*;
+import com.werwolv.engine.resource.Texture;
+import com.werwolv.engine.Model;
+import com.werwolv.engine.Shader;
+import org.joml.Matrix4f;
+import org.joml.Vector2f;
+import org.joml.Vector3f;
+import org.joml.Vector4f;
 
 public class GuiRenderer {
 
-    private Graphics2D graphics2D;
+    public Shader shader = new Shader("game:gui");
 
-    private static final Color DEFAULT_BACKGROUND = new Color(0x00, 0x00, 0x00, 0x7F);
+    private float[] vertices = new float[] { -0.5F,  0.5F, 0, 0.5F,  0.5F, 0, 0.5F, -0.5F, 0, -0.5F, -0.5F, 0 };
+    private float[] textureCooords = new float[] { 0, 0, 1, 0, 1, 1, 0, 1 };
+    private int[] indices = new int[] { 0, 1, 2, 2, 3, 0 };
 
-    public interface IRenderer{
-        void render(Graphics2D g);
+    private Model model = new Model(vertices, textureCooords, indices);
+
+    public GuiRenderer() {
+
     }
 
-    public void setGraphics(Graphics2D graphics2D) {
-        this.graphics2D = graphics2D;
+    public void renderGui(Texture texture, Camera camera, Vector2f position, Vector4f drawRegion) {
+        shader.bind();
+
+
+        texture.bind(0);
+
+        Matrix4f target = new Matrix4f();
+        camera.getProjection().mul(new Matrix4f().scale(Math.min(API.ContextValues.WINDOW_HEIGHT, API.ContextValues.WINDOW_WIDTH)), target);
+
+        position.set(position.x / texture.getWidth(), position.y / texture.getHeight());
+
+        shader.setUniform("sampler", 0);
+        shader.setUniform("projMatrix", target);
+        shader.setUniform("drawPosition", position);
+        shader.setUniform("drawRegion", drawRegion.add(new Vector4f(0, 0, drawRegion.x, drawRegion.y)).div(new Vector4f(texture.getWidth(), texture.getHeight(), texture.getWidth(), texture.getHeight())));
+
+
+        model.render();
+
+        shader.unbind();
+        texture.unbind();
     }
-
-    public void drawDefaultBackground() {
-        graphics2D.setColor(DEFAULT_BACKGROUND);
-        graphics2D.fillRect(0, 0, API.ContextValues.WINDOW_WIDTH, API.ContextValues.WINDOW_HEIGHT);
-    }
-
-    public void drawGuiBackground(int textureID, int offsetX, int offsetY, double scale) {
-       /* BufferedImage texture = API.ResourceRegistry.getResourceFromID(textureID);
-
-        graphics2D.drawImage(texture, API.ContextValues.WINDOW_WIDTH / 2 - texture.getWidth() / 2 + offsetX, API.ContextValues.WINDOW_HEIGHT / 2 - texture.getHeight() / 2 + offsetY, (int)(texture.getWidth() * scale), (int)(texture.getHeight() * scale), null);
-    */}
-
-    public void drawGuiTexture(int textureID, int offsetX, int offsetY, double scale) {
-       /* BufferedImage texture = API.ResourceRegistry.getResourceFromID(textureID);
-
-        graphics2D.drawImage(texture, API.ContextValues.WINDOW_WIDTH / 2 + offsetX, API.ContextValues.WINDOW_HEIGHT / 2 + offsetY, (int)(texture.getWidth() * scale), (int)(texture.getHeight() * scale), null);
-    */}
-
-    public void drawGuiTexture(int textureID, int offsetX, int offsetY, int sectorX1, int sectorY1, int sectorX2, int sectorY2, double scale) {
-   /*     BufferedImage texture = API.ResourceRegistry.getResourceFromID(textureID).getSubimage(sectorX1, sectorY1, sectorX2, sectorY2);
-
-        graphics2D.drawImage(texture, API.ContextValues.WINDOW_WIDTH / 2 + offsetX, API.ContextValues.WINDOW_HEIGHT / 2 + offsetY, (int)(texture.getWidth() * scale), (int)(texture.getHeight() * scale), null);
-   */ }
-
-    public void drawGuiTexture(int textureID, int offsetX, int offsetY, Rectangle rect, double scale) {
-    /*    BufferedImage texture = API.ResourceRegistry.getResourceFromID(textureID).getSubimage(rect.x, rect.y, rect.width, rect.height);
-
-        graphics2D.drawImage(texture, API.ContextValues.WINDOW_WIDTH / 2 + offsetX, API.ContextValues.WINDOW_HEIGHT / 2 + offsetY, (int)(texture.getWidth() * scale), (int)(texture.getHeight() * scale), null);
-    */}
-
-    public void render(IRenderer renderer) {
-        renderer.render(this.graphics2D);
-    }
-
 }

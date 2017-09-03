@@ -9,7 +9,7 @@ import com.werwolv.api.eventbus.SubscribeEvent;
 import com.werwolv.item.ItemStack;
 import com.werwolv.main.ModMain;
 import com.werwolv.states.GameState;
-import com.werwolv.states.State;
+import com.werwolv.state.State;
 import com.werwolv.tile.Tile;
 import com.werwolv.tileEntities.TileEntity;
 
@@ -49,20 +49,21 @@ public class EventHandler {
 
             if(gameState.player.getOpenedGui() == null) {
 
-                int currX = (int) (State.getCurrentState().getCamera().getX() + event.getCoords().getX());
-                int currY = (int) (State.getCurrentState().getCamera().getY() + event.getCoords().getY());
+                int currX = (int) Math.round(event.getCoords().getWorldSpaceX());
+                int currY = (int) Math.round(event.getCoords().getWorldSpaceY());
 
-                TileEntity tileEntity = gameState.world.getTileEntity(currX / Tile.TILE_SIZE, currY / Tile.TILE_SIZE);
+                TileEntity tileEntity = gameState.world.getTileEntity(currX, currY);
 
-                if (tileEntity != null)
+                if (tileEntity != null) {
+                    System.out.println(currX + ", " + currY);
                     tileEntity.onTileClicked(event.getButton(), gameState.player, gameState.world, currX / Tile.TILE_SIZE, currY / Tile.TILE_SIZE);
-                //else if(gameState.player.inventoryPlayer.get)
-            } else {
-                gameState.player.getOpenedContainer().getInventorySlots().forEach((key, slot) -> {
+                }
+            } else if(API.thePlayer.getOpenedContainer() != null) {
+                API.thePlayer.getOpenedContainer().getInventorySlots().forEach((key, slot) -> {
                     int slotX = API.ContextValues.WINDOW_WIDTH / 2 - slot.getSize() / 2 + slot.getPosX();
                     int slotY = API.ContextValues.WINDOW_HEIGHT / 2 - slot.getSize() / 2 + slot.getPosY();
 
-                    if(State.mouseX >= slotX && State.mouseY >= slotY) {
+                    if(event.getCoords().getX() >= slotX && event.getCoords().getY() >= slotY) {
                         if (State.mouseX <= slotX + slot.getSize() && State.mouseY <= slotY + slot.getSize()) {
                             ItemStack oldDraggedItem = gameState.player.getOpenedContainer().draggingItem;
                             gameState.player.getOpenedContainer().draggingItem = slot.getItemStack();
@@ -70,7 +71,6 @@ public class EventHandler {
                         }
                     }
                 });
-
             }
         }
     }

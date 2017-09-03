@@ -51,15 +51,26 @@ public class Texture {
         }
     }
 
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
     public void bind(int sampler) {
         if(sampler < 0 && sampler > 31) return;
 
         glActiveTexture(GL_TEXTURE0 + sampler);
         glBindTexture(GL_TEXTURE_2D, id);
+        glEnable(GL_BLEND);
+        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     }
 
     public void unbind() {
         glBindTexture(GL_TEXTURE_2D, 0);
+        glDisable(GL_BLEND);
     }
 
 }

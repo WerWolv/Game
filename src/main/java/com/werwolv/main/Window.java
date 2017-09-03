@@ -2,7 +2,7 @@ package com.werwolv.main;
 
 import com.werwolv.api.API;
 import com.werwolv.api.event.input.*;
-import com.werwolv.states.State;
+import com.werwolv.state.State;
 import org.lwjgl.glfw.GLFWVidMode;
 import org.lwjgl.system.MemoryStack;
 
@@ -100,7 +100,7 @@ public class Window {
         glfwSetMouseButtonCallback(window, (window, button, action, mods) -> {
             switch (action) {
                 case GLFW_PRESS:
-                    API.EVENT_BUS.postEvent(new MouseClickedEvent(EnumMouseButton.getButtonFromID(button), this.mouseX, this.mouseY, State.getCurrentState().getCamera()));
+                    API.EVENT_BUS.postEvent(new MousePressedEvent(EnumMouseButton.getButtonFromID(button), this.mouseX, this.mouseY, State.getCurrentState().getCamera()));
                     break;
                 case GLFW_RELEASE:
                     API.EVENT_BUS.postEvent(new MouseReleasedEvent(EnumMouseButton.getButtonFromID(button), this.mouseX, this.mouseY, State.getCurrentState().getCamera()));
