@@ -2,6 +2,7 @@ package com.werwolv.main;
 
 import com.werwolv.api.API;
 import com.werwolv.api.event.input.*;
+import com.werwolv.states.State;
 import org.lwjgl.glfw.GLFWVidMode;
 import org.lwjgl.system.MemoryStack;
 
@@ -99,10 +100,10 @@ public class Window {
         glfwSetMouseButtonCallback(window, (window, button, action, mods) -> {
             switch (action) {
                 case GLFW_PRESS:
-                    API.EVENT_BUS.postEvent(new MouseClickedEvent(EnumMouseButton.getButtonFromID(button), this.mouseX, this.mouseY));
+                    API.EVENT_BUS.postEvent(new MouseClickedEvent(EnumMouseButton.getButtonFromID(button), this.mouseX, this.mouseY, State.getCurrentState().getCamera()));
                     break;
                 case GLFW_RELEASE:
-                    API.EVENT_BUS.postEvent(new MouseReleasedEvent(EnumMouseButton.getButtonFromID(button), this.mouseX, this.mouseY));
+                    API.EVENT_BUS.postEvent(new MouseReleasedEvent(EnumMouseButton.getButtonFromID(button), this.mouseX, this.mouseY, State.getCurrentState().getCamera()));
                     break;
             }
         });
@@ -110,7 +111,7 @@ public class Window {
         glfwSetCursorPosCallback(window, (window, xPos, yPos) -> {
             this.mouseX = xPos;
             this.mouseY = yPos;
-            API.EVENT_BUS.postEvent(new MouseMovedEvent(xPos, yPos));
+            API.EVENT_BUS.postEvent(new MouseMovedEvent(xPos, yPos, State.getCurrentState().getCamera()));
         });
     }
 

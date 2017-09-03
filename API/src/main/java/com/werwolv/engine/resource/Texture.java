@@ -1,4 +1,4 @@
-package com.werwolv.api.resource;
+package com.werwolv.engine.resource;
 
 import org.lwjgl.BufferUtils;
 

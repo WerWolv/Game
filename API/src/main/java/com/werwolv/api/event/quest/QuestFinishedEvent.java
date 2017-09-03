@@ -8,6 +8,7 @@ public class QuestFinishedEvent extends Event {
     private final Quest quest;
 
     public QuestFinishedEvent(Quest quest) {
+        super();
         this.quest = quest;
     }
 

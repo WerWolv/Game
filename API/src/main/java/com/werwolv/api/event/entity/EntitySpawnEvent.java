@@ -9,6 +9,7 @@ public class EntitySpawnEvent extends Event {
     public final double posX, posY;
 
     public EntitySpawnEvent(Entity spawnedEntity, double posX, double posY) {
+        super();
         this.spawnedEntity = spawnedEntity;
         this.posX = posX;
         this.posY = posY;

@@ -1,11 +1,13 @@
 package com.werwolv.engine;
 
+import com.werwolv.api.API;
 import org.joml.Matrix4f;
 import org.joml.Vector2f;
 import org.joml.Vector3f;
 import org.joml.Vector4f;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
@@ -22,14 +24,19 @@ public class Shader {
 
     private Map<String, Integer> cacheLocations = new HashMap<>();
 
-    public Shader(String shaderPath) {
+    public Shader(String path) {
         program = glCreateProgram();
 
         vertId = glCreateShader(GL_VERTEX_SHADER);
         fragId = glCreateShader(GL_FRAGMENT_SHADER);
 
-        glShaderSource(vertId, readFile(shaderPath + ".vert"));
-        glShaderSource(fragId, readFile(shaderPath + ".frag"));
+
+        String[] tokens = path.split(":");
+        int vertResourceId = API.ResourceRegistry.registerResource(tokens[0] + "/shaders/" + tokens[1] + ".vert");
+        int fragResourceId = API.ResourceRegistry.registerResource(tokens[0] + "/shaders/" + tokens[1] + ".frag");
+
+        glShaderSource(vertId, readFile(ClassLoader.getSystemClassLoader().getResource(((File)API.ResourceRegistry.getResourceFromID(vertResourceId)).getPath()).toString().replace("%5c", "\\").substring(6)));
+        glShaderSource(fragId, readFile(ClassLoader.getSystemClassLoader().getResource(((File)API.ResourceRegistry.getResourceFromID(fragResourceId)).getPath()).toString().replace("%5c", "\\").substring(6)));
 
         glCompileShader(vertId);
         glCompileShader(fragId);
@@ -94,7 +101,7 @@ public class Shader {
         BufferedReader reader;
 
         try {
-            reader = new BufferedReader(new FileReader("shaders/" + path));
+            reader = new BufferedReader(new FileReader(path));
 
             String line;
             while((line = reader.readLine()) != null)

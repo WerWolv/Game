@@ -1,28 +1,26 @@
 package com.werwolv.engine.renderer;
 
-import com.werwolv.api.API;
-import com.werwolv.api.resource.Texture;
+import com.werwolv.engine.resource.Texture;
 import com.werwolv.engine.Model;
 import com.werwolv.engine.Shader;
-import com.werwolv.main.Camera;
 import org.joml.Matrix4f;
 import org.joml.Vector3f;
 
-public class TileRenderer {
+public class ModelRenderer {
 
-    public Shader shader = new Shader("shader");
-    public Model tileModel;
-    public Texture texture;
+    public Shader shader = new Shader("game:shader");
+
     private float[] vertices = new float[] { -0.5F,  0.5F, 0, 0.5F,  0.5F, 0, 0.5F, -0.5F, 0, -0.5F, -0.5F, 0 };
     private float[] textureCooords = new float[] { 0, 0, 1, 0, 1, 1, 0, 1 };
     private int[] indices = new int[] { 0, 1, 2, 2, 3, 0 };
 
-    public TileRenderer() {
-        tileModel = new Model(vertices, textureCooords, indices);
+    Model model1 = new Model(vertices, textureCooords, indices);
+
+    public ModelRenderer() {
+
     }
 
-    public void renderTile(int tileId, float x, float y, Matrix4f worldSpaceMatrix, Camera camera) {
-        texture = API.ResourceRegistry.getResourceFromID(API.GameRegistry.getTileFromID(tileId).getTextureID());
+    public void renderTile(Model model, Texture texture, float x, float y, Matrix4f worldSpaceMatrix, Camera camera) {
         shader.bind();
 
         texture.bind(0);
@@ -37,13 +35,13 @@ public class TileRenderer {
         shader.setUniform("projMatrix", target);
         shader.setUniform("color", new Vector3f(-1, -1, -1));
 
-        tileModel.render();
+        model.render();
 
         shader.unbind();
         texture.unbind();
     }
 
-    public void renderColor(Vector3f color, float x, float y, Matrix4f worldSpaceMatrix, Camera camera) {
+    public void renderColor(Model model, Vector3f color, float x, float y, Matrix4f worldSpaceMatrix, Camera camera) {
         shader.bind();
 
         Matrix4f tilePosition = new Matrix4f().translate(new Vector3f(x - camera.getX(), y - camera.getY(), 0.0F));
@@ -56,7 +54,7 @@ public class TileRenderer {
         shader.setUniform("projMatrix", target);
         shader.setUniform("color", color);
 
-        tileModel.render();
+        model.render();
 
         shader.unbind();
     }

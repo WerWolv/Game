@@ -1,4 +1,4 @@
-package com.werwolv.renderer;
+package com.werwolv.engine.renderer;
 
 import com.werwolv.api.API;
 

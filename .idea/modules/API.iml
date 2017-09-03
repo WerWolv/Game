@@ -5,6 +5,7 @@
     <content url="file://$MODULE_DIR$/../../API">
       <excludeFolder url="file://$MODULE_DIR$/../../API/.gradle" />
       <excludeFolder url="file://$MODULE_DIR$/../../API/build" />
+      <excludeFolder url="file://$MODULE_DIR$/../../API/out" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

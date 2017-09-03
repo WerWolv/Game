@@ -4,14 +4,11 @@ import com.werwolv.api.Log;
 
 import java.io.*;
 
-/**
- * Created by werwo on 26.07.2017.
- */
 public abstract class SerializableDataObject implements Serializable {
 
         public void serialize() {
             try {
-                File file = new File(System.getProperty("user.home") + "/everphase/data/" + getClass().getSimpleName() + ".sdo");
+                File file = new File(System.getProperty("user.home") + "/game/data/" + getClass().getSimpleName() + ".sdo");
                 File parent = file.getParentFile();
 
                 if (!parent.exists() && !parent.mkdirs()) {

@@ -1,7 +1,7 @@
 package com.werwolv.states;
 
 import com.werwolv.api.IUpdatable;
-import com.werwolv.main.Camera;
+import com.werwolv.engine.renderer.Camera;
 
 public abstract class State implements IUpdatable {
 
@@ -10,7 +10,7 @@ public abstract class State implements IUpdatable {
 
 	public static double mouseX, mouseY;
 
-	public Camera camera = new Camera();
+	private Camera CAMERA = new Camera();
 
 	private static State currState = null;
 
@@ -30,4 +30,7 @@ public abstract class State implements IUpdatable {
 
 	public abstract void render();
 
+    public Camera getCamera() {
+        return CAMERA;
+    }
 }

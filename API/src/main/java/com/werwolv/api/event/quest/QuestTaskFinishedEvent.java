@@ -10,6 +10,7 @@ public class QuestTaskFinishedEvent extends Event {
     private final QuestTask finishedTask;
 
     public QuestTaskFinishedEvent(Quest quest, QuestTask finishedTask) {
+        super();
         this.quest = quest;
         this.finishedTask = finishedTask;
     }

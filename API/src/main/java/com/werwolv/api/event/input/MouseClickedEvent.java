@@ -1,27 +1,24 @@
 package com.werwolv.api.event.input;
 
 import com.werwolv.api.event.Event;
+import com.werwolv.engine.renderer.Camera;
 
 public class MouseClickedEvent extends Event {
 
     private final EnumMouseButton button;
-    private final double x, y;
+    private final MouseCoords coords;
 
-    public MouseClickedEvent(EnumMouseButton button, double x, double y) {
+    public MouseClickedEvent(EnumMouseButton button, double x, double y, Camera camera) {
         this.button = button;
-        this.x = x;
-        this.y = y;
+
+        this.coords = new MouseCoords(x, y, camera);
     }
 
     public EnumMouseButton getButton() {
         return button;
     }
 
-    public double getX() {
-        return x;
-    }
-
-    public double getY() {
-        return y;
+    public MouseCoords getCoords() {
+        return coords;
     }
 }

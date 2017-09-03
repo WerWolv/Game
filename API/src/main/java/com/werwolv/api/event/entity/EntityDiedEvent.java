@@ -9,6 +9,7 @@ public class EntityDiedEvent extends Event {
     private final double deathX, deathY;
 
     public EntityDiedEvent(Entity diedEntity, double deathX, double deathY) {
+        super();
         this.diedEntity = diedEntity;
         this.deathX = deathX;
         this.deathY = deathY;

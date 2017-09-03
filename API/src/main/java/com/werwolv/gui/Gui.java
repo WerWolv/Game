@@ -1,7 +1,7 @@
 package com.werwolv.gui;
 
 import com.werwolv.api.IUpdatable;
-import com.werwolv.renderer.GuiRenderer;
+import com.werwolv.engine.renderer.GuiRenderer;
 
 public abstract class Gui implements IUpdatable {
 

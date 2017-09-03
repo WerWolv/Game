@@ -1,4 +1,4 @@
-package com.werwolv.engine.renderer.audio;
+package com.werwolv.engine.audio;
 
 import com.werwolv.api.API;
 import com.werwolv.entities.EntityPlayer;
@@ -25,7 +25,7 @@ public class Audio {
 
         ALCapabilities alCapabilities = AL.createCapabilities(ALC.createCapabilities(device));
 
-        AL10.alDistanceModel(AL11.AL_EXPONENT_DISTANCE);
+        AL10.alDistanceModel(AL11.AL_EXPONENT_DISTANCE_CLAMPED);
 
         if(!alCapabilities.OpenAL10) {
             System.err.println("[OpenAL] OpenAL 1.0 isn't supported!");

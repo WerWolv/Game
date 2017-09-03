@@ -4,14 +4,16 @@ import com.werwolv.api.event.quest.QuestFinishedEvent;
 import com.werwolv.api.event.quest.QuestTaskFinishedEvent;
 import com.werwolv.api.eventbus.EventBus;
 import com.werwolv.api.modloader.ModLoader;
-import com.werwolv.api.resource.Texture;
+import com.werwolv.engine.resource.Texture;
 import com.werwolv.entities.EntityPlayer;
 import com.werwolv.item.Item;
 import com.werwolv.quest.Quest;
-import com.werwolv.renderer.GuiRenderer;
+import com.werwolv.engine.renderer.GuiRenderer;
 import com.werwolv.tile.Tile;
 import com.werwolv.world.World;
 
+import javax.xml.soap.Text;
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -95,7 +97,8 @@ public class API {
     }
 
     public static class ResourceRegistry {
-        private static Map<Integer, Texture> loadedResources = new HashMap<>();
+        private static Map<Integer, File> loadedResources = new HashMap<>();
+        private static Map<Integer, Texture> loadedTextures = new HashMap<>();
 
         private static int registeredTextures = 0;
 
@@ -110,8 +113,13 @@ public class API {
             registeredTextures++;
 
             for(resourceID = 0; resourceID < registeredTextures; resourceID++) {
-                if (loadedResources.get(resourceID) == null) {
-                    loadedResources.put(resourceID, new Texture(path));
+                if (loadedResources.get(resourceID) == null && !path.endsWith(".png")) {
+                        loadedResources.put(resourceID, new File(path));
+                    break;
+                }
+
+                if (loadedTextures.get(resourceID) == null && path.endsWith(".png")) {
+                    loadedTextures.put(resourceID, new Texture(path));
                     break;
                 }
             }
@@ -121,8 +129,12 @@ public class API {
             return resourceID;
         }
 
-        public static Texture getResourceFromID(int id) {
+        public static File getResourceFromID(int id) {
             return loadedResources.get(id);
+        }
+
+        public static Texture getTextureFromID(int id) {
+            return loadedTextures.get(id);
         }
 
         public static void unloadResource(int resourceID) {
@@ -262,6 +274,8 @@ public class API {
         public static int WINDOW_HEIGHT;
         public static int MONITOR_WIDTH;
         public static int MONITOR_HEIGHT;
+
+        public static float WORLD_SCALE = 50.0F;
 
         public static int DRAGGED_ITEM_SIZE = 64;
 

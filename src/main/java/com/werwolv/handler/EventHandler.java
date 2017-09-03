@@ -38,8 +38,8 @@ public class EventHandler {
 
     @SubscribeEvent
     public void onMouseMoved(MouseMovedEvent event) {
-        State.mouseX = event.getX();
-        State.mouseY = event.getY();
+        State.mouseX = event.getCoords().getX();
+        State.mouseY = event.getCoords().getY();
     }
 
     @SubscribeEvent
@@ -49,13 +49,13 @@ public class EventHandler {
 
             if(gameState.player.getOpenedGui() == null) {
 
-                int currX = (int) (gameState.camera.getX() + event.getX());
-                int currY = (int) (gameState.camera.getY() + event.getY());
+                int currX = (int) (State.getCurrentState().getCamera().getX() + event.getCoords().getX());
+                int currY = (int) (State.getCurrentState().getCamera().getY() + event.getCoords().getY());
 
                 TileEntity tileEntity = gameState.world.getTileEntity(currX / Tile.TILE_SIZE, currY / Tile.TILE_SIZE);
 
                 if (tileEntity != null)
-                    tileEntity.onTileClicked(event.button, gameState.player, gameState.world, currX / Tile.TILE_SIZE, currY / Tile.TILE_SIZE);
+                    tileEntity.onTileClicked(event.getButton(), gameState.player, gameState.world, currX / Tile.TILE_SIZE, currY / Tile.TILE_SIZE);
                 //else if(gameState.player.inventoryPlayer.get)
             } else {
                 gameState.player.getOpenedContainer().getInventorySlots().forEach((key, slot) -> {

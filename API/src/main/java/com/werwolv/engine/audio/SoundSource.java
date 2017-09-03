@@ -1,4 +1,4 @@
-package com.werwolv.engine.renderer.audio;
+package com.werwolv.engine.audio;
 
 import org.lwjgl.openal.AL10;
 
@@ -14,9 +14,8 @@ public class SoundSource {
         AL10.alSourcef(sourceId, AL10.AL_PITCH, pitch);
         AL10.alSource3f(sourceId, AL10.AL_POSITION, 0, 0, 0);
 
-        AL10.alSourcef(sourceId, AL10.AL_ROLLOFF_FACTOR, background ? 0 : 1);
-        AL10.alSourcef(sourceId, AL10.AL_REFERENCE_DISTANCE, 1);
-        AL10.alSourcef(sourceId, AL10.AL_MAX_DISTANCE, 1);
+        AL10.alSourcef(sourceId, AL10.AL_ROLLOFF_FACTOR, background ? 0 : 3F);
+        AL10.alSourcef(sourceId, AL10.AL_REFERENCE_DISTANCE, 2.5F);
 
     }
 
@@ -58,8 +57,8 @@ public class SoundSource {
         return this;
     }
 
-    public SoundSource setLooping(boolean looping) {
-        AL10.alSourcei(sourceId, AL10.AL_LOOPING, looping ? AL10.AL_TRUE : AL10.AL_FALSE);
+    public SoundSource looping() {
+        AL10.alSourcei(sourceId, AL10.AL_LOOPING, AL10.AL_TRUE);
 
         return this;
     }

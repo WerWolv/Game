@@ -7,14 +7,19 @@ import com.werwolv.data.PlayerData;
 import com.werwolv.gui.Gui;
 import com.werwolv.gui.IGuiHandler;
 import com.werwolv.item.ItemStack;
+import com.werwolv.utils.SizedStack;
 import com.werwolv.world.World;
+import org.joml.Vector2f;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Stack;
 
 public class EntityPlayer extends Entity {
 
     private final PlayerData playerData = (PlayerData) new PlayerData().deserialize();
+
+    private Stack<Vector2f> prevPositions = new SizedStack<>(2048);
 
     private int selectedItemIndex;
     private int numInventoryRows = 5;
@@ -70,6 +75,12 @@ public class EntityPlayer extends Entity {
         this.openedContainer = null;
     }
 
+    @Override
+    public void move(float x, float y) {
+        super.move(x, y);
+        this.prevPositions.push(new Vector2f(this.getX(), this.getY()));
+    }
+
     public void setSelectedItemIndex(int index) {
         this.selectedItemIndex = index;
     }
@@ -80,5 +91,9 @@ public class EntityPlayer extends Entity {
 
     public PlayerData getPlayerData() {
         return playerData;
+    }
+
+    public Stack<Vector2f> getPrevPositions() {
+        return prevPositions;
     }
 }

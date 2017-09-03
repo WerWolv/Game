@@ -2,29 +2,24 @@ package com.werwolv.main;
 
 import java.awt.Graphics2D;
 import java.awt.image.BufferStrategy;
-import java.nio.ByteBuffer;
-import java.nio.IntBuffer;
 
 import com.werwolv.api.API;
 import com.werwolv.api.IUpdatable;
 import com.werwolv.api.Log;
+import com.werwolv.api.event.init.GameDestroyEvent;
 import com.werwolv.api.event.init.InitializationEvent;
 import com.werwolv.api.event.init.PostInitializationEvent;
 import com.werwolv.api.event.init.PreInitializationEvent;
-import com.werwolv.engine.renderer.audio.Audio;
+import com.werwolv.engine.audio.Audio;
 import com.werwolv.states.State;
 
 import org.lwjgl.*;
 import org.lwjgl.glfw.*;
-import org.lwjgl.openal.AL;
-import org.lwjgl.openal.ALC;
-import org.lwjgl.openal.ALCCapabilities;
 import org.lwjgl.opengl.*;
 
 import static org.lwjgl.glfw.Callbacks.*;
 import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.openal.AL10.*;
-import static org.lwjgl.openal.ALC10.*;
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.system.MemoryUtil.NULL;
 
@@ -123,7 +118,7 @@ public class Game implements Runnable{
 
             if(window.hasBeenResized()) {
                 glViewport(0, 0, API.ContextValues.WINDOW_WIDTH, API.ContextValues.WINDOW_HEIGHT);
-                State.getCurrentState().camera.recreateViewPort();
+                State.getCurrentState().getCamera().recreateViewPort();
             }
 
 			if(delta >= 1){
@@ -143,6 +138,8 @@ public class Game implements Runnable{
 
 			render();
 		}
+
+		API.EVENT_BUS.postEvent(new GameDestroyEvent());
 
 		Audio.clean();
 

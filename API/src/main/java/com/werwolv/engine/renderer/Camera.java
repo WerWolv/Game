@@ -1,4 +1,4 @@
-package com.werwolv.main;
+package com.werwolv.engine.renderer;
 
 import com.werwolv.api.API;
 import com.werwolv.api.IUpdatable;
@@ -9,9 +9,10 @@ public class Camera implements IUpdatable {
 
     private float x, y;
     private float lerp;
-    private Matrix4f projection;
+    public static Matrix4f projection;
 
     private Entity entityToFollow;
+
 
     public Camera() {
         recreateViewPort();
@@ -58,7 +59,9 @@ public class Camera implements IUpdatable {
         int width = API.ContextValues.FULL_SCREEN ? API.ContextValues.MONITOR_WIDTH : API.ContextValues.WINDOW_WIDTH;
         int height = API.ContextValues.FULL_SCREEN ? API.ContextValues.MONITOR_HEIGHT : API.ContextValues.WINDOW_HEIGHT;
 
-        projection = new Matrix4f().ortho2D(-width/2, width/2, -height/2, height/2);    }
+
+        projection = new Matrix4f().ortho2D(-width/2, width/2, -height/2, height/2);
+    }
 
     @Override
     public void update(long deltaTime) {

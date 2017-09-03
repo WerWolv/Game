@@ -1,7 +1,7 @@
 package com.werwolv.gui;
 
 import com.werwolv.api.API;
-import com.werwolv.renderer.GuiRenderer;
+import com.werwolv.engine.renderer.GuiRenderer;
 
 import java.awt.*;
 

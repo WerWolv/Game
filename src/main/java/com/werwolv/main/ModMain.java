@@ -1,11 +1,13 @@
 package com.werwolv.main;
 
 import com.werwolv.api.API;
+import com.werwolv.api.event.init.GameDestroyEvent;
 import com.werwolv.api.event.init.InitializationEvent;
 import com.werwolv.api.event.init.PostInitializationEvent;
 import com.werwolv.api.event.init.PreInitializationEvent;
 import com.werwolv.api.eventbus.SubscribeEvent;
 import com.werwolv.api.modloader.Mod;
+import com.werwolv.data.SerializableDataObject;
 import com.werwolv.handler.GuiHandler;
 import com.werwolv.item.Item;
 import com.werwolv.tile.Tile;
@@ -21,7 +23,7 @@ public class ModMain {
 
     @SubscribeEvent
     public void onPreInit(PreInitializationEvent event) {
-
+        API.thePlayer.getPlayerData().deserialize();
     }
 
     @SubscribeEvent
@@ -33,6 +35,10 @@ public class ModMain {
     @SubscribeEvent
     public void onPostInit(PostInitializationEvent event) {
 
+    }
+
+    public void onGameDestroyed(GameDestroyEvent event) {
+        API.thePlayer.getPlayerData().serialize();
     }
 
 }
