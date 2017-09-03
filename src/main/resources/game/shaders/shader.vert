@@ -8,6 +8,8 @@ out vec2 textureCoordsFrag;
 
 uniform mat4 projMatrix;
 
+uniform vec3 lightPosition;
+
 void main() {
     positionFrag = position;
     textureCoordsFrag = textureCoords;

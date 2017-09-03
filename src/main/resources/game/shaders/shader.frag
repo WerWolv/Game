@@ -3,6 +3,7 @@
 uniform sampler2D sampler;
 
 uniform vec3 color = vec3(-1, -1, -1);
+uniform vec3 lightColor;
 
 in vec3 positionFrag;
 in vec2 textureCoordsFrag;
