@@ -81,8 +81,6 @@ public class World implements IUpdatable {
     public TileEntity getTileEntity(int posX, int posY) {
         int chunk = (int)Math.floor(posX / Chunk.CHUNK_WIDTH);
 
-        System.out.println(posX);
-
         if(chunksTile.get(chunk) == null)
             return null;
 

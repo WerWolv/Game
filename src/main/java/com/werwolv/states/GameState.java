@@ -66,10 +66,6 @@ public class GameState extends State {
                 this.player.move(0, -0.1F);
             if (Window.isKeyPressed(KeyEvent.VK_D))
                 this.player.move(0.1F, 0);
-            if(Window.isKeyPressed(KeyEvent.VK_E))
-                this.player.openGui(ModMain.class, 0);
-        } else if(Window.isKeyPressed(KeyEvent.VK_E)) {
-            this.player.closeGui();
         }
 
         //Collision check
@@ -103,6 +99,5 @@ public class GameState extends State {
         }
 
         API.RenderingUtils.MODEL_RENDERER.renderColor(model, new Vector4f(1, 1, 0, 1), player.getX(), player.getY(), worldSpace, this.getCamera());
-        API.RenderingUtils.MODEL_RENDERER.renderColor(model, new Vector4f(1, 0, 1, 1),  this.getCamera().getX() + ((int)State.mouseX - API.ContextValues.WINDOW_WIDTH / 2) / API.ContextValues.WORLD_SCALE, this.getCamera().getY() + ((int)-State.mouseY + API.ContextValues.WINDOW_HEIGHT / 2) / API.ContextValues.WORLD_SCALE, worldSpace, this.getCamera());
     }
 }

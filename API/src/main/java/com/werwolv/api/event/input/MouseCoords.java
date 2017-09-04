@@ -27,6 +27,6 @@ public class MouseCoords {
     }
 
     public double getWorldSpaceY() {
-        return -(camera.getY() + ((int) y - API.ContextValues.WINDOW_HEIGHT / 2) / API.ContextValues.WORLD_SCALE);
+        return camera.getY() - ((int)y - API.ContextValues.WINDOW_HEIGHT / 2) / API.ContextValues.WORLD_SCALE;
     }
 }

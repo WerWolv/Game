@@ -10,9 +10,7 @@ public abstract class State implements IUpdatable {
 
     private static final Map<String, State> states = new HashMap<>();
 
-	public static double mouseX, mouseY;
-
-	private Camera CAMERA = new Camera();
+    private Camera CAMERA = new Camera();
 
 	private static State currState = null;
 
