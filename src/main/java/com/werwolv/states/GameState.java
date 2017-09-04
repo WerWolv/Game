@@ -57,19 +57,6 @@ public class GameState extends State {
 
     @Override
     public void update(long delta) {
-        if(this.player.getOpenedGui() == null) {
-            if (Window.isKeyPressed(KeyEvent.VK_W))
-                this.player.move(0, 0.1F);
-            if (Window.isKeyPressed(KeyEvent.VK_A))
-                this.player.move(-0.1F, 0);
-            if (Window.isKeyPressed(KeyEvent.VK_S))
-                this.player.move(0, -0.1F);
-            if (Window.isKeyPressed(KeyEvent.VK_D))
-                this.player.move(0.1F, 0);
-        }
-
-        //Collision check
-
         if(Window.isKeyPressed(KeyEvent.VK_R))
             if(!source.isPlaying()) {
                 source.setPosition(0, 0, 0);

@@ -1,12 +1,21 @@
 package com.werwolv.main;
 
 import com.werwolv.api.API;
-import com.werwolv.api.event.input.*;
+import com.werwolv.api.event.input.keyboard.KeyHeldEvent;
+import com.werwolv.api.event.input.keyboard.KeyPressedEvent;
+import com.werwolv.api.event.input.keyboard.KeyReleasedEvent;
+import com.werwolv.api.event.input.keyboard.KeyTypedEvent;
+import com.werwolv.api.event.input.mouse.EnumMouseButton;
+import com.werwolv.api.event.input.mouse.MouseMovedEvent;
+import com.werwolv.api.event.input.mouse.MousePressedEvent;
+import com.werwolv.api.event.input.mouse.MouseReleasedEvent;
 import com.werwolv.state.State;
 import org.lwjgl.glfw.GLFWVidMode;
 import org.lwjgl.system.MemoryStack;
 
 import java.nio.IntBuffer;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.system.MemoryUtil.*;
@@ -18,6 +27,8 @@ public class Window {
 	private double mouseX, mouseY;
 
     private static boolean[] pressedKeys = new boolean[1024];
+    public static List<Long> pressedKeyList = new ArrayList<>();
+
     private boolean hasBeenResized = false;
 
     public Window() {
@@ -85,14 +96,13 @@ public class Window {
                             API.EVENT_BUS.postEvent(new KeyTypedEvent(key));
 
                         pressedKeys[key] = true;
+                        pressedKeyList.add((long) key);
                         API.EVENT_BUS.postEvent(new KeyPressedEvent(key));
                         break;
                     case GLFW_RELEASE:
                         pressedKeys[key] = false;
+                        pressedKeyList.remove((long) key);
                         API.EVENT_BUS.postEvent(new KeyReleasedEvent(key));
-                        break;
-                    case GLFW_REPEAT:
-                        API.EVENT_BUS.postEvent(new KeyHeldEvent(key));
                         break;
                 }
         });

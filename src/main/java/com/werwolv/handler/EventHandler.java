@@ -1,9 +1,12 @@
 package com.werwolv.handler;
 
 import com.werwolv.api.API;
-import com.werwolv.api.event.input.KeyTypedEvent;
-import com.werwolv.api.event.input.MouseMovedEvent;
-import com.werwolv.api.event.input.MousePressedEvent;
+import com.werwolv.api.event.input.controller.ControllerAnalogInputEvent;
+import com.werwolv.api.event.input.controller.EnumControllerAxis;
+import com.werwolv.api.event.input.keyboard.KeyHeldEvent;
+import com.werwolv.api.event.input.keyboard.KeyTypedEvent;
+import com.werwolv.api.event.input.mouse.MouseMovedEvent;
+import com.werwolv.api.event.input.mouse.MousePressedEvent;
 import com.werwolv.api.eventbus.EventBusSubscriber;
 import com.werwolv.api.eventbus.SubscribeEvent;
 import com.werwolv.item.ItemStack;
@@ -33,8 +36,23 @@ public class EventHandler {
     }
 
     @SubscribeEvent
+    public void onKeyHeld(KeyHeldEvent event) {
+        switch(event.getKeyCode()) {
+            case GLFW_KEY_W: API.thePlayer.move(0.0F, 0.1F); break;
+            case GLFW_KEY_A: API.thePlayer.move(-0.1F, 0.0F); break;
+            case GLFW_KEY_S: API.thePlayer.move(0.0F, -0.1F); break;
+            case GLFW_KEY_D: API.thePlayer.move(0.1F, 0.0F); break;
+        }
+    }
+
+    @SubscribeEvent
     public void onMouseMoved(MouseMovedEvent event) {
 
+    }
+
+    @SubscribeEvent
+    public void onControllerAxisMoved(ControllerAnalogInputEvent event) {
+        API.thePlayer.move(event.getAxis(EnumControllerAxis.STICK_LEFT_X) / 10, -event.getAxis(EnumControllerAxis.STICK_LEFT_Y) / 10);
     }
 
     @SubscribeEvent

@@ -1,4 +1,4 @@
-package com.werwolv.api.event.input;
+package com.werwolv.api.event.input.keyboard;
 
 import com.werwolv.api.event.Event;
 

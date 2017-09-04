@@ -19,8 +19,6 @@ public class EntityPlayer extends Entity {
 
     private final PlayerData playerData = (PlayerData) new PlayerData().deserialize();
 
-    private Stack<Vector2f> prevPositions = new SizedStack<>(2048);
-
     private int selectedItemIndex;
     private int numInventoryRows = 5;
     public Map<Integer, ItemStack> inventoryPlayer = new HashMap<>();
@@ -30,11 +28,6 @@ public class EntityPlayer extends Entity {
 
     public EntityPlayer(World world, float posX, float posY) {
         super(world, posX, posY);
-    }
-
-    @Override
-    public void update(long deltaTime) {
-
     }
 
     public void openGui(Class<?> modClass, int guiID) {
@@ -78,7 +71,6 @@ public class EntityPlayer extends Entity {
     @Override
     public void move(float x, float y) {
         super.move(x, y);
-        this.prevPositions.push(new Vector2f(this.getX(), this.getY()));
     }
 
     public void setSelectedItemIndex(int index) {
@@ -91,9 +83,5 @@ public class EntityPlayer extends Entity {
 
     public PlayerData getPlayerData() {
         return playerData;
-    }
-
-    public Stack<Vector2f> getPrevPositions() {
-        return prevPositions;
     }
 }

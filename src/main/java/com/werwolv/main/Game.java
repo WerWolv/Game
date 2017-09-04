@@ -11,6 +11,8 @@ import com.werwolv.api.event.init.GameDestroyEvent;
 import com.werwolv.api.event.init.InitializationEvent;
 import com.werwolv.api.event.init.PostInitializationEvent;
 import com.werwolv.api.event.init.PreInitializationEvent;
+import com.werwolv.api.event.input.controller.ControllerAnalogInputEvent;
+import com.werwolv.api.event.input.keyboard.KeyHeldEvent;
 import com.werwolv.engine.audio.Audio;
 import com.werwolv.state.State;
 
@@ -80,7 +82,30 @@ public class Game implements Runnable{
 
         State.setCurrentState("game");
 	}
-	
+
+	public void update(double delta) {
+        API.EVENT_BUS.processEvents();
+
+        Audio.setListenerPosition();
+
+        try {
+            for (IUpdatable updatable : IUpdatable.updateableInstances)
+                updatable.update((int) delta);
+        } catch(ConcurrentModificationException e) {
+
+        }
+
+        if(glfwJoystickPresent(GLFW_JOYSTICK_1)) {
+            API.EVENT_BUS.postEvent(new ControllerAnalogInputEvent(glfwGetJoystickAxes(GLFW_JOYSTICK_1)));
+        }
+
+        for(long key : Window.pressedKeyList)
+            API.EVENT_BUS.postEvent(new KeyHeldEvent((int) key));
+
+        window.setResized(false);
+        glfwPollEvents();
+    }
+
 	public void render(){
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -120,6 +145,7 @@ public class Game implements Runnable{
 		long now;
 		long lastTime = System.nanoTime();
 		long timer = 0;
+		long fps = 0;
 
 		while(!window.shouldClose()){
 			now = System.nanoTime();
@@ -133,25 +159,17 @@ public class Game implements Runnable{
             }
 
 			if(delta >= 1){
-                API.EVENT_BUS.processEvents();
-
-                Audio.setListenerPosition();
-
-                try {
-                    for (IUpdatable updatable : IUpdatable.updateableInstances)
-                        updatable.update((int) delta);
-                } catch(ConcurrentModificationException e) {
-
-                }
-
-				window.setResized(false);
-				glfwPollEvents();
-
+                update(delta);
 				delta--;
 			}
-			if(timer >= 1E9) timer = 0;
+			if(timer >= 1E9) {
+			    glfwSetWindowTitle(window.getWindow(), "FPS: " + fps);
+			    timer = 0;
+			    fps = 0;
+            }
 
 			render();
+			fps++;
 		}
 
 		API.EVENT_BUS.postEvent(new GameDestroyEvent());

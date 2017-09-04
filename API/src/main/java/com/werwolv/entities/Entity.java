@@ -10,7 +10,10 @@ public abstract class Entity implements IUpdatable {
     protected double health = 100D;
     protected double maxHealth = 100D;
 
+    protected double maxSpeed = 0.1D;
+
     private float posX, posY;
+    private float nextX, nextY;
     private boolean isDead = false;
 
     protected World entityWorld;
@@ -30,12 +33,21 @@ public abstract class Entity implements IUpdatable {
         this.posY = posY;
     }
 
+    @Override
+    public void update(long deltaTime) {
+        this.posX += nextX;
+        this.posY += nextY;
+
+        this.nextX = 0;
+        this.nextY = 0;
+    }
+
     public float getX() {
         return posX;
     }
 
     public void setX(float posX) {
-        this.posX = posX;
+        this.nextX = posX;
     }
 
     public float getY() {
@@ -43,7 +55,7 @@ public abstract class Entity implements IUpdatable {
     }
 
     public void setY(float posY) {
-        this.posY = posY;
+        this.nextY = posY;
     }
 
     public boolean isDead() {
@@ -55,8 +67,12 @@ public abstract class Entity implements IUpdatable {
     }
 
     public void move(float x, float y) {
-        this.posX += x;
-        this.posY += y;
+        this.nextX += x;
+        this.nextY += y;
+
+        this.nextX = (float) Math.max(-maxSpeed, Math.min(maxSpeed, nextX));
+        this.nextY = (float) Math.max(-maxSpeed, Math.min(maxSpeed, nextY));
+
     }
 
     public AABB getBoundingBox() {

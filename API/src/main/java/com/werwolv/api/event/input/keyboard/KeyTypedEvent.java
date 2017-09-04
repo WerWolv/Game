@@ -1,12 +1,12 @@
-package com.werwolv.api.event.input;
+package com.werwolv.api.event.input.keyboard;
 
 import com.werwolv.api.event.Event;
 
-public class KeyReleasedEvent extends Event {
+public class KeyTypedEvent extends Event {
 
     private final int keyCode;
 
-    public KeyReleasedEvent(int keyCode) {
+    public KeyTypedEvent(int keyCode) {
         super();
         this.keyCode = keyCode;
     }

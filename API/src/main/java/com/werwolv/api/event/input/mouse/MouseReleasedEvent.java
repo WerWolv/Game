@@ -1,4 +1,4 @@
-package com.werwolv.api.event.input;
+package com.werwolv.api.event.input.mouse;
 
 import com.werwolv.api.event.Event;
 import com.werwolv.engine.renderer.Camera;

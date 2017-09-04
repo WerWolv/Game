@@ -1,4 +1,4 @@
-package com.werwolv.api.event.input;
+package com.werwolv.api.event.input.mouse;
 
 public enum EnumMouseButton {
     LEFT(1),
