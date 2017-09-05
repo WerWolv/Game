@@ -7,6 +7,7 @@ import com.werwolv.api.event.entity.EntityDiedEvent;
 import com.werwolv.entities.Entity;
 import com.werwolv.tile.Tile;
 import com.werwolv.tileEntities.TileEntity;
+import javafx.util.Pair;
 
 import java.util.*;
 
@@ -15,11 +16,8 @@ public class World implements IUpdatable {
     public static final int WORLD_HEIGHT = 512;
 
     private List<Entity> entities = new ArrayList<>();
-    private Map<Integer, Chunk<Tile>> chunksTile = new HashMap<>();
-
-    public World() {
-
-    }
+    private Map<Integer, Chunk<Integer>> chunksTile = new HashMap<>();
+    private Map<Integer, Chunk<TileEntity>> chunksTileEntity = new HashMap<>();
 
     public void update(long deltaTime) {
         Entity entityToRemove = null;
@@ -34,11 +32,18 @@ public class World implements IUpdatable {
         this.entities.add(entity);
     }
 
-    public Chunk<Tile> getChunk(int coord) {
+    public Chunk<Integer> getTileChunk(int coord) {
         if(!chunksTile.containsKey(coord))
-            this.chunksTile.put(coord, new Chunk(new Tile[Chunk.CHUNK_WIDTH][World.WORLD_HEIGHT]));
+            this.chunksTile.put(coord, new Chunk());
 
         return chunksTile.get(coord);
+    }
+
+    public Chunk<TileEntity> getTileEntityChunk(int coord) {
+        if(!chunksTileEntity.containsKey(coord))
+            this.chunksTileEntity.put(coord, new Chunk());
+
+        return chunksTileEntity.get(coord);
     }
 
     public int getChunkCount() {
@@ -51,20 +56,24 @@ public class World implements IUpdatable {
         if(chunksTile.get(chunk) == null)
             return null;
 
-        return chunksTile.get(chunk).getGridObjects()[posX % Chunk.CHUNK_WIDTH][posY];
+        return API.GameRegistry.getTileFromID(chunksTile.get(chunk).getGridObjects().get(new Pair<>(posX % Chunk.CHUNK_WIDTH, posY)));
     }
 
     public void setTile(Tile tile, int posX, int posY) {
         int chunk = (int)Math.floor(posX / Chunk.CHUNK_WIDTH);
 
-        if(!chunksTile.containsKey(chunk))
-            this.chunksTile.put(chunk, new Chunk(new Tile[Chunk.CHUNK_WIDTH][World.WORLD_HEIGHT]));
+        if(tile == null) return;
 
-        this.getChunk(chunk).setGridObject(tile, posX - (chunk * Chunk.CHUNK_WIDTH), posY);
+        if(!chunksTile.containsKey(chunk))
+            this.chunksTile.put(chunk, new Chunk());
+
+        this.getTileChunk(chunk).setGridObject(tile.getTileID(), posX - (chunk * Chunk.CHUNK_WIDTH), posY);
+
+        if(tile.getTileEntity() != null)
+            this.getTileEntityChunk(chunk).setGridObject(tile.getTileEntity(), posX - (chunk * Chunk.CHUNK_WIDTH), posY);
     }
 
     public void setTile(int id, int posX, int posY) {
-        int chunk = (int)Math.floor(posX / Chunk.CHUNK_WIDTH);
         Tile tile = API.GameRegistry.getTileFromID(id);
 
         if(id != 0 && tile == null) {
@@ -72,25 +81,23 @@ public class World implements IUpdatable {
             return;
         }
 
-        if(!chunksTile.containsKey(chunk))
-            this.chunksTile.put(chunk, new Chunk(new Tile[Chunk.CHUNK_WIDTH][World.WORLD_HEIGHT]));
+        this.setTile(tile, posX, posY);
 
-        this.getChunk(chunk).setGridObject(tile, posX - (chunk * Chunk.CHUNK_WIDTH), posY);
     }
 
     public TileEntity getTileEntity(int posX, int posY) {
         int chunk = (int)Math.floor(posX / Chunk.CHUNK_WIDTH);
 
-        if(chunksTile.get(chunk) == null)
+        if(chunksTileEntity.get(chunk) == null)
             return null;
 
         if(posY < 0 || posY >= World.WORLD_HEIGHT)
             return null;
 
-        if(chunksTile.get(chunk).getGridObjects()[posX % Chunk.CHUNK_WIDTH][posY] == null)
+        if(chunksTileEntity.get(chunk).getGridObjects().get(new Pair<>(posX % Chunk.CHUNK_WIDTH, posY)) == null)
             return null;
 
-        return chunksTile.get(chunk).getGridObjects()[posX % Chunk.CHUNK_WIDTH][posY].getTileEntity();
+        return chunksTileEntity.get(chunk).getGridObjects().get(new Pair<>(posX % Chunk.CHUNK_WIDTH, posY));
     }
 
 }

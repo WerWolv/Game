@@ -14,7 +14,6 @@ public class TileEntityTest extends TileEntity {
 
     @Override
     public void onTileClicked(EnumMouseButton button, EntityPlayer player, World world, int x, int y) {
-        super.onTileClicked(button, player, world, x, y);
         player.openGui(ModMain.class, 0);
     }
 }

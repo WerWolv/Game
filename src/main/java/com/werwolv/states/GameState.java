@@ -13,6 +13,7 @@ import com.werwolv.tile.Tile;
 import com.werwolv.world.Chunk;
 import com.werwolv.world.World;
 import com.werwolv.world.WorldGenerator;
+import javafx.util.Pair;
 import org.joml.Matrix4f;
 import org.joml.Vector4f;
 
@@ -78,7 +79,9 @@ public class GameState extends State {
         for(int chunk = cameraChunk - chunksOnScreen / 2; chunk < cameraChunk + chunksOnScreen / 2; chunk++) {
             for(int x = 0; x < Chunk.CHUNK_WIDTH; x++) {
                 for (int y = Math.max(0, cameraVerticalTile - verticalTilesOnScreen / 2); y < cameraVerticalTile + verticalTilesOnScreen / 2; y++) {
-                    Tile tile = this.world.getChunk(chunk).getGridObjects()[x][y];
+                    Integer tileId = this.world.getTileChunk(chunk).getGridObjects().get(new Pair<>(x, y));
+                    Tile tile = API.GameRegistry.getTileFromID(tileId == null ? 0 : tileId);
+
                     if(tile != null && tile.getTileID() != 0)
                         API.RenderingUtils.MODEL_RENDERER.renderTile(model, API.ResourceRegistry.getTextureFromID(tile.getTileID()), chunk * Chunk.CHUNK_WIDTH + x, y, worldSpace, this.getCamera());
                 }
