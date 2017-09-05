@@ -21,6 +21,8 @@ import static org.lwjgl.glfw.GLFW.*;
 @EventBusSubscriber
 public class EventHandler {
 
+    private float cameraOffsetX, cameraOffsetY;
+
     @SubscribeEvent
     public void onKeyPressed(KeyTypedEvent event) {
         if(State.getCurrentState() instanceof GameState) {
@@ -53,6 +55,11 @@ public class EventHandler {
     @SubscribeEvent
     public void onControllerAxisMoved(ControllerAnalogInputEvent event) {
         API.thePlayer.move(event.getAxis(EnumControllerAxis.STICK_LEFT_X) / 10, -event.getAxis(EnumControllerAxis.STICK_LEFT_Y) / 10);
+
+        this.cameraOffsetX += event.getAxis(EnumControllerAxis.STICK_RIGHT_X);
+        this.cameraOffsetY -= event.getAxis(EnumControllerAxis.STICK_RIGHT_Y);
+
+        State.getCurrentState().getCamera().setOffset(cameraOffsetX, cameraOffsetY);
     }
 
     @SubscribeEvent

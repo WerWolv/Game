@@ -8,6 +8,7 @@ import org.joml.Matrix4f;
 public class Camera implements IUpdatable {
 
     private float x, y;
+    private float offsetX, offsetY;
     private float lerp;
     public static Matrix4f projection;
 
@@ -63,11 +64,24 @@ public class Camera implements IUpdatable {
         projection = new Matrix4f().ortho2D(-width/2, width/2, -height/2, height/2);
     }
 
+    public void setOffset(float x, float y) {
+        this.offsetX = x;
+        this.offsetY = y;
+    }
+
+    public float getOffsetX() {
+        return offsetX;
+    }
+
+    public float getOffsetY() {
+        return offsetY;
+    }
+
     @Override
     public void update(long deltaTime) {
         if(entityToFollow != null) {
-            this.x += (entityToFollow.getX() - this.x) * lerp;
-            this.y += (entityToFollow.getY() - this.y) * lerp;
+            this.x += ((entityToFollow.getX() + offsetX - this.x) * lerp);
+            this.y += ((entityToFollow.getY() + offsetY - this.y) * lerp);
         }
     }
 }

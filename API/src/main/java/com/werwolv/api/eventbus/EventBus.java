@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableSet;
 import com.google.common.reflect.ClassPath;
 import com.werwolv.api.event.Event;
 import com.werwolv.api.modloader.Mod;
+import javafx.util.Pair;
 
 import java.util.concurrent.ConcurrentLinkedQueue;
 
@@ -17,7 +18,7 @@ import java.util.List;
 
 public class EventBus {
 
-    private List<Class<?>> eventHandlers = new ArrayList<>();
+    private List<Pair<Class<?>, Object>> eventHandlers = new ArrayList<>();
     private ConcurrentLinkedQueue<Event> eventStack = new ConcurrentLinkedQueue<>();
 
 
@@ -29,21 +30,21 @@ public class EventBus {
 
         for (Iterator<Event> iterator = eventStack.iterator(); iterator.hasNext(); ) {
             Event currEvent = iterator.next();
-            for (Class eventHandler : eventHandlers)
-                runAllAnnotatedWith(SubscribeEvent.class, eventHandler, currEvent);
+            for (Pair<Class<?>, Object> eventHandler : eventHandlers)
+                runAllAnnotatedWith(SubscribeEvent.class, eventHandler.getKey(), eventHandler.getValue(), currEvent);
             iterator.remove();
         }
     }
 
-    private void runAllAnnotatedWith(Class<? extends Annotation> annotation, Class<?> eventListener, Event event) {
+    private void runAllAnnotatedWith(Class<? extends Annotation> annotation, Class<?> eventListener, Object object, Event event) {
         Method[] methods = eventListener.getMethods();
 
         for (Method method : methods) {
             if (method.isAnnotationPresent(annotation)) {
                 try {
                     if(method.getParameterTypes()[0].isInstance(event))
-                            method.invoke(eventListener.newInstance(), event);
-                } catch (IllegalAccessException | InvocationTargetException | InstantiationException e) {
+                            method.invoke(object, event);
+                } catch (IllegalAccessException | InvocationTargetException e) {
                     e.printStackTrace();
                 }
             }
@@ -63,10 +64,12 @@ public class EventBus {
             try {
                 Class clazz = c.load();
                 if(clazz.isAnnotationPresent(EventBusSubscriber.class))
-                    this.eventHandlers.add(clazz);
+                    this.eventHandlers.add(new Pair<>(clazz, clazz.newInstance()));
                 else if(clazz.isAnnotationPresent(Mod.class))
-                    this.eventHandlers.add(clazz);
-            } catch(NoClassDefFoundError e) {}
+                    this.eventHandlers.add(new Pair<>(clazz, clazz.newInstance()));
+            } catch(NoClassDefFoundError e) {} catch (IllegalAccessException | InstantiationException e) {
+                e.printStackTrace();
+            }
         }
     }
 }
