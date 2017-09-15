@@ -24,7 +24,7 @@ public class API {
     public static final ModLoader MOD_LOADER = new ModLoader();
 
     public static final World theWorld = new World();
-    public static final EntityPlayer thePlayer = new EntityPlayer(theWorld, 0, 0);
+    public static final EntityPlayer thePlayer = new EntityPlayer(theWorld, 256, 256);
 
     public static class GameRegistry {
         private static Map<Integer, Tile> registeredTiles = new HashMap<>();
@@ -277,7 +277,7 @@ public class API {
         public static int MONITOR_WIDTH;
         public static int MONITOR_HEIGHT;
 
-        public static float WORLD_SCALE = 50.0F;
+        public static float WORLD_SCALE = 1.0F;
 
         public static int DRAGGED_ITEM_SIZE = 64;
 

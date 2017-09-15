@@ -17,7 +17,11 @@ import com.werwolv.tileEntities.TileEntityTest;
 @Mod(modId = "game", modName = "Game", modVersion = "1.0.0", guiHandler = GuiHandler.class)
 public class ModMain {
 
-    public static final Tile tileGrass = new TileTest(1).setUnlocalizedName("tileGrass").setTexture("game:tileGrass").addTileEntity(TileEntityTest.class);
+    public static final Tile tileGrass1 = new TileTest(1).setUnlocalizedName("tileGrass").setTexture("game:tileGrass").addTileEntity(TileEntityTest.class);
+    public static final Tile tileGrass2 = new TileTest(2).setUnlocalizedName("tileGrass").setTexture("game:tileGrass").addTileEntity(TileEntityTest.class);
+    public static final Tile tileGrass3 = new TileTest(3).setUnlocalizedName("tileGrass").setTexture("game:tileGrass").addTileEntity(TileEntityTest.class);
+    public static final Tile tileGrass4 = new TileTest(4).setUnlocalizedName("tileGrass").setTexture("game:tileGrass").addTileEntity(TileEntityTest.class);
+    public static final Tile tileGrass5 = new TileTest(5).setUnlocalizedName("tileGrass").setTexture("game:tileGrass").addTileEntity(TileEntityTest.class);
 
     public static final Item itemTest = new Item(1).setUnlocalizedName("itemTest").setTexture("game:itemGrass");
 
@@ -28,7 +32,12 @@ public class ModMain {
 
     @SubscribeEvent
     public void onInit(InitializationEvent event) {
-        API.GameRegistry.registerTile(tileGrass);
+        API.GameRegistry.registerTile(tileGrass1);
+        API.GameRegistry.registerTile(tileGrass2);
+        API.GameRegistry.registerTile(tileGrass3);
+        API.GameRegistry.registerTile(tileGrass4);
+        API.GameRegistry.registerTile(tileGrass5);
+
         API.GameRegistry.registerItem(itemTest);
     }
 

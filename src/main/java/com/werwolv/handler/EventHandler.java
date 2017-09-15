@@ -40,10 +40,10 @@ public class EventHandler {
     @SubscribeEvent
     public void onKeyHeld(KeyHeldEvent event) {
         switch(event.getKeyCode()) {
-            case GLFW_KEY_W: API.thePlayer.move(0.0F, 0.1F); break;
-            case GLFW_KEY_A: API.thePlayer.move(-0.1F, 0.0F); break;
-            case GLFW_KEY_S: API.thePlayer.move(0.0F, -0.1F); break;
-            case GLFW_KEY_D: API.thePlayer.move(0.1F, 0.0F); break;
+            case GLFW_KEY_W: API.thePlayer.move(0.0F, API.thePlayer.getSpeed()); break;
+            case GLFW_KEY_A: API.thePlayer.move(-API.thePlayer.getSpeed(), 0.0F); break;
+            case GLFW_KEY_S: API.thePlayer.move(0.0F, -API.thePlayer.getSpeed()); break;
+            case GLFW_KEY_D: API.thePlayer.move(API.thePlayer.getSpeed(), 0.0F); break;
         }
     }
 

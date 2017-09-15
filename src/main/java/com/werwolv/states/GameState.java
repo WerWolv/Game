@@ -6,13 +6,12 @@ import com.werwolv.engine.resource.ModelLoader;
 import com.werwolv.engine.Model;
 import com.werwolv.engine.audio.SoundSource;
 import com.werwolv.entities.EntityPlayer;
-import com.werwolv.main.ModMain;
 import com.werwolv.main.Window;
 import com.werwolv.state.State;
 import com.werwolv.tile.Tile;
 import com.werwolv.world.Chunk;
 import com.werwolv.world.World;
-import com.werwolv.world.WorldGenerator;
+import com.werwolv.world.WorldGenBase;
 import javafx.util.Pair;
 import org.joml.Matrix4f;
 import org.joml.Vector4f;
@@ -47,8 +46,8 @@ public class GameState extends State {
     public void init() {
         //source = new SoundSource("game:test", 1.0F, 1.0F, false);
 
-        WorldGenerator worldGen = new WorldGenerator(this.world, 123);
-        worldGen.generate(0, 256);
+        WorldGenBase worldGen = new WorldGenBase(this.world, 123);
+        worldGen.generateChunk(0, 512);
     }
 
     @Override
@@ -83,7 +82,8 @@ public class GameState extends State {
                     Tile tile = API.GameRegistry.getTileFromID(tileId == null ? 0 : tileId);
 
                     if(tile != null && tile.getTileID() != 0)
-                        API.RenderingUtils.MODEL_RENDERER.renderTile(model, API.ResourceRegistry.getTextureFromID(tile.getTileID()), chunk * Chunk.CHUNK_WIDTH + x, y, worldSpace, this.getCamera());
+                        //API.RenderingUtils.MODEL_RENDERER.renderTile(model, API.ResourceRegistry.getTextureFromID(tile.getTileID()), chunk * Chunk.CHUNK_WIDTH + x, y, worldSpace, this.getCamera());
+                        API.RenderingUtils.MODEL_RENDERER.renderColor(model, new Vector4f((tile.getTileID()%3)*0.5f,((tile.getTileID()/3)%3)*0.5f,((tile.getTileID()/9)%3)*0.5f,1),chunk * Chunk.CHUNK_WIDTH + x, y, worldSpace, this.getCamera());
                 }
             }
         }

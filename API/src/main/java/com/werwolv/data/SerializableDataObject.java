@@ -31,7 +31,7 @@ public abstract class SerializableDataObject implements Serializable {
         public SerializableDataObject deserialize() {
             SerializableDataObject  sdo;
             try {
-                File file = new File(System.getProperty("user.home") + "/everphase/data/" + getClass().getSimpleName() + ".sdo");
+                File file = new File(System.getProperty("user.home") + "/game/data/" + getClass().getSimpleName() + ".sdo");
                 File parent = file.getParentFile();
 
                 if (!parent.exists() && !parent.mkdirs()) {

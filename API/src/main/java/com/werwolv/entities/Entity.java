@@ -10,7 +10,9 @@ public abstract class Entity implements IUpdatable {
     protected double health = 100D;
     protected double maxHealth = 100D;
 
-    protected double maxSpeed = 0.1D;
+    protected double maxSpeed = 5.1D;
+
+    protected float speed = 1.2f;
 
     private float posX, posY;
     private float nextX, nextY;
@@ -19,8 +21,8 @@ public abstract class Entity implements IUpdatable {
     protected World entityWorld;
 
     public Entity(World world) {
-        this.posX = 0;
-        this.posY = 0;
+        this.posX = 256;
+        this.posY = 256;
         this.entityWorld = world;
 
         setUpdateable();
@@ -41,6 +43,8 @@ public abstract class Entity implements IUpdatable {
         this.nextX = 0;
         this.nextY = 0;
     }
+
+    public float getSpeed() { return  speed; }
 
     public float getX() {
         return posX;
@@ -76,7 +80,7 @@ public abstract class Entity implements IUpdatable {
     }
 
     public AABB getBoundingBox() {
-        return new AABB(new Vector2f(0.5F, 0.5F), new Vector2f(0.5F, 0.5F));
+        return new AABB(new Vector2f(8.5F, 8.5F), new Vector2f(8.5F, 8.5F));
     }
 
 }
